@@ -1,0 +1,106 @@
+<div class="col-lg-12"></div>
+<div class="card">
+    <div class="card">
+        <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="#">Configuration</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Profils Calendaires </li>
+            </ol>
+          </nav>
+             
+              <ul class="nav nav-tabs nav-tabs-bordered">
+
+                <li class="nav-item">
+                  <button class="nav-link " data-bs-toggle="tab" data-bs-target="#profile-overview" routerLink="/admin/typeabsence">Type d'Absence</button>
+                </li>
+  
+                <li class="nav-item">
+                  <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-edit" routerLink="/admin/addabsense">Ajouter un Type d'absece</button>
+                </li>
+              </ul>
+              <hr>
+              
+            
+          
+                    <div class="card">
+                      <div class="card-body">
+                        
+          
+                        <!-- General Form Elements -->
+                        <form>
+                          <div class="row mt-3 mb-3">
+                            <label for="inputText" class="col-sm-2 col-form-label">Designation:</label>
+                            <div class="col-sm-10">
+                              <input type="text" class="form-control">
+                            </div>
+                          </div>
+                          <div class="row mt-3 mb-3">
+                            <label for="inputText" class="col-sm-2 col-form-label">Color:</label>
+                            <div class="col-md-4 col-lg-5">
+                                <input class="form-select"  type="color" aria-label="Example select with button addon">
+                              
+                            </div>
+                          </div>
+                          
+                        
+                          
+          
+                        
+                          <div class="row mt-3 mb-3">
+                          <div class="form-check">Traitement de l'absence 
+                              <hr>
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                            <label class="form-check-label" for="flexRadioDefault1">
+                             nom comptabilise
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" >
+                            <label class="form-check-label" for="flexRadioDefault2">
+                                comptabilise(ou renumere)
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3" checked >
+                            <label class="form-check-label" for="flexRadioDefault3">
+                             Prix en tant que RTT
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4" >
+                            <label class="form-check-label" for="flexRadioDefault4">
+                             Prix en tant que conge paye
+                            </label>
+                          </div>
+                          </div>
+                       
+                          <div class="row mt-3 mb-3">
+
+                          <div class="form-check">Annulation/Traitement RTT 
+                            <hr>
+                          <input class="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault5" checked>
+                          <label class="form-check-label" for="flexRadioDefault5">
+                           Personnalisable par l'operateur
+                          </label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault6" >
+                          <label class="form-check-label" for="flexRadioDefault6">
+                             journee complete
+                          </label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault7" >
+                          <label class="form-check-label" for="flexRadioDefault7">
+                           Demi-journee
+                          </label>
+                        </div>
+                        
+                         </div>
+                                             
+          
+              
+            
+                  
+                
+          

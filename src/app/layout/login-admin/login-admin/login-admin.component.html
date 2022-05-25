@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {font-family: Arial, Helvetica, sans-serif;  }
+form {border: 3px solid #f1f1f1;  }
+
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #04AA6D;
+ 
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+.cancelbtn {
+  width: auto;
+  padding: 10px 18px;
+  background-color: #f44336;
+}
+
+.imgcontainer {
+  text-align: center;
+  margin: 100px 100px 100px 100px;
+}
+
+img.avatar {
+  width: 100%;
+  border-radius: 50%;
+}
+
+.container {
+  padding: 20px;
+}
+
+span.psw {
+  float: right;
+  padding-top: 0px;
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 400px) {
+  span.psw {
+     display: block;
+     float: none;
+  }
+  .cancelbtn {
+     width: 100%;
+  }
+}
+</style>
+</head>
+<body>
+  
+  <main>
+    
+    <div class="container">
+
+      <section class="section register min-vh-50 d-flex flex-column align-items-center justify-content-center py-2">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-lg-4 col-md-4 d-flex flex-column align-items-center justify-content-center">
+
+              <!-- End Logo -->
+              
+              <div class="card mb-3">
+                <div class="d-flex justify-content-center py-0" >
+                <a href="index.html" class="logo d-flex align-items-center w-auto">
+                  <img src="assets/admin/img/img1.png" alt="">
+                  <span class="d-none d-lg-block">BIOTIME</span>
+                </a>
+              </div>
+                <div class="card-body">
+
+                  <div class="pt-4 pb-2">
+                    <h5 class="card-title text-center pb-0 fs-4">Connectez-vous a votre compte</h5>
+                    <h5><p class="text-center small">Entrer votre Username et votre Mot de passe </p></h5>
+                  </div>
+
+                  <form class="row g-3 needs-validation" novalidate>
+
+                    <div class="col-12">
+                      <label for="yourUsername" class="form-label">Username</label>
+                      <div class="input-group has-validation">
+                        
+                        <input type="text" name="username" class="form-control" id="yourUsername" required>
+                        <div class="invalid-feedback">Please enter your username.</div>
+                      </div>
+                    </div>
+
+                    <div class="col-12">
+                      <label for="yourPassword" class="form-label">Mot de passe</label>
+                      <input type="password" name="passwword" class="form-control" id="yourPassword" required>
+                      <div class="invalid-feedback">Please enter your password!</div>
+                    </div>
+
+                    
+                    <div class="col-12">
+                      <button class="btn btn-primary w-100" type="submit" routerLink="/admin">Se Connecter</button>
+                    </div>
+                    <div class="col-12">
+                      <p class="small mb-0">Vous n'avez pas de compte? <a href="register">Creer nouveau compte</a></p>
+                    </div>
+                    <div class="container" style="background-color:#f1f1f1">
+                  
+                      <span class="psw"> <a href="/forgotpassword" >Mot de passe oublié?</a></span>
+                    </div>
+                  </form>
+
+                </div>
+              </div>
+
+            
+                
+                
+              
+
+            </div>
+          </div>
+        </div>
+          
+      </section>
+
+    </div>
+  </main><!-- End #main -->
+
+
+</body>
+</html>

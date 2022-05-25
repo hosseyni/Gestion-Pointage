@@ -1,0 +1,72 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+body{
+  background: #f2f2f2;
+  font-family: 'Open Sans', sans-serif;
+}
+* { margin: 0px; padding: 0px; }
+
+
+.search {
+  width: 100%;
+  position: relative;
+  display: flex;
+  margin-bottom: 20px;
+  margin-left: 15px;
+}
+
+.searchTerm {
+  width: 200px;
+  border: 3px solid #00B4CC;
+  border-right: none;
+  padding: 5px;
+  height: 40px;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  color: #9DBFAF;
+}
+
+.searchTerm:focus{
+  color: #00B4CC;
+}
+
+.searchButton {
+  width: 40px;
+  height: 40px;
+  border: 1px solid #00B4CC;
+  background: #00B4CC;
+  text-align: center;
+  color: #fff;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+
+
+.friend img {
+    width: 40px;
+    border-radius: 50%;
+    margin: 10px 10px 10px 10px;
+    /* float: left; */
+}
+.friend .text {
+    display: inline-table;
+}
+.friend .text span {
+padding-left: 10px;
+}
+.friend text{
+    padding:15px 0 0 0;     
+  }
+  .friend text strong{
+    font-weight:600;
+    font-size:15px;
+    color:#597a96;  
+  
+  }
+  .friend text span{
+    font-size:13px;
+    font-weight:400;
+    color:#aab8c2;
+  }

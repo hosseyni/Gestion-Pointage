@@ -1,0 +1,232 @@
+<nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="#">Configuration</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Profil d'accés</li>
+    </ol>
+  </nav>
+<hr>
+<ul class="nav nav-tabs nav-tabs-bordered">
+
+    <li class="nav-item">
+      <button class="nav-link " data-bs-toggle="tab" data-bs-target="#profile-overview" routerLink="/admin/handkeys">Pointeuse</button>
+    </li>
+
+    <li class="nav-item">
+      <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-edit" routerLink="/admin/addprofil">Profil Controle d'accès</button>
+    </li>
+  </ul>
+  <hr>
+
+<!-- Scrolling Modal -->
+
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#scrollingModal">
+    Ajouter profil de controle d'accés
+  </button>
+  <div class="modal fade" id="scrollingModal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Ajouter profil de controle d'accés</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" style="min-height: 1500px;">
+            <div class="row mb-3">
+                <label for="designation" class="col-md-4 col-lg-3 col-form-label">Designation</label>
+                <div class="col-md-4 col-lg-6 col-form-label">
+                  <input name="designation" type="text" class="form-control" id="designation" value="">
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label for="Email" class="col-md-4 col-lg-3 col-form-label">Badge Vertx</label>
+                <div class="col-md-4 col-lg-5 col-form-label">
+                  <select class="form-select" id="inputGroupSelect04" aria-label="Example select with button addon">
+                    
+                    <option value="1">Zkteco1</option>
+                    <option value="2">Zkteco2</option>
+                    <option value="2">Zkteco6</option>
+                    <option value="2">Zkteco7</option>
+                   
+                  </select>
+                  
+                </div>
+                <div class="col-12">
+                  
+                </div>
+                
+                
+              </div>
+              <div class="row mb-3">
+                <label for="Email" class="col-md-4 col-lg-3 col-form-label">Empreinte</label>
+                <div class="col-md-4 col-lg-5 col-form-label">
+                  <select class="form-select" id="inputGroupSelect04" aria-label="Example select with button addon">
+                    
+                    <option value="1">Zkteco8</option>
+                    <option value="2">Zkteco11</option>
+                    <option value="2">Zkteco15</option>
+                    <option value="2">Zkteco3</option>
+                   
+                  </select>
+                  
+                </div>
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Pointeuse</th>
+                        <th scope="col">Type</th>
+                        <td></td>
+                        
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">Zkteco1</th>
+                        <td>Badge Vertx</td>
+                        <td><i class="bi bi-trash"></i></td>
+                      </tr>
+    
+                      <tr class="table-primary">
+                        <th scope="row">Zkteco2</th>
+                        <td>Empreinte</td>
+                        <td><i class="bi bi-trash"></i></td>
+                      </tr>
+                      <tr class="table-secondary">
+                        <th scope="row">Zkteco11</th>
+                        <td>Badge Vertx</td>
+                        <td><i class="bi bi-trash"></i></td>
+                      </tr>
+                      <tr class="table-success">
+                        <th scope="row">Zkteco15</th>
+                        <td>Empreinte</td>
+                        <td><i class="bi bi-trash"></i></td>
+                      </tr>
+                      
+                    </tbody>
+                  </table>
+                  <!-- End Table Variants -->
+                <div class="col-12">
+                  
+                </div>
+                
+                
+              </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+          <button type="button" class="btn btn-primary">Enregistrer</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div><!-- End Scrolling Modal-->
+<hr>
+<section class="section dashboard">
+    <div class="row">
+
+      <!-- Left side columns -->
+      <div class="col-lg-8">
+        <div class="row">
+
+          <!-- Sales Card -->
+          <div class="col-xxl-4 col-md-6">
+            <div class="card info-card sales-card">
+
+              <div class="filter">
+                <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-trash"></i></a><a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-pen"></i></a>
+                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                  <li class="dropdown-header text-start">
+                    <h6>Filter</h6>
+                  </li>
+
+                  <li><a class="dropdown-item" href="#">Today</a></li>
+                  <li><a class="dropdown-item" href="#">This Month</a></li>
+                  <li><a class="dropdown-item" href="#">This Year</a></li>
+                </ul>
+              </div>
+
+              <div class="card-body">
+                <h2 class="card-title">Profil/1 <span></span></h2>
+
+                <div class="d-flex align-items-center">
+                  <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                    <i class="bi bi-calculator"></i>
+                  </div>
+                  <div class="ps-4">
+                    <h6> 3 Pointeuses</h6>
+                    <span class="text-success small pt-1 fw-bold"></span> <span class="text-muted small pt-2 ps-1"></span>
+
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div><!-- End Sales Card -->
+
+          <!-- Revenue Card -->
+          <div class="col-xxl-4 col-md-6">
+            <div class="card info-card revenue-card">
+
+              <div class="filter">
+                <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-trash"></i></a><a class="icon" href="addprofil" data-bs-toggle="dropdown"><i class="bi bi-pen"></i></a>
+                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                  <li class="dropdown-header text-start">
+                    <h6>Filter</h6>
+                  </li>
+
+                  <li><a class="dropdown-item" href="#">Today</a></li>
+                  <li><a class="dropdown-item" href="#">This Month</a></li>
+                  <li><a class="dropdown-item" href="#">This Year</a></li>
+                </ul>
+              </div>
+
+              <div class="card-body">
+                <h2 class="card-title">Profil/2 <span></span></h2>
+
+                <div class="d-flex align-items-center">
+                  <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                    <i class="bi bi-calculator"></i>
+                  </div>
+                  <div class="ps-4">
+                    <h6> 4 Pointeuses</h6>
+                    <span class="text-success small pt-1 fw-bold"></span> <span class="text-muted small pt-2 ps-1"></span>
+
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div><!-- End Revenue Card -->
+
+          <!-- Customers Card -->
+          <div class="col-xxl-4 col-xl-12">
+
+            <div class="card info-card customers-card">
+
+              <div class="filter">
+                <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-trash"></i></a><a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-pen"></i></a>
+                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                  <li class="dropdown-header text-start">
+                    <h6>Filter</h6>
+                  </li>
+
+                  <li><a class="dropdown-item" href="#">Today</a></li>
+                  <li><a class="dropdown-item" href="#">This Month</a></li>
+                  <li><a class="dropdown-item" href="#">This Year</a></li>
+                </ul>
+              </div>
+
+              <div class="card-body">
+                <h2 class="card-title">Profil/3 <span></span></h2>
+
+                <div class="d-flex align-items-center">
+                  <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                    <i class="bi bi-calculator"></i>
+                  </div>
+                  <div class="ps-4">
+                    <h6> 5 Pointeuses</h6>
+                    <span class="text-success small pt-1 fw-bold"></span> <span class="text-muted small pt-2 ps-1"></span>
+
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div><!-- End Customers Card -->

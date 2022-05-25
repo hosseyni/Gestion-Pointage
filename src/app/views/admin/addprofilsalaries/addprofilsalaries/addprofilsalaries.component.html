@@ -1,0 +1,152 @@
+<div class="col-lg-12"></div>
+<div class="card">
+    <div class="card">
+        <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="#">Configuration</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Profils Calendaires </li>
+            </ol>
+          </nav>
+             
+              <ul class="nav nav-tabs nav-tabs-bordered">
+
+                <li class="nav-item">
+                  <button class="nav-link " data-bs-toggle="tab" data-bs-target="#profile-overview" routerLink="/admin/profilscalendaires">Profils Calendaire</button>
+                </li>
+  
+                <li class="nav-item">
+                  <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-edit" routerLink="/admin/addprofilcalendaire">Ajouter Profil Calendaire</button>
+                </li>
+              </ul>
+              <hr>
+              
+            
+          
+                    <div class="card">
+                      <div class="card-body">
+                        
+          
+                        <!-- General Form Elements -->
+                        <form>
+                          <div class="row mt-3 mb-3">
+                            <label for="inputText" class="col-sm-2 col-form-label">Designation:</label>
+                            <div class="col-sm-10">
+                              <input type="text" class="form-control">
+                            </div>
+                          </div>
+                          
+          
+                          <div class="row mt-3 mb-3">Horaire definissant la nuit
+                              <hr> 
+                            <label for="inputTime" class="col-sm-2 col-form-label">Soir:</label>
+                            <div class="col-sm-4">
+                              <input type="time" class="form-control">
+                            </div>
+                            <label for="inputTime" class="col-sm-2 col-form-label">Matin:</label>
+                            <div class="col-sm-4">
+                              <input type="time" class="form-control">
+                            </div>
+                          </div>
+          
+                        
+          
+                          <div class="form-check">Annulation/Traitement RTT 
+                              <hr>
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                            <label class="form-check-label" for="flexRadioDefault1">
+                             Payer les horaires supplementaires
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                            <label class="form-check-label" for="flexRadioDefault2">
+                              Annuler les heures(ecart positifs ou negatifs)
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                            <label class="form-check-label" for="flexRadioDefault2">
+                              R.T.T
+                            </label>
+                          </div>
+                          <div class="row mb-3">
+                            <div class="col-sm-4">
+                              <input type="date" class="form-control">
+                            </div>
+                            <div class="col-sm-8">
+                                 jour du mois qui definit le debut d'une annees
+                              </div>
+                          </div>
+                         <span>Profil Calendaire par Defaut</span>
+                         <hr>
+                          <table class="table">
+                            <thead>
+                              <tr>
+                                <th scope="col">JOUR DE LA SEMAINE</th>
+                                <th scope="col">PROFILS CALENDAIRE UTILISES</th>
+                                <td></td>
+                                
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <th scope="row">Dimanche</th>
+                                <td>
+                                    <div class="col-md-4 col-lg-5 col-form-label">
+                                        <select class="form-select" id="inputGroupSelect04" aria-label="Example select with button addon">
+                                          
+                                          <option value="1">Profil Calendaire</option>
+                                          <option value="2">Profil1</option>
+                                          <option value="2">Profil2</option>
+                                          <option value="2">Profil3</option>
+                                         
+                                        </select>
+                                        
+                                      </div>
+                                </td>
+                                <td><i class="bi bi-trash"></i></td>
+                              </tr>
+            
+                              <tr class="table-primary">
+                                <th scope="row">Lundi</th>
+                                <td>
+                                    <div class="col-md-4 col-lg-5 col-form-label">
+                                        <select class="form-select" id="inputGroupSelect04" aria-label="Example select with button addon">
+                                          
+                                            <option value="1">Profil Calendaire</option>
+                                            <option value="2">Profil1</option>
+                                            <option value="2">Profil2</option>
+                                            <option value="2">Profil3</option>
+                                         
+                                        </select>
+                                        
+                                      </div>
+                                </td>
+                                <td><i class="bi bi-trash"></i></td>
+                              </tr>
+                              <tr class="table-secondary">
+                                <th scope="row">Mardi</th>
+                                <td>
+                                    <div class="col-md-4 col-lg-5 col-form-label">
+                                        <select class="form-select" id="inputGroupSelect04" aria-label="Example select with button addon">
+                                          
+                                            <option value="1">Profil Calendaire</option>
+                                            <option value="2">Profil1</option>
+                                            <option value="2">Profil2</option>
+                                            <option value="2">Profil3</option>
+                                        </select>
+                                        
+                                      </div>
+                                </td>
+                                <td><i class="bi bi-trash"></i></td>
+                              </tr>
+                            
+                              
+                            </tbody>
+                          </table>                        
+          
+              
+            
+                  
+                
+          
