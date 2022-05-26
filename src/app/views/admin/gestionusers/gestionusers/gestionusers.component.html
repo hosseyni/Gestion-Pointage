@@ -41,6 +41,10 @@
                   <th scope="col">Prenom</th>
                   <th scope="col">Date de naissance</th>
                   <th scope="col">Email</th>
+                  <th scope="col">Statut</th>
+                  <th scope="col">Action</th>
+
+
                 
                   
                 </tr>
@@ -176,7 +180,6 @@
                     </div><!-- End Full Screen Modal-->
       
   
-                    <a routerLink="admin/addsession" class="#addsession" data-bs-toggle="modal" data-bs-target="#ExtralargeModal"><i class="bi bi-pen"></i></a>&nbsp;
 
                     <div class="modal fade" id="ExtralargeModal" tabindex="-1">
                       <div class="modal-dialog modal-xl">
@@ -439,9 +442,7 @@
       
                     </div>
 
-                    <a href="#" class="#profile-delete"><i class="bi bi-trash"></i></a>&nbsp;
-                    <a href="#" class="#profile-desactivate"><i class="bi bi-exclamation-triangle-fill"></i></a>&nbsp;
-                    <a href="#" class="#profile-activate"><i class="bi bi-file-check-fill"></i></a>
+                
                     
                   </th>
                   <td> <div class="form-check">
@@ -452,6 +453,12 @@
                   <td>Mourad</td>
                   <td>2016-05-25</td>
                   <td>zarai.mourad@example.com</td>
+                  <td><a href="#" class="#profile-desactivate"><i class="bi bi-exclamation-triangle-fill"></i></a>&nbsp;
+                    <a href="#" class="#profile-activate"><i class="bi bi-file-check-fill"></i></a></td>
+                  <td><a href="#" class="#profile-delete"><i class="bi bi-trash"></i></a>&nbsp;
+                    <a href="addsession" class="#addsession"><i class="bi bi-pen"></i></a>&nbsp;
+
+                  </td>
                   
                   
                 </tr>
@@ -459,10 +466,7 @@
                   <th scope="row">2</th>
                   <th scope="row">
                   <a href="addfonctionalite" class="#addfonctionalite"><i class="bi bi-plus-lg"></i></a>&nbsp;
-                  <a href="addsession" class="#addsession"><i class="bi bi-pen"></i></a>&nbsp;
-                  <a href="#" class="#profile-delete"><i class="bi bi-trash"></i></a>&nbsp;
-                  <a href="#" class="#profile-desactivate"><i class="bi bi-exclamation-triangle-fill"></i></a>&nbsp;
-                  <a href="#" class="#profile-activate"><i class="bi bi-file-check-fill"></i></a>
+                  
                   
                   <td> <div class="form-check">
                     <input class="form-check-input" type="checkbox" value="" id="defaultCheck1"></div>
@@ -472,7 +476,13 @@
                   <td>hassini</td>
                   <td>2016-05-25</td>
                   <td>taher.hassini@example.com</td>
-                  
+                  <td><a href="#" class="#profile-desactivate"><i class="bi bi-exclamation-triangle-fill"></i></a>&nbsp;
+                    <a href="#" class="#profile-activate"><i class="bi bi-file-check-fill"></i></a></td>
+                  <td><a href="#" class="#profile-delete"><i class="bi bi-trash"></i></a>&nbsp;
+                    <a href="addsession" class="#addsession"><i class="bi bi-pen"></i></a>&nbsp;
+
+                  </td>
+
                 </tr>
                 
               </tbody>
