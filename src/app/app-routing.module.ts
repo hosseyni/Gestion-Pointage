@@ -35,7 +35,8 @@ const routes: Routes = [
     {path:'addprofilacces',loadChildren:()=>import('./views/admin/addprofilacces/addprofilacces.module').then(m=>m.AddprofilaccesModule)},
     {path:'addprofilcalendaire',loadChildren:()=>import('./views/admin/addprofilcalendaire/addprofilcalendaire.module').then(m=>m.AddprofilcalendaireModule)},
     {path:'addprofilsalaries',loadChildren:()=>import('./views/admin/addprofilsalaries/addprofilsalaries.module').then(m=>m.AddprofilsalariesModule)},
-    {path:'addabsense',loadChildren:()=>import('./views/admin/addabsense/addabsense.module').then(m=>m.AddabsenseModule)}
+    {path:'addabsense',loadChildren:()=>import('./views/admin/addabsense/addabsense.module').then(m=>m.AddabsenseModule)},
+    {path:'addusager',loadChildren:()=>import('./views/admin/addusager/addusager.module').then(m=>m.AddusagerModule)}
 
   ]},
   {path:'login',component:LoginAdminComponent},

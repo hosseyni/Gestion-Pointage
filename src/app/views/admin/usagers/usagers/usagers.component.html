@@ -88,16 +88,19 @@
                   </div>  
                      
               </div> 
+              <br>
               </div>
               </div>
-<div class="col-md-8">
+<div class="col-md-8" >
+
 <div>
     <i class="fas fa-file-pdf">Afficher le Planning</i>
 </div>
-<table class="table table-success table-striped">
+<table class="table table-success table-striped" id="htmlData" >
     <thead>
       <tr>
-        <th scope="col"><i class="fas fa-plus"></i></th>
+        
+        <th  scope="col"><i *ngIf= "isShown" class="bi bi-plus-lg nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit" routerLink="/admin/addusager"></i></th>
         <th scope="col">DIMANCHE</th>
         <th scope="col">LUNDI</th>
         <th scope="col">MARDI</th>
@@ -110,56 +113,81 @@
     </thead>
     <tbody>
       <tr>
-        <td >Zkteco1</td>
-        <td>Badge Vertx</td>
-        <td>Zkteco1</td>
-        <td >Zkteco1</td>
-       <td >Zkteco1</td>
-      <td >Zkteco1</td>
-      <td >Zkteco1</td>
-     <td >Zkteco1</td>
+        <td >Adam Bannour</td>
+        <td><p>10:00:00</p><p>18:00:00</p></td>
+        <td><p>11:00:00</p><p>19:00:00</p></td>
+        <td><p>10:00:00</p><p>18:00:00</p></td> 
+        <td> Sans Profile</td>
+        <td><p>10:00:00</p><p>18:00:00</p></td>
+        <td><p>10:00:00</p><p>18:00:00</p></td>
+        <td><p>11:00:00</p><p>19:00:00</p></td>
 
       </tr>
 
       <tr>
-        <td >Zkteco1</td>
-        <td>Badge Vertx</td>
-        <td>Zkteco1</td>
-        <td >Zkteco1</td>
-       <td >Zkteco1</td>
-      <td >Zkteco1</td>
-      <td >Zkteco1</td>
-     <td >Zkteco1</td>
+        <td >Adam Bannour</td>
+        <td><p>10:00:00</p><p>18:00:00</p></td>
+        <td> Sans Profile</td>
+        <td><p>10:00:00</p><p>18:00:00</p></td> 
+        <td> Sans Profile</td>
+        <td> Sans Profile</td>
+        <td><p>11:00:00</p><p>19:00:00</p></td>
+        <td> Sans Profile</td>
+      </tr>
+      <tr>
+        <td >Adam Bannour</td>
+        <td><p>10:00:00</p><p>18:00:00</p></td>
+        <td><p>11:00:00</p><p>19:00:00</p></td>
+        <td><p>10:00:00</p><p>18:00:00</p></td> 
+        <td> Sans Profile</td>
+        <td><p>10:00:00</p><p>18:00:00</p></td>
+        <td><p>10:00:00</p><p>18:00:00</p></td>
+        <td><p>11:00:00</p><p>19:00:00</p></td>
 
       </tr>
       <tr>
-        <td >Zkteco1</td>
-        <td>Badge Vertx</td>
-        <td>Zkteco1</td>
-        <td >Zkteco1</td>
-       <td >Zkteco1</td>
-      <td >Zkteco1</td>
-      <td >Zkteco1</td>
-     <td >Zkteco1</td>
+        <td >Adam Bannour</td>
+        <td><p>10:00:00</p><p>18:00:00</p></td>
+        <td><p>11:00:00</p><p>19:00:00</p></td>
+        <td><p>10:00:00</p><p>18:00:00</p></td> 
+        <td> Sans Profile</td>
+        <td><p>10:00:00</p><p>18:00:00</p></td>
+        <td><p>10:00:00</p><p>18:00:00</p></td>
+        <td><p>11:00:00</p><p>19:00:00</p></td>
 
       </tr>
       <tr>
-        <td >Zkteco1</td>
-        <td>Badge Vertx</td>
-        <td>Zkteco1</td>
-        <td >Zkteco1</td>
-       <td >Zkteco1</td>
-      <td >Zkteco1</td>
-      <td >Zkteco1</td>
-     <td >Zkteco1</td>
+        <td >Adam Bannour</td>
+        <td><p>10:00:00</p><p>18:00:00</p></td>
+        <td><p>11:00:00</p><p>19:00:00</p></td>
+        <td><p>10:00:00</p><p>18:00:00</p></td> 
+        <td> Sans Profile</td>
+        <td><p>10:00:00</p><p>18:00:00</p></td>
+        <td><p>10:00:00</p><p>18:00:00</p></td>
+        <td><p>11:00:00</p><p>19:00:00</p></td>
 
       </tr>
-    
-     
+      <tr>
+        <td >Adam Bannour</td>
+        <td><p>10:00:00</p><p>18:00:00</p></td>
+        <td><p>11:00:00</p><p>19:00:00</p></td>
+        <td><p>10:00:00</p><p>18:00:00</p></td> 
+        <td> Sans Profile</td>
+        <td><p>10:00:00</p><p>18:00:00</p></td>
+        <td><p>10:00:00</p><p>18:00:00</p></td>
+        <td><p>11:00:00</p><p>19:00:00</p></td>
+
+      </tr>
       
     </tbody>
   </table>
+  <div class="col-md-4 text-right">
+    <button class="btn btn-success btn-block" (click)="openPDF()">Download PDF</button>
+  </div>
 </div> 
+
+
+
 </div>            
 </div> 
                

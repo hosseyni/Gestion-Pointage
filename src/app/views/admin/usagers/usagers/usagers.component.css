@@ -70,3 +70,7 @@ padding-left: 10px;
     font-weight:400;
     color:#aab8c2;
   }
+
+  th , td{
+    text-align: center
+  }
