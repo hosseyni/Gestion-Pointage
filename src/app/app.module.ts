@@ -9,6 +9,14 @@ import { AddusagerModule } from './views/admin/addusager/addusager.module';
 import { AddusagerRoutingModule } from './views/admin/addusager/addusager-routing.module';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import dayGridPlugin from '@fullcalendar/daygrid';
+import interactionPlugin from '@fullcalendar/interaction';
+import { FullCalendarModule } from '@fullcalendar/angular';
+
+FullCalendarModule.registerPlugins([
+  dayGridPlugin,
+  interactionPlugin
+]);
 @NgModule({
   declarations: [
     AppComponent
@@ -21,6 +29,7 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
     AddprofilsalariesModule,
     AddusagerModule,
     AddusagerRoutingModule,
+    FullCalendarModule,
     CalendarModule.forRoot({
       provide: DateAdapter,
       useFactory: adapterFactory,

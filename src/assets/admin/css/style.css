@@ -11,7 +11,18 @@
 :root {
   scroll-behavior: smooth;
 }
+.fc .fc-col-header-cell-cushion { /* needs to be same precedence */
+  padding-top: 5px; /* an override! */
+  padding-bottom: 5px; /* an override! */
+  color: black;
+}
+.fc .fc-daygrid-event.fc-event-end{
+  color: black;
+}
+.fc .fc-daygrid-day-number {
 
+  color: black;
+}
 body {
   font-family: "Open Sans", sans-serif;
   background: #f6f9ff;

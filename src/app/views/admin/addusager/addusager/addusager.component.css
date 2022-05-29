@@ -6,3 +6,8 @@ th{
     text-transform: uppercase;
     background-color: #333;
 }
+.fc td { background-color: #333 !important; }
+
+.fc-widget-header{
+    background-color:red;
+}

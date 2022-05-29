@@ -61,39 +61,40 @@ export class UsagersComponent implements OnInit {
     this.isShown = false
 
     setTimeout(async ()=>{
+
     let DATA: any = document.getElementById('htmlData');
-    
+      this.isShown = true
     html2canvas(DATA).then((canvas) => {
-      var imgWidth = 210; 
-      var pageHeight = 295;  
+
+      var imgWidth = 180; ;  
       var imgHeight = canvas.height * imgWidth / canvas.width;
-      var heightLeft = imgHeight;
-      
-      let fileWidth = 208;
-      let fileHeight = (canvas.height * fileWidth) / canvas.width;
+
+   
       const FILEURI = canvas.toDataURL('image/png');
       let PDF = new jsPDF('p', 'mm', 'a4');
-      var margins = {
-        top: 40,
-        bottom: 60,
-        left: 40,
-        width: 522
-            };
-      var totalPages = 10;
-      PDF.setTextColor(0, 0, 0);
-      PDF.setFontSize(8);
-      let position = 0;
-      var str = "Page " + 1 ;
-      PDF.setFontSize(10);// optional
-      PDF.text(str, 50, PDF.internal.pageSize.height - 10);//key is the interal pageSize function
 
+      PDF.setTextColor(0, 0, 0);
+      let position = 0;
+      PDF.setFontSize(10);// optional
+    
+
+      PDF.text('Leeds Engineering', 11, 8);
+      PDF.text('biotime-Tchnology', 170, 8);
+      PDF.setFontSize(30);
+      PDF.setTextColor(0, 0, 0);
+
+      PDF.text('Planning des usagers de Leeds ', 105, 30 , {align: "center"});
+      PDF.text(' Engineering', 108, 45 , {align: "center"});
       PDF.setHeaderFunction
 
-      PDF.addImage(FILEURI, 'PNG', 0, position, imgWidth, imgHeight);
+      
+
+      PDF.addImage(FILEURI, 'PNG', 15, 60, imgWidth, imgHeight);
+      PDF.output('dataurlnewwindow')
       PDF.save('angular-demo.pdf');
     });
-
-},2);
+  
+},0);
 
 }
 
