@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TypeabsenceService } from '../typeabsence.service';
 
 @Component({
   selector: 'app-typeabsence',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TypeabsenceComponent implements OnInit {
 
-  constructor() { }
+  constructor( private TypeabsenceService : TypeabsenceService ) {}
 
   ngOnInit(): void {
+
+    this.TypeabsenceService.ListAbsence().then((response) => {
+   
+        console.log("ffffffff" , response ) 
+    }).catch((error) => {
+      console.log("error" , error)
+      });
   }
 
 }

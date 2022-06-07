@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AddprofilacceesService } from './addprofilaccees.service';
 
 @Component({
   selector: 'app-addprofilacces',
@@ -7,9 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddprofilaccesComponent implements OnInit {
 
-  constructor() { }
+  constructor(private AddprofilacceesService : AddprofilacceesService , private router : Router) { }
 
   ngOnInit(): void {
   }
+  AddPointeuse(){
 
+  }
 }

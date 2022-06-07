@@ -24,9 +24,10 @@
               <!-- Scrolling Modal -->
                
             
-               <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#scrollingModal">
+               <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#scrollingModal" #modeladdPointeuse id="modeladdPointeuse">
                 Ajouter Pointeuse
               </button>
+          
               <div class="modal fade" id="scrollingModal" tabindex="-1">
                 <div class="modal-dialog">
                   <div class="modal-content">
@@ -49,7 +50,7 @@
                     <div class="row mb-3">
                       <label for="company" class="col-md-4 col-lg-5 col-form-label">&nbsp;&nbsp;Adresse IP:</label>
                       <div class="col-md-4 col-lg-5 col-form-label">
-                        <input name="company" type="text" class="form-control" id="username" value="">
+                        <input name="company" type="text" class="form-control" id="company" value="">
                       </div>
                     </div>
                     <div class="row mb-3">
@@ -75,10 +76,10 @@
                     <div class="row mb-3">
                       <label for="Email" class="col-md-5 col-lg-5 col-form-label">&nbsp;&nbsp; Type:</label>
                       <div class="col-md-5 col-lg-5 col-form-label">
-                        <select class="form-select" id="inputGroupSelect04" aria-label="Example select with button addon">
+                        <select class="form-select" id="inputGroupSelect05" aria-label="Example select with button addon">
                           
-                          <option value="1">Badge Vertx</option>
-                          <option value="2">Empreinte</option>
+                          <option value="0">Badge Vertx</option>
+                          <option value="1">Empreinte</option>
                          
                         </select>
                       </div>
@@ -90,16 +91,10 @@
                       <div class="text-center" style="margin: 4%;">
                         
                       </div>
-                      
-                     
-                      
-                    
-                    
-                 
-                      
+   
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-                      <button type="button" class="btn btn-primary">Enregistrer</button>
+                      <button type="button" class="btn btn-primary" (click)="AddPointeuse()">Enregistrer</button>
                     </div>
                   </div>
                 </div>
@@ -123,6 +118,7 @@
                     <th scope="col">#</th>
                     <th scope="col"></th>
                     <th scope="col"></th>
+                    <th scope="col"></th>
                     <th scope="col">Pointeuse</th>
                     <th scope="col"> Adresse IP</th>
                     <th scope="col">Port</th>
@@ -132,33 +128,25 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
+                  <tr *ngFor="let order of ListPadge">
                     <th scope="row">1</th>
-                     <th scope="row"><a href="addsession" class="#profile-edit"><i class="bi bi-pen"></i></a>&nbsp;
-                      <a href="#" class="#profile-delete"><i class="bi bi-trash"></i></a>&nbsp;</th>
-                    
-                      <td> <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1"></div>
+                  
+                      <td>
+                        <div class="bi bi-pen"   (click)="DeletePointeuse(order.idPointeuse)"></div>
                     </td>
-                    <td>ZKTeco1</td>
-                    <td>192.168.111.111</td>
-                    <td>3128</td>
-                    <td>Secteur 1</td>
+                    <td> 
+                        <div class="bi bi-trash"   (click)="DeletePointeuse(order.idPointeuse)" ></div>
+                    </td>
+                    <td> <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value={{order.idPointeuse}} id="defaultCheck1" (change)="onItemChange($event.target)"></div>
+                    </td>
+                    <td>{{order.designation}}</td>
+                    <td>{{order.adresseIp}}</td>
+                    <td>{{order.port}}</td>
+                    <td>{{order.type}</td>
                     
                   </tr>
-                  <tr>
-                  <th scope="row">2</th>
-                  <th scope="row"><a href="addsession" class="#profile-edit"><i class="bi bi-pen"></i></a>&nbsp;
-                    <a href="#" class="#profile-delete"><i class="bi bi-trash"></i></a>&nbsp;</th>
-                  
-                    <td> <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="" id="defaultCheck1"></div>
-                  </td>
-                    <td>ZKTeco2</td>
-                    <td>192.168.111.112</td>
-                    <td>3128</td>
-                    <td>Secteur 3</td>
-                    </tr>
+               
                 </tbody>
               </table>
               <h1><div  class="text-center"><strong><u>Empreinte </u></strong>
@@ -170,6 +158,7 @@
                     <th scope="col">#</th>
                     <th scope="col"></th>
                     <th scope="col"></th>
+                    <th scope="col"></th>
                     <th scope="col">Pointeuse</th>
                     <th scope="col"> Adresse IP</th>
                     <th scope="col">Port</th>
@@ -179,32 +168,24 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
+                  <tr *ngFor="let order of ListEmpreinte">
                     <th scope="row">1</th>
-                    <th scope="row"><a href="addsession" class="#profile-edit"><i class="bi bi-pen"></i></a>&nbsp;
-                      <a href="#" class="#profile-delete"><i class="bi bi-trash"></i></a>&nbsp;</th>
+                    <td>
+                      <div class="bi bi-pen"   (click)="EditPointeuse(order.idPointeuse)"></div>
+                     </td>
+                     <td> 
+                      <div class="bi bi-trash"   (click)="DeletePointeuse(order.idPointeuse)" ></div>
+                    </td>
                       <td> <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="" id="defaultCheck1"></div>
                     </td>
-                    <td>ZKTeco1</td>
-                    <td>192.168.111.111</td>
-                    <td>3128</td>
-                    <td>Secteur 1</td>
+                    <td>{{order.designation}}</td>
+                    <td>{{order.adresseIp}}</td>
+                    <td>{{order.port}}</td>
+                    <td>{{order.type}</td>
                     
                   </tr>
-                  <tr>
-                  <th scope="row">2</th>
-                  <th scope="row"><a href="addsession" class="#profile-edit"><i class="bi bi-pen"></i></a>&nbsp;
-                    <a href="#" class="#profile-delete"><i class="bi bi-trash"></i></a>&nbsp;</th>
-                  
-                    <td> <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="" id="defaultCheck1"></div>
-                  </td>
-                    <td>ZKTeco2</td>
-                    <td>192.168.111.112</td>
-                    <td>3128</td>
-                    <td>Secteur 3</td>
-                    </tr>
+              
                 </tbody>
               </table>
                 

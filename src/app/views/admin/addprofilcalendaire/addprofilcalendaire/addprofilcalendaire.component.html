@@ -50,7 +50,7 @@
  
                               <label for="inputTime" class="col-sm-2 col-form-label">Designation:</label>
                               <div class="col-sm-4">
-                                <input type="text" class="form-control">
+                                <input type="text" class="form-control" id ="designation">
                               </div>
                              
                             </div>
@@ -59,11 +59,11 @@
  
                               <label for="inputTime" class="col-sm-2 col-form-label">Defini de :</label>
                               <div class="col-sm-4">
-                                <input type="time" class="form-control">
+                                <input type="time" class="form-control"  id ="date_definit">
                               </div>
                               <label for="inputTime" class="col-sm-2 col-form-label">couvrant une periode de :</label>
                               <div class="col-sm-4">
-                                <input type="time" class="form-control">
+                                <input type="time" class="form-control" id ="date_couvrant">
                               </div>
                             </div>
 
@@ -71,11 +71,11 @@
  
                               <label for="inputTime" class="col-sm-2 col-form-label">Horaire théorique :</label>
                               <div class="col-sm-4">
-                                <input type="time" class="form-control">
+                                <input type="time" class="form-control" id ="horaire_théorique">
                               </div>
                               <label for="inputTime" class="col-sm-2 col-form-label">Ecrétée a partir de :</label>
                               <div class="col-sm-4">
-                                <input type="time" class="form-control">
+                                <input type="time" class="form-control" id="Ecrétée">
                               </div>
                             </div>
                             <div class="form-check">
@@ -122,7 +122,7 @@
                                                 <p>&nbsp;&nbsp;défini entre 07:00 et 19:00 de la méme jours </p>
                                                 <label for="designation" class="col-md-4 col-lg-5 col-form-label">&nbsp;&nbsp;Horraire Spécifique</label>
                                                 <div class="col-md-4 col-lg-5 col-form-label">
-                                                  <input name="designation" type="time" class="form-control" id="designation" value="09:00">
+                                                  <input name="horraire_specifique" type="time" class="form-control" id="horraire_specifique" value="09:00">
                                                 </div>
                                               </div>
                                               <div class="row mb-3">
@@ -130,14 +130,15 @@
                                                 <div class="col-md-4 col-lg-5 col-form-label">
                                                  
                                                   <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                                                    <label class="form-check-label" for="flexRadioDefault2">
+                                                    <input class="form-check-input" type="radio" name="type_horraire" id="type_horraire"  [checked]="true"  value="Horraire d'arriver"
+                                                    (change)="onItemChange($event.target)">
+                                                    <label class="form-check-label" for="type_horraire">
                                                      Horraire d'arriver 
                                                     </label>
                                                   </div>
                                                   <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                                                    <label class="form-check-label" for="flexRadioDefault2">
+                                                    <input class="form-check-input" type="radio" name="type_horraire" id="type_horraire" value="Horraire de départ" (change)="onItemChange($event.target)" >
+                                                    <label class="form-check-label" for="type_horraire">
                                                       Horraire de départ
                                                     </label>
                                                   </div>
@@ -148,20 +149,20 @@
                                                 <label for="company" class="col-md-4 col-lg-5 col-form-label">&nbsp;&nbsp;Traitement de l'erreur</label>
                                                 <div class="col-md-4 col-lg-5 col-form-label">
                                                   <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                                                    <label class="form-check-label" for="flexRadioDefault2">
+                                                    <input class="form-check-input" type="radio" name="horraire" id="horraire" value="Aucun"  [checked]="true" (change)="onItemChange($event.target)">
+                                                    <label class="form-check-label" for="horraire">
                                                      Aucun
                                                     </label>
                                                   </div>
                                                   <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                                                    <label class="form-check-label" for="flexRadioDefault2">
+                                                    <input class="form-check-input" type="radio" name="horraire" id="horraire" value="Tolèrance" (change)="onItemChange($event.target)">
+                                                    <label class="form-check-label" for="horraire">
                                                      Tolèrance
                                                     </label>
                                                   </div>
                                                   <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                                                    <label class="form-check-label" for="flexRadioDefault2">
+                                                    <input class="form-check-input" type="radio" name="horraire" id="horraire" value="Sanction" (change)="onItemChange($event.target)" >
+                                                    <label class="form-check-label" for="horraire">
                                                      Sanction
                                                     </label>
                                                   </div>
@@ -170,7 +171,7 @@
                                               <div class="row mb-3">
                                                 <label for="Email" class="col-md-4 col-lg-5 col-form-label">&nbsp;&nbsp;Du Montant</label>
                                                 <div class="col-md-4 col-lg-5 col-form-label">
-                                                  <select class="form-select" id="inputGroupSelect04" aria-label="Example select with button addon">
+                                                  <select class="form-select" id="montant" aria-label="Example select with button addon">
                                                     
                                                     <option value="1">15</option>
                                                     <option value="2">Secteur 2</option>
@@ -188,7 +189,7 @@
                                               <div class="row mb-3">
                                                 <label for="Email" class="col-md-5 col-lg-5 col-form-label">&nbsp;&nbsp; Reprise de pointage</label>
                                                 <div class="col-md-5 col-lg-5 col-form-label">
-                                                  <select class="form-select" id="inputGroupSelect04" aria-label="Example select with button addon">
+                                                  <select class="form-select" id="reprise_pointage" aria-label="Example select with button addon">
                                                     
                                                     <option value="1">45</option>
                                                     <option value="2">Empreinte</option>
@@ -203,7 +204,7 @@
                                                 <hr>
                                               <div class="modal-footer" style="border-width: 0;">
                                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-                                                <button type="button" class="btn btn-primary">Enregistrer</button>
+                                                <button type="button" class="btn btn-primary" (click)="AddHoraire()">Enregistrer</button>
                                               </div>
                                             </div>
                                           </div>

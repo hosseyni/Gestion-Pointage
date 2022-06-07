@@ -12,6 +12,8 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import { FullCalendarModule } from '@fullcalendar/angular';
+import { HttpClientModule } from '@angular/common/http';
+
 
 FullCalendarModule.registerPlugins([
   dayGridPlugin,
@@ -34,6 +36,7 @@ FullCalendarModule.registerPlugins([
       provide: DateAdapter,
       useFactory: adapterFactory,
     }),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

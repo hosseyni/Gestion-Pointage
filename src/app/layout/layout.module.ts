@@ -5,6 +5,7 @@ import { FrontLayoutComponent } from './front-layout/front-layout.component';
 import { RouterModule } from '@angular/router';
 import { LoginAdminComponent } from './login-admin/login-admin/login-admin.component';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword/forgotpassword.component';
+import { LoginAdminService } from './login-admin/login-admin/login-admin.service';
 
 
 
@@ -18,6 +19,8 @@ import { ForgotpasswordComponent } from './forgotpassword/forgotpassword/forgotp
   imports: [
     CommonModule,
     RouterModule
-  ]
+  ],
+  providers: [LoginAdminService],
+
 })
 export class LayoutModule { }
