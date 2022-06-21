@@ -10,7 +10,7 @@
            
           </ol>
         </nav>
-        <div class="card">
+        <div class="card" >
          
              
               <ul class="nav nav-tabs nav-tabs-bordered">
@@ -35,30 +35,33 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>GRH </td>
+                <tr *ngFor="let company of listDepartement; let i = index" >
+                  <th scope="row">{{i}}</th>
+                  <td>{{company.designation}}</td>
                   
                   <div class="btn-group mr-2" role="group" aria-label="First group" >
                 
-                    <h3> <a href="#" class="#profile-delete"><i class="bi bi-trash"></i></a></h3>&nbsp;
-                    <h3> <a href="#" class="#profile-edit"><i class="bi bi-pen"></i></a></h3>&nbsp;
+                    <h3> <a href="#" class="#profile-delete" (click)="DelDepartement(company.idCompany)"  routerLink="/admin/gestiondepartement"><i class="bi bi-trash"></i></a></h3>&nbsp;
                     
+                    <h3> <a href="#" class="#profile-edit" (click)="open(content, company)" data-bs-toggle="modal" data-bs-target="#scrollingModal"  [attr.data-target]="'#Model'+company.designation" #modelEditDepartement id="modalEditDepartement"><i class="bi bi-pen"></i></a></h3>&nbsp;
+                   
+                    <ng-template #content let-modal>
+                      <div class="modal-header">
+                        <h4 class="modal-title" id="modal-basic-title">Modifier Departement</h4>
+                        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <input name="company" type="text" class="form-control" id="designation" value={{company.designation}}>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-primary"  (click)="UpdateDepartement(company.idCompany)">Enregistrer</button>
+                      </div>
+                    </ng-template>
                    </div>
                   
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Service financiaire</td>
-                  
-                  <div class="btn-group mr-2" role="group" aria-label="First group" >
-                
-                    <h3> <a href="#" class="#profile-delete"><i class="bi bi-trash"></i></a></h3>&nbsp;
-                    <h3> <a href="#" class="#profile-edit"><i class="bi bi-pen"></i></a></h3>&nbsp;
-                    
-                   </div>&nbsp;
-                </tr>
-                
+                </tr> 
               </tbody>
             </table>
             <!-- End Table with stripped rows -->

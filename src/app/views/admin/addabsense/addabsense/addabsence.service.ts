@@ -2,11 +2,11 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { environment } from 'src/environments/environment';
+
 @Injectable({
   providedIn: 'root'
 })
-export class AddprofilsalariesService {
-
+export class AddabsenceService {
   constructor(
     private httpClient: HttpClient ,  private cookieService: CookieService ,
   ) { }
@@ -21,22 +21,14 @@ export class AddprofilsalariesService {
 
     // POST
 
-    AddProfilSalarie(data: any): Promise<any> {
+    AddTypeAbsence(data: any): Promise<any> {
       const request = this.httpClient.post<any>(
-        environment.BackendUrl + 'profilSalaire/add',
+        environment.BackendUrl + 'typeAbsence/add',
         JSON.stringify(data),
         this.httpOptions
       );
       return request.toPromise();
     }
 
-        //get
-    GeProfilSalarie(): Promise<[any]> {
-      const request = this.httpClient.get<any>(
-        environment.BackendUrl + 'profilSalaire/list' ,
-        this.httpOptions
-      );
-      return request.toPromise();
-    }
-    
+
 }

@@ -20,10 +20,10 @@ export class TypeabsenceService {
 
     // POST
  
-   
+   //get
     ListAbsence(): Promise<any> {
       const request = this.httpClient.get<any>(
-        environment.BackendUrl + '/tempspause/list'
+        environment.BackendUrl + 'typeAbsence/list'
       );
       return request.toPromise();
     }

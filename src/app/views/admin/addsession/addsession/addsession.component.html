@@ -89,7 +89,7 @@
                   <div class="row mb-3"></div>
                   <div class="nativeDatePicker">
                     <label for="bday" class="col-md-4 col-lg-3 col-form-label">Date de naissance </label>
-                    <input type="date" id="bday" name="bday">
+                    <input type="date" id="bday" name="bday" id="date">
                     <span class="validity"></span>
                   </div>
 
@@ -110,7 +110,7 @@
                   </div>
                   </div>
                   <div class="text-center">
-                    <button type="submit" class="btn btn-primary">Enregistrer</button>
+                    <button type="submit" class="btn btn-primary" (click)="AddUsers()">Enregistrer</button>
                   </div>
                 </form><!-- End Profile Edit Form -->
 

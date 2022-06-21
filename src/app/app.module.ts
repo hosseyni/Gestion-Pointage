@@ -13,6 +13,9 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { HttpClientModule } from '@angular/common/http';
+import { DashboardRoutingModule } from './views/admin/dashboard/dashboard-routing.module';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
 
 
 FullCalendarModule.registerPlugins([
@@ -31,6 +34,7 @@ FullCalendarModule.registerPlugins([
     AddprofilsalariesModule,
     AddusagerModule,
     AddusagerRoutingModule,
+    DashboardRoutingModule,
     FullCalendarModule,
     CalendarModule.forRoot({
       provide: DateAdapter,

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AdddepartementService } from './adddepartement.service';
 
 @Component({
   selector: 'app-adddepartement',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdddepartementComponent implements OnInit {
 
-  constructor() { }
+  constructor( private addepartementservice : AdddepartementService) { }
 
   ngOnInit(): void {
   }
+  AddDepartement(){
+    let designation =  (<HTMLInputElement>document.getElementById('designation')).value;
+    this.addepartementservice.AddDepartement({
+      "designation": designation,
+    }).then((response) => {
+        console.log("response" , response)
 
+    })
+    .catch((error) => {
+      console.log("error" , error)
+      });
+    }
 }

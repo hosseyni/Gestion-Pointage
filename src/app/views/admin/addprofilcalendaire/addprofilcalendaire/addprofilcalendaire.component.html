@@ -75,7 +75,7 @@
                               </div>
                               <label for="inputTime" class="col-sm-2 col-form-label">Ecrétée a partir de :</label>
                               <div class="col-sm-4">
-                                <input type="time" class="form-control" id="Ecrétée">
+                                <input type="time" class="form-control" id="Ecrete">
                               </div>
                             </div>
                             <div class="form-check">
@@ -173,7 +173,7 @@
                                                 <div class="col-md-4 col-lg-5 col-form-label">
                                                   <select class="form-select" id="montant" aria-label="Example select with button addon">
                                                     
-                                                    <option value="1">15</option>
+                                                    <option value="15">15</option>
                                                     <option value="2">Secteur 2</option>
                                                     <option value="2">Secteur 3</option>
                                                     <option value="2">Secteur 4</option>
@@ -191,7 +191,7 @@
                                                 <div class="col-md-5 col-lg-5 col-form-label">
                                                   <select class="form-select" id="reprise_pointage" aria-label="Example select with button addon">
                                                     
-                                                    <option value="1">45</option>
+                                                    <option value="45">45</option>
                                                     <option value="2">Empreinte</option>
                                                   
                                                   </select>
@@ -204,7 +204,7 @@
                                                 <hr>
                                               <div class="modal-footer" style="border-width: 0;">
                                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-                                                <button type="button" class="btn btn-primary" (click)="AddHoraire()">Enregistrer</button>
+                                                <button type="button" class="btn btn-primary" (click)="AddHoraire()"   data-bs-dismiss="modal" routerLink="/admin/addprofilcalendaire">Enregistrer</button>
                                               </div>
                                             </div>
                                           </div>
@@ -261,7 +261,7 @@
                             <p>&nbsp;&nbsp;défini entre 07:00 et 19:00 de la méme jours </p>
                             <label for="designation" class="col-md-4 col-lg-5 col-form-label">&nbsp;&nbsp;Designiation :</label>
                             <div class="col-md-4 col-lg-5 col-form-label">
-                              <input name="designation" type="text" class="form-control" id="designation" value="Déjeuner">
+                              <input name="designation" type="text" class="form-control" id="designation-pause" value="">
                             </div>
                           </div>
                           <div class="row mb-3">
@@ -286,7 +286,7 @@
                               </div>
                               <label for="inputTime" class="col-sm-4  col-lg-4 pt-2 col-form-label">Horaire théorique :</label>
                               <div class="col-sm-4 col-lg-4">
-                                <input type="time" class="form-control">
+                                <input type="time" class="form-control" id="horaire">
                               </div>
                             </div>
                             </div>
@@ -304,7 +304,7 @@
                             <p>&nbsp;&nbsp;définir sur l'ensemble des pèriodes ci_dessous:  </p>
                             <label for="designation" class="col-md-4 col-lg-4 col-form-label">&nbsp;&nbsp;Date de debut :</label>
                             <div class="col-md-4 col-lg-4 col-form-label">
-                              <input name="designation" type="time" class="form-control" id="designation" value="">
+                              <input name="date_debut" type="time" class="form-control" id="date_debut" value="">
                             </div>
                             <div class="col-md-4 col-lg-4 col-form-label">
                             </div>
@@ -315,7 +315,7 @@
                           <div class="row mb-3">
                             <label for="designation" class="col-md-4 col-lg-4 col-form-label">&nbsp;&nbsp;Date de Fin:</label>
                             <div class="col-md-4 col-lg-4 col-form-label">
-                              <input name="designation" type="time" class="form-control" id="designation" value="">
+                              <input name="date_fin" type="time" class="form-control" id="date_fin" value="">
                             </div>
                             <div class="col-md-4 col-lg-3 col-form-label" >
                               <button type="button" class="btn btn-success">Ajouter</button>
@@ -343,7 +343,7 @@
                             <hr>
                           <div class="modal-footer" style="border-width: 0;">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-                            <button type="button" class="btn btn-primary">Enregistrer</button>
+                            <button type="button" class="btn btn-primary" (click) ="AddPause()"  data-bs-dismiss="modal" routerLink="/admin/addprofilcalendaire">Enregistrer</button>
                           </div>
                        
                       </div>
@@ -370,7 +370,7 @@
             <div class="row mb-3">
               
               <div class="col-sm-10">
-                <button type="submit" class="btn btn-primary" style="float: right;">Enregistrer</button>
+                <button type="submit" class="btn btn-primary" style="float: right;" (click)="AddProfilCalandaire()">Enregistrer</button>
               </div>
             </div>
             </form>

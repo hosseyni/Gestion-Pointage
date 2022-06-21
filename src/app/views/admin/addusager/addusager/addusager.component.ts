@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CalendarOptions } from '@fullcalendar/angular';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
+import { AddusagerService } from './addusager.service';
 
 @Component({
   selector: 'app-addusager',
@@ -28,7 +29,7 @@ export class AddusagerComponent implements OnInit {
   calendarOptions: CalendarOptions = {
     initialView: 'dayGridMonth'
   };
-  constructor() { }
+  constructor(private addusagerservice: AddusagerService) { }
 
   ngOnInit(): void {
     this.calendarOptions.events = this.Events;
@@ -71,4 +72,30 @@ export class AddusagerComponent implements OnInit {
 
 
 }
+
+
+//     AddUsagers(){
+
+//       let nom = (<HTMLInputElement>document.getElementById('name')).value;
+//       let prenom =  (<HTMLInputElement>document.getElementById('prenom')).value;
+//       let email =  (<HTMLInputElement>document.getElementById('email')).value;
+//       let profesion = (<HTMLInputElement>document.getElementById('profesion')).value;
+//       let profil_sa =  (<HTMLInputElement>document.getElementById('profil_sa')).value;
+//       let profil_ac = (<HTMLInputElement>document.getElementById('profil_ac')).value;
+      
+//       let dattosend= {
+//         "designation": designation,
+//       }
+//       console.log(inputGroupSelect03 , inputGroupSelect04 , designation  )
+
+//       this.addusagerservice.AddUager(dattosend).then((response) => {
+//         console.log("response")
+
+//       })
+//       .catch((error) => {
+//         console.log("error" , error)
+//         });
+// }
+
+
 }

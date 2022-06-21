@@ -11,11 +11,11 @@
               <ul class="nav nav-tabs nav-tabs-bordered">
 
                 <li class="nav-item">
-                  <button class="nav-link " data-bs-toggle="tab" data-bs-target="#profile-overview" routerLink="/admin/profilscalendaires">Profils Salaires</button>
+                  <button class="nav-link " data-bs-toggle="tab" data-bs-target="#profile-overview" routerLink="/admin/profilssalaries">Profils Salaires</button>
                 </li>
   
                 <li class="nav-item">
-                  <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-edit" routerLink="/admin/addprofilcalendaire">Ajouter Profil Salaire</button>
+                  <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-edit" routerLink="/admin/addprofilsalaries">Ajouter Profil Salaire</button>
                 </li>
               </ul>
               <hr>
@@ -31,7 +31,7 @@
                           <div class="row mt-3 mb-3">
                             <label for="inputText" class="col-sm-2 col-form-label">Designation:</label>
                             <div class="col-sm-10">
-                              <input type="text" class="form-control">
+                              <input type="text" class="form-control" id="designation">
                             </div>
                           </div>
                           
@@ -40,11 +40,11 @@
                               <hr> 
                             <label for="inputTime" class="col-sm-2 col-form-label">Soir:</label>
                             <div class="col-sm-4">
-                              <input type="time" class="form-control">
+                              <input type="time" class="form-control" id="time_soir">
                             </div>
                             <label for="inputTime" class="col-sm-2 col-form-label">Matin:</label>
                             <div class="col-sm-4">
-                              <input type="time" class="form-control">
+                              <input type="time" class="form-control" id="time_matin">
                             </div>
                           </div>
           
@@ -52,26 +52,26 @@
           
                           <div class="form-check">Annulation/Traitement RTT 
                               <hr>
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                            <label class="form-check-label" for="flexRadioDefault1">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value = "Payer les horaires supplementaires">
+                            <label class="form-check-label" for="flexRadioDefault2" id="flexRadioDefault2" >
                              Payer les horaires supplementaires
                             </label>
                           </div>
                           <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                            <label class="form-check-label" for="flexRadioDefault2">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value = "Annuler les heures" checked>
+                            <label class="form-check-label" for="flexRadioDefault2" id="flexRadioDefault2" >
                               Annuler les heures(ecart positifs ou negatifs)
                             </label>
                           </div>
                           <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                            <label class="form-check-label" for="flexRadioDefault2">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2"  value = "R.T.T" checked>
+                            <label class="form-check-label" for="flexRadioDefault2" id="flexRadioDefault2">
                               R.T.T
                             </label>
                           </div>
                           <div class="row mb-3">
                             <div class="col-sm-4">
-                              <input type="date" class="form-control">
+                              <input type="date" class="form-control" id="date">
                             </div>
                             <div class="col-sm-8">
                                  jour du mois qui definit le debut d'une annees
@@ -145,7 +145,9 @@
                             </tbody>
                           </table>                        
           
-              
+                          <div >
+                            <button  class="btn btn-primary" style="float: right;" (click)="AddProfilSalarie()">Enregistrer</button>
+                          </div>
             
                   
                 

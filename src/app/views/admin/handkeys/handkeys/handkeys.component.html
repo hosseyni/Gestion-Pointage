@@ -38,7 +38,7 @@
                     <div class="row mb-3">
                       <label for="designation" class="col-md-4 col-lg-5 col-form-label">&nbsp;&nbsp;Designation:</label>
                       <div class="col-md-4 col-lg-5 col-form-label">
-                        <input name="designation" type="text" class="form-control" id="designation" value="">
+                        <input name="designation" type="text" class="form-control" id="designation" value="ddddddd" >
                       </div>
                     </div>
                     <div class="row mb-3">
@@ -94,7 +94,7 @@
    
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-                      <button type="button" class="btn btn-primary" (click)="AddPointeuse()">Enregistrer</button>
+                      <button type="button" class="btn btn-primary"   (click)="AddPointeuse()">Enregistrer</button>
                     </div>
                   </div>
                 </div>
@@ -122,17 +122,17 @@
                     <th scope="col">Pointeuse</th>
                     <th scope="col"> Adresse IP</th>
                     <th scope="col">Port</th>
-                    <th scope="col">Departement</th>
+                    <!-- <th scope="col">Departement</th> -->
                     
                     
                   </tr>
                 </thead>
                 <tbody>
                   <tr *ngFor="let order of ListPadge">
-                    <th scope="row">1</th>
+                    <th scope="row">{{order.idPointeuse}}</th>
                   
                       <td>
-                        <div class="bi bi-pen"   (click)="DeletePointeuse(order.idPointeuse)"></div>
+                        <div class="bi bi-pen"   (click)="EditPointeuse(order.idPointeuse)"></div>
                     </td>
                     <td> 
                         <div class="bi bi-trash"   (click)="DeletePointeuse(order.idPointeuse)" ></div>
@@ -143,7 +143,7 @@
                     <td>{{order.designation}}</td>
                     <td>{{order.adresseIp}}</td>
                     <td>{{order.port}}</td>
-                    <td>{{order.type}</td>
+                    <!-- <td>{{order.type}</td> -->
                     
                   </tr>
                
@@ -162,16 +162,16 @@
                     <th scope="col">Pointeuse</th>
                     <th scope="col"> Adresse IP</th>
                     <th scope="col">Port</th>
-                    <th scope="col">Departement</th>
+                    <!-- <th scope="col">Departement</th> -->
                     
                     
                   </tr>
                 </thead>
                 <tbody>
                   <tr *ngFor="let order of ListEmpreinte">
-                    <th scope="row">1</th>
+                    <th scope="row">{{order.idPointeuse}}</th>
                     <td>
-                      <div class="bi bi-pen"   (click)="EditPointeuse(order.idPointeuse)"></div>
+                      <div class="bi bi-pen"  data-bs-toggle="modal" data-bs-target="#scrollingModal" #modeladdPointeuse id="modeladdPointeuse"  (click)="EditPointeuse(order.idPointeuse)"></div>
                      </td>
                      <td> 
                       <div class="bi bi-trash"   (click)="DeletePointeuse(order.idPointeuse)" ></div>
@@ -182,7 +182,7 @@
                     <td>{{order.designation}}</td>
                     <td>{{order.adresseIp}}</td>
                     <td>{{order.port}}</td>
-                    <td>{{order.type}</td>
+                    <!-- <td>{{order.type}</td> -->
                     
                   </tr>
               

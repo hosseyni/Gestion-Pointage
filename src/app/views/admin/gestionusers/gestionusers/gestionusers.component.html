@@ -50,12 +50,10 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <th scope="row">1</th>
+              
+                <tr *ngFor="let user of listusers">
                   <th scope="row">
                     <a routerLink="admin/addfonctionalite" class="#addfonctionalite" data-bs-toggle="modal" data-bs-target="#fullscreenModal"> <i class="bi bi-plus-lg"></i></a>&nbsp;
-                    
-      
                     <div class="modal fade" id="fullscreenModal" tabindex="-1">
                       <div class="modal-dialog modal-fullscreen">
                         <div class="modal-content">
@@ -445,40 +443,18 @@
                 
                     
                   </th>
+                  <th scope="row"> 
                   <td> <div class="form-check">
                     <input class="form-check-input" type="checkbox" value="" id="defaultCheck1"></div>
                 </td>
-                  <td>zarai.mourad </td>
-                  <td>Zarai</td>
-                  <td>Mourad</td>
-                  <td>2016-05-25</td>
-                  <td>zarai.mourad@example.com</td>
+                  <td>{{user.username}}</td>
+                  <td>{{user.prenom}}</td>
+                  <td>{{user.nom}}</td>
+                  <td>{{user.dateNaissance}}</td>
+                  <td>{{user.email}}</td>
                   <td><a href="#" class="#profile-desactivate"><i class="bi bi-exclamation-triangle-fill"></i></a>&nbsp;
                     <a href="#" class="#profile-activate"><i class="bi bi-file-check-fill"></i></a></td>
-                  <td><a href="#" class="#profile-delete"><i class="bi bi-trash"></i></a>&nbsp;
-                    <a href="addsession" class="#addsession"><i class="bi bi-pen"></i></a>&nbsp;
-
-                  </td>
-                  
-                  
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <th scope="row">
-                  <a href="addfonctionalite" class="#addfonctionalite"><i class="bi bi-plus-lg"></i></a>&nbsp;
-                  
-                  
-                  <td> <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1"></div>
-                </td>
-                  <td>taher.hassini</td>
-                  <td>Taher</td>
-                  <td>hassini</td>
-                  <td>2016-05-25</td>
-                  <td>taher.hassini@example.com</td>
-                  <td><a href="#" class="#profile-desactivate"><i class="bi bi-exclamation-triangle-fill"></i></a>&nbsp;
-                    <a href="#" class="#profile-activate"><i class="bi bi-file-check-fill"></i></a></td>
-                  <td><a href="#" class="#profile-delete"><i class="bi bi-trash"></i></a>&nbsp;
+                  <td><a href="#" class="#profile-delete" (click)="DeletePointeuse(user.idUsager)"><i class="bi bi-trash"></i></a>&nbsp;
                     <a href="addsession" class="#addsession"><i class="bi bi-pen"></i></a>&nbsp;
 
                   </td>

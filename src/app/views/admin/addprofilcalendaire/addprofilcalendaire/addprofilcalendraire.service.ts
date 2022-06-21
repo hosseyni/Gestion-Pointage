@@ -29,6 +29,15 @@ export class AddprofilcalendraireService {
       );
       return request.toPromise();
     }
+    
+       //get
+       GetHoraires(): Promise<[any]> {
+        const request = this.httpClient.get<any>(
+          environment.BackendUrl + 'horraireSpecifique/list' ,
+          this.httpOptions
+        );
+        return request.toPromise();
+      }
 
     AddHoraire(data: any): Promise<any> {
       const request = this.httpClient.post<any>(
@@ -47,4 +56,14 @@ export class AddprofilcalendraireService {
       );
       return request.toPromise();
     }
+    //get
+    GetPauses(): Promise<[any]> {
+      const request = this.httpClient.get<any>(
+        environment.BackendUrl + 'pause/list' ,
+        this.httpOptions
+      );
+      return request.toPromise();
+    }
+
+
 }

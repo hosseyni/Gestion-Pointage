@@ -52,8 +52,6 @@ export class HandkeysComponent implements OnInit {
     let company =  (<HTMLInputElement>document.getElementById('company')).value;
     let inputGroupSelect04 =  (<HTMLInputElement>document.getElementById('inputGroupSelect04')).value;
     let inputGroupSelect05 =  (<HTMLInputElement>document.getElementById('inputGroupSelect05')).value;
- 
-    console.log(designation , port , company , inputGroupSelect04 , inputGroupSelect05 )
 
     this.HandkeysService.AddPointeuse({
       "adresseIp": company,
@@ -65,11 +63,16 @@ export class HandkeysComponent implements OnInit {
       "principale": true,
       "type": inputGroupSelect05
     }).then((response) => {
-      this.router.events.subscribe((val ) => {
-        // see also 
-        console.log("ffffffff" , val ) 
-        this.onReload()
-    });
+      console.log("ffffffff" , response ) 
+
+        this.router.navigate(['/admin/handkeys']).then( (e) => {
+          if (e) {
+            console.log("Navigation is successful!");
+          } else {
+            console.log("Navigation has failed!");
+          }
+        });
+
  
     })
     .catch((error) => {

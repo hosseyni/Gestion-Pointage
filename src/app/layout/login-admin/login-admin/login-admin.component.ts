@@ -20,7 +20,6 @@ export class LoginAdminComponent implements OnInit {
   Login(){
     let username =  (<HTMLInputElement>document.getElementById('yourUsername')).value;
     let password =  (<HTMLInputElement>document.getElementById('yourPassword')).value;
-    console.log(username , password)
     this.LoginAdminService.Login({
     "email" :username.toString() ,
     "password" : password.toString()

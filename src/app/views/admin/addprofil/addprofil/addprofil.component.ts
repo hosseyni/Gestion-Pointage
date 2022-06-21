@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { AddprofilacceesService } from '../../addprofilacces/addprofilacces/addprofilaccees.service';
 import { HandkeysService } from '../../handkeys/handkeys/handkeys.service';
 import { handKeyModel } from '../../handkeys/handkeysModel';
+import { AddprofilService } from './addprofil.service';
+import { ProfilModel } from './profilModel';
 
 @Component({
   selector: 'app-addprofil',
@@ -13,11 +15,13 @@ export class AddprofilComponent implements OnInit {
 
   ListEmpreinte:handKeyModel[] = [];
   ListPadge:handKeyModel[] = [];
+  listProfil:ProfilModel[] = [];
   
-  constructor(private HandkeysService : HandkeysService , private AddprofilacceesService : AddprofilacceesService , private router : Router) { }
+  constructor(private HandkeysService : HandkeysService , private AddprofilacceesService : AddprofilacceesService , private router : Router , private AddProfilservice :AddprofilService) { }
 
   ngOnInit(): void {
     this.GetPointeuse()
+    this.GetListProfil()
   }
 
   GetPointeuse(){
@@ -44,7 +48,7 @@ export class AddprofilComponent implements OnInit {
 
   AddProfil(){
 
-    let inputGroupSelect03 =  (<HTMLInputElement>document.getElementById('inputGroupSelect03')).value;
+    let inputGroupSelect03 = (<HTMLInputElement>document.getElementById('inputGroupSelect03')).value;
     let inputGroupSelect04 =  (<HTMLInputElement>document.getElementById('inputGroupSelect04')).value;
     let designation =  (<HTMLInputElement>document.getElementById('designation')).value;
    
@@ -63,5 +67,18 @@ export class AddprofilComponent implements OnInit {
     .catch((error) => {
       console.log("error" , error)
       });
+  }
+
+  GetListProfil(){
+    this.AddProfilservice.GeProfilAcces().then((response) => {
+      for (let i = 0; i <response.length ; i++){
+ 
+         this.listProfil.push(response[i])
+       }
+    })
+    .catch((error) => {
+      console.log("error" , error)
+      });
+
   }
 }

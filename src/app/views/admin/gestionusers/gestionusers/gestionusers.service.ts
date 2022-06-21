@@ -2,13 +2,14 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { environment } from 'src/environments/environment';
-import { ProfilModel } from './profilModel';
+import { UserModel } from './userModel';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AddprofilService {
-  
+export class GestionusersService {
+
+ 
   constructor(
     private httpClient: HttpClient ,  private cookieService: CookieService ,
   ) { }
@@ -19,32 +20,21 @@ export class AddprofilService {
       'Content-Type': 'application/json',
     }).set('Authorization',  `Bearer ${this.cookieService.get("token")}`) ,
   };
-      //get
-      GeProfilAcces(): Promise<[ProfilModel]> {
+
+       //get
+       GetUsers(): Promise<[UserModel]> {
         const request = this.httpClient.get<any>(
-          environment.BackendUrl + 'pControleAccess/list' ,
+          environment.BackendUrl + 'usager/list',
           this.httpOptions
         );
         return request.toPromise();
       }
-  
       //DELETE
-      DeleteGeProfilAcces(id: number): Promise<any> {
+      DeleteUser(id: any): Promise<any> {
         const request = this.httpClient.delete<any>(
-          environment.BackendUrl + 'pControleAccess/delete/'+ id,
+          environment.BackendUrl + 'usager/delete/'+ id,
           this.httpOptions
         );
         return request.toPromise();
       }
-  
-       //Put
-       UpdateGeProfilAcces(data: any , id : number): Promise<any> {
-        const request = this.httpClient.put<any>(
-          environment.BackendUrl + 'pControleAccess/update/'+ id,
-          JSON.stringify(data),
-          this.httpOptions
-        );
-        return request.toPromise();
-      }
- 
 }
