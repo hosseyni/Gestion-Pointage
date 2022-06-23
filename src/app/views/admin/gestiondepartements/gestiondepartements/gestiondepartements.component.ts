@@ -32,7 +32,7 @@ export class GestiondepartementsComponent implements OnInit {
 
   DelDepartement(idCompany :number){
     this.gestiondepartementService.DeleteDepartement(idCompany).then((response) => {
-     console.log("response")
+      window.location.href = '/admin/gestiondepartements';
     })
     .catch((error) => {
       console.log("error" , error)
@@ -46,7 +46,7 @@ export class GestiondepartementsComponent implements OnInit {
       "idCompany": idCompany
     }
     this.gestiondepartementService.UpdateDepartement(postrequest , idCompany).then((response) => {
-     console.log("response")
+      window.location.href = '/admin/gestiondepartements';
     })
     .catch((error) => {
       console.log("error" , error)
@@ -57,6 +57,7 @@ export class GestiondepartementsComponent implements OnInit {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'});
     //console.log(tableRow)
     this.modalRow = tableRow;
+    
   }
 
 }

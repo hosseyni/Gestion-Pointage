@@ -14,7 +14,7 @@ import interactionPlugin from '@fullcalendar/interaction';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { HttpClientModule } from '@angular/common/http';
 import { DashboardRoutingModule } from './views/admin/dashboard/dashboard-routing.module';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule , NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -40,8 +40,12 @@ FullCalendarModule.registerPlugins([
       provide: DateAdapter,
       useFactory: adapterFactory,
     }),
-    HttpClientModule
+    HttpClientModule,
+    NgbModule,
+    NgbAlertModule
+
   ],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   providers: [],
   bootstrap: [AppComponent]
 })

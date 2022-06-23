@@ -42,8 +42,8 @@
     
                     <div class="d-flex align-items-center">
                       <div class="ps-4">
-                        <h6 style="color: green;">{{card.couvrant}}H</h6>
-                        <span class="text-success small pt-1 fw-bold"></span>{{card.couvrant}}<span class="text-muted small pt-2 ps-1"></span>
+                        <h6 style="color: green;">{{card.couvrant.slice(0,2)}}H</h6>
+                        <span class="text-success small pt-1 fw-bold"></span>{{card.definition}}<span class="text-muted small pt-2 ps-1"></span>
     
                       </div>
                       <div style="width: 50%;"></div>
@@ -55,10 +55,10 @@
                     </div>
                   </div>
                   <div class="card-footer bg-darkorange" style="background: green; height: 60px; display: flex; justify-content: space-between;">
-                    <p><small class="text-muted" style="color: white !important;">{{card.couvrant}}</small></p>
+                    <p><small class="text-muted" style="color: white !important;">{{card.enrcetee}}</small></p>
                    <div>
                     <a class="icon" href="#" style=" padding-right: 50px; color: white; font-size: larger;" data-bs-toggle="dropdown"><i class="bi bi-pencil-square "></i></a>
-                    <a class="icon" href="#" style=" padding-right: 50px; color: white; font-size: larger;" data-bs-toggle="dropdown"><i class="bi bi-trash"></i></a>
+                    <a (click)="DeleteProfilCalendaires(card.idProfilCalendaire)" class="icon" href="#" style=" padding-right: 50px; color: white; font-size: larger;" data-bs-toggle="dropdown"><i class="bi bi-trash"></i></a>
                     </div>
                   </div>
                 </div>

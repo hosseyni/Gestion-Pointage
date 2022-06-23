@@ -33,6 +33,7 @@
     "jspdf": "^2.5.1",
     "jspdf-autotable": "^3.5.24",
     "ngx-cookie-service": "^13.2.1",
+    "ngx-toastr": "^15.0.0",
     "rxjs": "~7.4.0",
     "save": "^2.5.0",
     "tslib": "^2.3.0",

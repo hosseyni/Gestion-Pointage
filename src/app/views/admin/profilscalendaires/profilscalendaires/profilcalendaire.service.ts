@@ -29,4 +29,13 @@ export class ProfilcalendaireService {
       );
       return request.toPromise();
     }
+
+    //DELETE
+    DeleteProfilCalandaire(id: any): Promise<any> {
+      const request = this.httpClient.delete<any>(
+        environment.BackendUrl + 'profilCalendaire/delete/'+ id,
+        this.httpOptions
+      );
+      return request.toPromise();
+    }
 }

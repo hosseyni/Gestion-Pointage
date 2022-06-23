@@ -46,18 +46,14 @@ export class AddprofilcalendaireComponent implements OnInit {
 
     this.AddprofilcalendraireService.AddProfilCalendaire({
       
-        "couvrant":"15:02:30",
-        "definition":"15:02:30",
-        "designation": "test",
-        "enrcetee":"15:02:30",
+        "couvrant": date_couvrant+":00",
+        "definition":date_definit+":00",
+        "designation": designation+":00",
+        "enrcetee":Ecrete+":00",
         "usePointeuse": true
       
   }).then((response) => {
-    this.router.events.subscribe((val ) => {
-      // see also 
-      console.log("ffffffff" , val ) 
-  });
-
+   window.location.href = '/admin/profilscalendaires'
   })
   .catch((error) => {
     console.log("error" , error)
@@ -137,10 +133,7 @@ export class AddprofilcalendaireComponent implements OnInit {
     }
     this.AddprofilcalendraireService.AddHoraire(datatosend).then((response) => {
 
-      this.router.events.subscribe((val ) => {
-        // see also 
-        console.log("ffffffff" , val ) 
-    });
+      window.location.href = '/admin/addprofilcalendaire';
  
     })
     .catch((error) => {
@@ -165,10 +158,7 @@ export class AddprofilcalendaireComponent implements OnInit {
     console.log(designation , flexRadioDefault2 , date_debut , date_fin )
 
     this.AddprofilcalendraireService.AddProfilCalendaire(datatosend).then((response) => {
-      this.router.events.subscribe((val ) => {
-        // see also 
-        console.log("ffffffff" , val ) 
-    });
+      window.location.href = '/admin/addprofilcalendaire';
  
     })
     .catch((error) => {

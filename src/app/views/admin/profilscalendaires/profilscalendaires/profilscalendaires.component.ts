@@ -36,4 +36,19 @@ export class ProfilscalendairesComponent implements OnInit {
       });
   }
 
+  DeleteProfilCalendaires(idProfilCalendaires :number){
+
+     
+    this.ProfilcalendaireService.DeleteProfilCalandaire(idProfilCalendaires).then((response) => {
+      window.location.href = '/admin/profilscalendaires';
+ 
+    })
+    .catch((error) => {
+      console.log("error" , error)
+      });
+  
+  }
+
+      
+
 }

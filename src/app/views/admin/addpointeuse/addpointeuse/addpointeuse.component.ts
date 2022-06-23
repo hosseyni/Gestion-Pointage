@@ -34,11 +34,8 @@ export class AddpointeuseComponent implements OnInit {
       "principale": true,
       "type": inputGroupSelect05
     }).then((response) => {
-      this.router.events.subscribe((val ) => {
-        // see also 
-        console.log("ffffffff" , val ) 
-    });
- 
+
+        window.location.href = '/admin/handkeys';
     })
     .catch((error) => {
       console.log("error" , error)

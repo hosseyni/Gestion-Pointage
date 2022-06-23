@@ -43,12 +43,7 @@ export class ProfilssalariesComponent implements OnInit {
 
      
     this.ProfilsalariesService.DeleteProfilSalarie(idProfilSalaire).then((response) => {
-      this.router.events.subscribe((val ) => {
-        // see also 
-        console.log("idddddd" , val ) 
-        window.location.reload();
-  
-    });
+      window.location.href = '/admin/profilssalaries';
  
     })
     .catch((error) => {

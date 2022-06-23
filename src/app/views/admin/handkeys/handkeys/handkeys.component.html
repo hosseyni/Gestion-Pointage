@@ -38,7 +38,7 @@
                     <div class="row mb-3">
                       <label for="designation" class="col-md-4 col-lg-5 col-form-label">&nbsp;&nbsp;Designation:</label>
                       <div class="col-md-4 col-lg-5 col-form-label">
-                        <input name="designation" type="text" class="form-control" id="designation" value="ddddddd" >
+                        <input name="designation" type="text" class="form-control" id="designation" value="" >
                       </div>
                     </div>
                     <div class="row mb-3">
@@ -84,7 +84,8 @@
                         </select>
                       </div>
                       <div class="text-center" style="margin: 3%;">
-                        <button type="button" class="btn btn-success">Connecter</button>
+                        <button type="button" class="btn btn-success" (click)="connect()">Connecter</button>
+                        <p *ngIf="connect_device" style="color: green;margin-left: 50px;" class="mt-1">Connect avec succes!</p>
                         
                       </div>
                     
@@ -128,13 +129,89 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let order of ListPadge">
-                    <th scope="row">{{order.idPointeuse}}</th>
+                  <tr *ngFor="let order of ListPadge ; let i = index">
+                    <th scope="row">{{i}}</th>
                   
-                      <td>
-                        <div class="bi bi-pen"   (click)="EditPointeuse(order.idPointeuse)"></div>
+                    <td>
+                
+                      <div class="bi bi-pen"  (click)="open(content, order)"  data-bs-toggle="modal" data-bs-target="#scrollingModalEdit" #modeleditPointeuse id="modeleditPointeuse">
+                        
+                      </div>
+                  
+                      <ng-template #content let-modal>
+                            <div class="modal-header">
+                              <h4 class="modal-title">Modifier Pointeuse</h4>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+                            </div>
+                            <div class="row mb-3">
+                              <label for="designation" class="col-md-4 col-lg-5 col-form-label">&nbsp;&nbsp;Designation:</label>
+                              <div class="col-md-4 col-lg-5 col-form-label">
+                              <input name="designation" type="text" class="form-control" id="designationedit" value={{order.designation}} >
+                              </div>
+                            </div>
+                            <div class="row mb-3">
+                              <label for="port" class="col-md-4 col-lg-5 col-form-label">&nbsp;&nbsp;Port:</label>
+                              <div class="col-md-4 col-lg-5 col-form-label">
+                                <input name="port" type="number" class="form-control" id="portedit" value={{order.port}}>
+                              </div>
+                            </div>
+                            <div class="row mb-3">
+                              <label for="company" class="col-md-4 col-lg-5 col-form-label">&nbsp;&nbsp;Adresse IP:</label>
+                              <div class="col-md-4 col-lg-5 col-form-label">
+                                <input name="company" type="text" class="form-control" id="companyedit" value={{order.adresseIp}}>
+                              </div>
+                            </div>
+                            <div class="row mb-3">
+                              <label for="Email" class="col-md-4 col-lg-5 col-form-label">&nbsp;&nbsp;Departement:</label>
+                              <div class="col-md-4 col-lg-5 col-form-label">
+                                <select class="form-select" id="inputGroupSelect04edit" aria-label="Example select with button addon">
+                                  
+                                  <option value="1">Secteur 1</option>
+                                  <option value="2">Secteur 2</option>
+                                  <option value="2">Secteur 3</option>
+                                  <option value="2">Secteur 4</option>
+                                
+                                </select>
+                                
+                              </div>
+                              <div class="col-12">
+                                
+                              </div>
+                              
+                              
+                            </div>
+                        
+                            <div class="row mb-3">
+                              <label for="Email" class="col-md-5 col-lg-5 col-form-label">&nbsp;&nbsp; Type:</label>
+                              <div class="col-md-5 col-lg-5 col-form-label">
+                                <select class="form-select" id="inputGroupSelect05edit" aria-label="Example select with button addon">
+                                  
+                                  <option value="0">Badge Vertx</option>
+                                  <option value="1">Empreinte</option>
+                                
+                                </select>
+                              </div>
+                              <div class="text-center" style="margin: 3%;">
+                                <button type="button" class="btn btn-success" (click)="connect()">Connecter</button>
+                                <p *ngIf="connect_device" style="color: green;margin-left: 50px;" class="mt-1">Connect avec succes!</p>
+                                
+                              </div>
+                            
+                              <div class="text-center" style="margin: 4%;">
+                                
+                              </div>
+          
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                              <button type="button" class="btn btn-primary"  (click)="EditPointeuse(order.idPointeuse)">Enregistrer</button>
+                            </div>
+                          </div>
+                   
+                      </ng-template>
+                     
+
                     </td>
-                    <td> 
+                    <td>
                         <div class="bi bi-trash"   (click)="DeletePointeuse(order.idPointeuse)" ></div>
                     </td>
                     <td> <div class="form-check">
@@ -168,10 +245,83 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let order of ListEmpreinte">
-                    <th scope="row">{{order.idPointeuse}}</th>
+                  <tr *ngFor="let order of ListEmpreinte ; let i = index">
+                    <th scope="row">{{i}}</th>
                     <td>
-                      <div class="bi bi-pen"  data-bs-toggle="modal" data-bs-target="#scrollingModal" #modeladdPointeuse id="modeladdPointeuse"  (click)="EditPointeuse(order.idPointeuse)"></div>
+                      <div class="bi bi-pen"  (click)="open(content, order)"  data-bs-toggle="modal" data-bs-target="#scrollingModalEdit" #modeleditPointeuse id="modeleditPointeuse">
+                        
+                      </div>
+                  
+                      <ng-template #content let-modal>
+                            <div class="modal-header">
+                              <h4 class="modal-title">Modifier Pointeuse</h4>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+                            </div>
+                            <div class="row mb-3">
+                              <label for="designation" class="col-md-4 col-lg-5 col-form-label">&nbsp;&nbsp;Designation:</label>
+                              <div class="col-md-4 col-lg-5 col-form-label">
+                              <input name="designation" type="text" class="form-control" id="designationedit" value={{order.designation}} >
+                              </div>
+                            </div>
+                            <div class="row mb-3">
+                              <label for="port" class="col-md-4 col-lg-5 col-form-label">&nbsp;&nbsp;Port:</label>
+                              <div class="col-md-4 col-lg-5 col-form-label">
+                                <input name="port" type="number" class="form-control" id="portedit" value={{order.port}}>
+                              </div>
+                            </div>
+                            <div class="row mb-3">
+                              <label for="company" class="col-md-4 col-lg-5 col-form-label">&nbsp;&nbsp;Adresse IP:</label>
+                              <div class="col-md-4 col-lg-5 col-form-label">
+                                <input name="company" type="text" class="form-control" id="companyedit" value={{order.adresseIp}}>
+                              </div>
+                            </div>
+                            <div class="row mb-3">
+                              <label for="Email" class="col-md-4 col-lg-5 col-form-label">&nbsp;&nbsp;Departement:</label>
+                              <div class="col-md-4 col-lg-5 col-form-label">
+                                <select class="form-select" id="inputGroupSelect04edit" aria-label="Example select with button addon">
+                                  
+                                  <option value="1">Secteur 1</option>
+                                  <option value="2">Secteur 2</option>
+                                  <option value="2">Secteur 3</option>
+                                  <option value="2">Secteur 4</option>
+                                
+                                </select>
+                                
+                              </div>
+                              <div class="col-12">
+                                
+                              </div>
+                              
+                              
+                            </div>
+                        
+                            <div class="row mb-3">
+                              <label for="Email" class="col-md-5 col-lg-5 col-form-label">&nbsp;&nbsp; Type:</label>
+                              <div class="col-md-5 col-lg-5 col-form-label">
+                                <select class="form-select" id="inputGroupSelect05edit" aria-label="Example select with button addon">
+                                  <option value="1">Empreinte</option>
+                                  <option value="0">Badge Vertx</option>
+                                  
+                                
+                                </select>
+                              </div>
+                              <div class="text-center" style="margin: 3%;">
+                                <button type="button" class="btn btn-success" (click)="connect()">Connecter</button>
+                                <p *ngIf="connect_device" style="color: green;margin-left: 50px;" class="mt-1">Connect avec succes!</p>
+                                
+                              </div>
+                            
+                              <div class="text-center" style="margin: 4%;">
+                                
+                              </div>
+          
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                              <button type="button" class="btn btn-primary"  (click)="EditPointeuse(order.idPointeuse)">Enregistrer</button>
+                            </div>
+                          </div>
+                   
+                      </ng-template>
                      </td>
                      <td> 
                       <div class="bi bi-trash"   (click)="DeletePointeuse(order.idPointeuse)" ></div>

@@ -37,4 +37,22 @@ export class GestionusersService {
         );
         return request.toPromise();
       }
+           //PUT
+      UpdateUser(data: any , id : number): Promise<any> {
+        const request = this.httpClient.put<any>(
+          environment.BackendUrl + 'usager/update/'+ id,
+          JSON.stringify(data),
+          this.httpOptions
+        );
+        return request.toPromise();
+      }
+
+      AddFonctionnalite(data: any): Promise<any> {
+        const request = this.httpClient.post<any>(
+          environment.BackendUrl + 'fonctionalitie/add',
+          JSON.stringify(data),
+          this.httpOptions
+        );
+        return request.toPromise();
+      }
 }

@@ -40,8 +40,9 @@
                 <label for="Email" class="col-md-4 col-lg-3 col-form-label">Badge Vertx</label>
                 <div class="col-md-4 col-lg-5 col-form-label">
                   <select class="form-select" id="inputGroupSelect03" aria-label="Example select with button addon"> 
-
-                    <option *ngFor="let item of ListPadge; let i = index" value={{item}}>{{item.designation}}</option>
+                    <option></option>
+                    <option *ngFor="let item of ListPadge; let i = index" value={{item.designation}}-{{item.idPointeuse}}-{{item.type}}>{{item.designation}}</option>
+                    
 
                   </select>
                   
@@ -55,12 +56,12 @@
               <div class="row mb-3">
                 <label for="Email" class="col-md-4 col-lg-3 col-form-label">Empreinte</label>
                 <div class="col-md-4 col-lg-5 col-form-label">
-                  <select class="form-select" id="inputGroupSelect04" aria-label="Example select with button addon">
-                    
-                    <option *ngFor="let item of ListEmpreinte; let i = index" value={{item.designation}}>{{item.designation}}</option>
+                  <select class="form-select" id="inputGroupSelect04" aria-label="Example select with button addon" (change)="onItemChange($event.target)">
+                    <option></option>
+                    <option *ngFor="let item of ListEmpreinte; let i = index" value={{item.designation}}-{{item.idPointeuse}}-{{item.type}}>{{item.designation}}</option>
                    
                   </select>
-                  
+                  <button (click)="AjouterPointeuse()">Ajouter</button>
                 </div>
                 <table class="table">
                     <thead>
@@ -71,28 +72,13 @@
                         
                       </tr>
                     </thead>
-                    <tbody>
-                      <tr>
-                        <th scope="row">Zkteco1</th>
-                        <td>Badge Vertx</td>
+                    <tbody *ngIf="showTable">
+                      <tr *ngFor="let item of listEmp">
+                        <th scope="row">{{item.name}}</th>
+                        <td>{{item.type}}</td>
                         <td><i class="bi bi-trash"></i></td>
                       </tr>
-    
-                      <tr class="table-primary">
-                        <th scope="row">Zkteco2</th>
-                        <td>Empreinte</td>
-                        <td><i class="bi bi-trash"></i></td>
-                      </tr>
-                      <tr class="table-secondary">
-                        <th scope="row">Zkteco11</th>
-                        <td>Badge Vertx</td>
-                        <td><i class="bi bi-trash"></i></td>
-                      </tr>
-                      <tr class="table-success">
-                        <th scope="row">Zkteco15</th>
-                        <td>Empreinte</td>
-                        <td><i class="bi bi-trash"></i></td>
-                      </tr>
+    =
                       
                     </tbody>
                   </table>
@@ -124,7 +110,7 @@
             <div class="card info-card sales-card">
 
               <div class="filter">
-                <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-trash"></i></a><a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-pen"></i></a>
+                <a class="icon" href="#" data-bs-toggle="dropdown" (click)="DeleteProfil(profil.idPControleAccess)"><i class="bi bi-trash"></i></a><a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-pen"></i></a>
                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
                   <li class="dropdown-header text-start">
                     <h6>Filter</h6>

@@ -4,8 +4,8 @@
         <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
           <ol class="breadcrumb">
             <li class="breadcrumb-item" routerLink="dashboard">Home</li>
-            <li class="breadcrumb-item"><a href="gestiondepartements">Gestion Departements </a></li>
-            <li class="breadcrumb-item active" aria-current="page">Ajouter Departement</li>
+            <li class="breadcrumb-item"><a href="gestiondepartements">Gestion Company </a></li>
+            <li class="breadcrumb-item active" aria-current="page">Ajouter Company</li>
             
            
           </ol>
@@ -16,11 +16,11 @@
               <ul class="nav nav-tabs nav-tabs-bordered">
 
                 <li class="nav-item">
-                  <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-overview" routerLink="/admin/gestiondepartement">Departements</button>
+                  <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-overview" routerLink="/admin/gestiondepartement">Company</button>
                 </li>
   
                 <li class="nav-item">
-                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit" routerLink="/admin/adddepartement">Ajouter Departement</button>
+                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit" routerLink="/admin/adddepartement">Ajouter Company</button>
                 </li>
               </ul>
 
@@ -41,13 +41,13 @@
                   
                   <div class="btn-group mr-2" role="group" aria-label="First group" >
                 
-                    <h3> <a href="#" class="#profile-delete" (click)="DelDepartement(company.idCompany)"  routerLink="/admin/gestiondepartement"><i class="bi bi-trash"></i></a></h3>&nbsp;
+                    <h3> <a href="#" class="#profile-delete" (click)="DelDepartement(company.idCompany)"  ><i class="bi bi-trash"></i></a></h3>&nbsp;
                     
                     <h3> <a href="#" class="#profile-edit" (click)="open(content, company)" data-bs-toggle="modal" data-bs-target="#scrollingModal"  [attr.data-target]="'#Model'+company.designation" #modelEditDepartement id="modalEditDepartement"><i class="bi bi-pen"></i></a></h3>&nbsp;
                    
                     <ng-template #content let-modal>
                       <div class="modal-header">
-                        <h4 class="modal-title" id="modal-basic-title">Modifier Departement</h4>
+                        <h4 class="modal-title" id="modal-basic-title">Modifier Company</h4>
                         <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
                           <span aria-hidden="true">&times;</span>
                         </button>

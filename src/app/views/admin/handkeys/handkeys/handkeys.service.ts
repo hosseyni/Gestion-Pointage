@@ -47,4 +47,14 @@ export class HandkeysService {
       );
       return request.toPromise();
     }
+
+         //Put
+         UpdatePointeuse(data: any , id : number): Promise<any> {
+          const request = this.httpClient.put<any>(
+            environment.BackendUrl + 'pointeuse/update/'+ id,
+            JSON.stringify(data),
+            this.httpOptions
+          );
+          return request.toPromise();
+        }
 }

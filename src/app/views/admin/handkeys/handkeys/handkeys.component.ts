@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { handKeyModel } from '../handkeysModel';
 import { HandkeysService } from './handkeys.service';
 @Component({
@@ -11,14 +12,21 @@ export class HandkeysComponent implements OnInit {
 
   ListEmpreinte:handKeyModel[] = [];
   ListPadge:handKeyModel[] = [];
+  connect_device:boolean =false;
+  modalRow: any;
   @ViewChild("modeladdPointeuse") modeladdPointeuse: ElementRef | undefined;
 
   
-  constructor(private HandkeysService : HandkeysService , private router : Router , private route:ActivatedRoute) { }
+  constructor(private HandkeysService : HandkeysService , private router : Router , private route:ActivatedRoute , private modalService: NgbModal) { }
 
   ngOnInit(): void {
  
     this.GetPointeuse()
+  }
+  connect(){  
+
+    this.connect_device = true
+    console.log("connect" ,this.connect_device )
   }
 
   GetPointeuse(){
@@ -29,13 +37,12 @@ export class HandkeysComponent implements OnInit {
        
         for (let i = 0; i <response.length ; i++){
           console.log(response[i].type)
-         if(response[i].type == "Type1"){
+         if(response[i].type == "Type2"){
            this.ListEmpreinte.push(response[i])
-         } else if (response[i].type == "Type2"){
+         } else if (response[i].type == "Type1"){
            this.ListPadge.push(response[i])
          }
       }
-      console.log("ffffffff" , this.ListEmpreinte , this.ListPadge )
       }  
  
     })
@@ -63,17 +70,7 @@ export class HandkeysComponent implements OnInit {
       "principale": true,
       "type": inputGroupSelect05
     }).then((response) => {
-      console.log("ffffffff" , response ) 
-
-        this.router.navigate(['/admin/handkeys']).then( (e) => {
-          if (e) {
-            console.log("Navigation is successful!");
-          } else {
-            console.log("Navigation has failed!");
-          }
-        });
-
- 
+      window.location.href = '/admin/handkeys';
     })
     .catch((error) => {
       console.log("error" , error)
@@ -89,14 +86,9 @@ export class HandkeysComponent implements OnInit {
    }
 
    DeletePointeuse(value: any){
-    console.log("eeeevvvvv" , value )
    
       this.HandkeysService.DeletePointeuse(value).then((response) => {
-        this.router.events.subscribe((val ) => {
-          // see also 
-          console.log("ffffffff" , val ) 
-    
-      });
+        window.location.href = '/admin/handkeys';
    
       })
       .catch((error) => {
@@ -107,6 +99,34 @@ export class HandkeysComponent implements OnInit {
 
   EditPointeuse(value: any){
     console.log("eeeevvvvv" , value )
+    let designation =  (<HTMLInputElement>document.getElementById('designationedit')).value;
+    let port =  (<HTMLInputElement>document.getElementById('portedit')).value;
+    let company =  (<HTMLInputElement>document.getElementById('companyedit')).value;
+    let inputGroupSelect04 =  (<HTMLInputElement>document.getElementById('inputGroupSelect04edit')).value;
+    let inputGroupSelect05 =  (<HTMLInputElement>document.getElementById('inputGroupSelect05edit')).value;
+    let postrequest = {
+      "adresseIp": company,
+      "connexion": true,
+      "designation": designation,
+      "etat": true,
+      "idPointeuse": value,
+      "port": port,
+      "principale": true,
+      "type": inputGroupSelect05
+    }
+    console.log("fffffffff" , postrequest)
+    this.HandkeysService.UpdatePointeuse(postrequest , value).then((response) => {
+      window.location.href = '/admin/handkeys';
+    })
+    .catch((error) => {
+      console.log("error" , error)
+      });
+    
+  }
+  open(content: any, tableRow : any) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'});
+    //console.log(tableRow)
+    this.modalRow = tableRow;
     
   }
 }

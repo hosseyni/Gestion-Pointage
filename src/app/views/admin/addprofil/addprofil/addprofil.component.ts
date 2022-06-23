@@ -4,7 +4,7 @@ import { AddprofilacceesService } from '../../addprofilacces/addprofilacces/addp
 import { HandkeysService } from '../../handkeys/handkeys/handkeys.service';
 import { handKeyModel } from '../../handkeys/handkeysModel';
 import { AddprofilService } from './addprofil.service';
-import { ProfilModel } from './profilModel';
+import { deviceModel, ProfilModel } from './profilModel';
 
 @Component({
   selector: 'app-addprofil',
@@ -16,6 +16,10 @@ export class AddprofilComponent implements OnInit {
   ListEmpreinte:handKeyModel[] = [];
   ListPadge:handKeyModel[] = [];
   listProfil:ProfilModel[] = [];
+  listEmp:deviceModel[]=[];
+  modelDevisEmp:deviceModel = {type:'' , id :0 , name:''};
+  modelDevisBdg:deviceModel = {type:'' , id :0 , name:''};
+  showTable: boolean = true;
   
   constructor(private HandkeysService : HandkeysService , private AddprofilacceesService : AddprofilacceesService , private router : Router , private AddProfilservice :AddprofilService) { }
 
@@ -46,6 +50,16 @@ export class AddprofilComponent implements OnInit {
       });
   }
 
+  DeleteProfil(idprofil:number){
+    this.HandkeysService.DeletePointeuse(idprofil).then((response) => {
+      window.location.href = '/admin/addprofil';
+ 
+    })
+    .catch((error) => {
+      console.log("error" , error)
+      });
+  }
+
   AddProfil(){
 
     let inputGroupSelect03 = (<HTMLInputElement>document.getElementById('inputGroupSelect03')).value;
@@ -57,16 +71,43 @@ export class AddprofilComponent implements OnInit {
 
     this.AddprofilacceesService.AddProfile({
       "designation": designation,
+      "pointeuses":this.listEmp
     }).then((response) => {
-      this.router.events.subscribe((val ) => {
-        // see also 
-        console.log("ffffffff" , val ) 
-    });
- 
+      window.location.href = '/admin/addprofil';
     })
     .catch((error) => {
       console.log("error" , error)
       });
+  }
+
+  onItemChange(value: any){
+    console.log(" Value is : ", value.name );
+    
+  }
+  AjouterPointeuse(){
+    this.showTable = false;
+    let inputGroupSelect03 = (<HTMLInputElement>document.getElementById('inputGroupSelect03')).value;
+    let inputGroupSelect04 =  (<HTMLInputElement>document.getElementById('inputGroupSelect04')).value;
+    let inputGroupSelect044 =  (<HTMLInputElement>document.getElementById('inputGroupSelect04')).select;
+
+    if(inputGroupSelect03 != ''){
+
+        this.modelDevisEmp.name = inputGroupSelect03.split('-')[0];
+        this.modelDevisEmp.id = Number(inputGroupSelect03.split('-')[1]);
+        this.modelDevisEmp.type = "Badge Vertx";
+        this.listEmp.push(this.modelDevisEmp)
+    }
+    if(inputGroupSelect04 != ''){
+     
+        this.modelDevisBdg.name = inputGroupSelect04.split('-')[0];
+        this.modelDevisBdg.id =  Number(inputGroupSelect04.split('-')[1]);
+        this.modelDevisBdg.type = "Empreinte";
+        this.listEmp.push(this.modelDevisBdg)
+
+    }
+    setTimeout(()=>{this.showTable = true}, 0);
+    console.log(this.listEmp , inputGroupSelect044)
+
   }
 
   GetListProfil(){

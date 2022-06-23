@@ -26,13 +26,13 @@ export class AddsessionComponent implements OnInit {
     let flexRadioDefault2 = (<HTMLInputElement>document.getElementById('flexRadioDefault2')).value;
     if(flexRadioDefault1){
        this.sexe == "Homme"
-    }else {
+    }else if(flexRadioDefault2) {
       this.sexe == "Femme"
     }
     
     let dattosend= {
       
-        "dateInscrit": "2022-06-21T05:00:29.116Z",
+        "dateInscrit": new Date(),
         "dateNaissance": date,
         "email": Email,
         "nom": nom,
@@ -46,7 +46,7 @@ export class AddsessionComponent implements OnInit {
     console.log(dattosend )
 
     this.addsessionservice.AddUsers(dattosend).then((response) => {
-      console.log("response")
+      window.location.href   = '/admin/gestionusers';
 
     })
     .catch((error) => {

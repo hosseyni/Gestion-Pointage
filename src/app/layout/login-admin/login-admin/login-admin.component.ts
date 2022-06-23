@@ -24,13 +24,9 @@ export class LoginAdminComponent implements OnInit {
     "email" :username.toString() ,
     "password" : password.toString()
   }).then((response) => {
+    console.log('r', username.split('@'))
       this.cookieService.set("token" , response['token'])
-      this.router.navigate(['/admin/dashboard'])
-      this.router.events.subscribe((val ) => {
-        // see also 
-        console.log("ffffffff" , val ) 
-    });
- 
+      window.location.href = '/admin/dashboard';
     })
     .catch((error) => {
       console.log("error" , error)
