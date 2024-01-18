@@ -15,7 +15,14 @@ export class AdddepartementComponent implements OnInit {
     private chRef: ChangeDetectorRef, private router: Router , private modalService: NgbModal) {
   }
 
+  succes =false
+  probleme =false;
+
   ngOnInit(): void {
+  }
+
+  redirection(){
+    window.location.href = '/admin/gestiondepartements';
   }
 
  
@@ -25,14 +32,15 @@ export class AdddepartementComponent implements OnInit {
     this.addepartementservice.AddDepartement({
       "designation": designation,
     }).then((response) => {
-        window.location.href = '/admin/gestiondepartements';
-        this.serviceappservice.show('I am a standard toast', {
-          delay: 2000,
-          autohide: true
-        });
-      this.modalService.open("gggggggg");
+      
+       
+        this.succes = true;
+   
+  
     })
     .catch((error) => {
+      this.probleme =true;
+   
       console.log("error" , error)
       });
     }

@@ -50,22 +50,22 @@
           
                         
           
-                          <div class="form-check">Annulation/Traitement RTT 
+                         <div class="form-check">Annulation/Traitement RTT 
                               <hr>
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value = "Payer les horaires supplementaires" >
-                            <label class="form-check-label" for="flexRadioDefault2" id="flexRadioDefault1" >
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value = "Payer_les_heures_supplémentaires"   >
+                            <label class="form-check-label" for="flexRadioDefault" id="flexRadioDefault11" >
                              Payer les horaires supplementaires
                             </label>
                           </div>
                           <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value = "Annuler les heures" >
-                            <label class="form-check-label" for="flexRadioDefault2" id="flexRadioDefault2" >
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value ="Annualiser_les_heures"  >
+                            <label class="form-check-label" for="flexRadioDefault1" id="flexRadioDefault22" >
                               Annuler les heures(ecart positifs ou negatifs)
                             </label>
                           </div>
                           <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3"  value = "R.T.T" checked>
-                            <label class="form-check-label" for="flexRadioDefault2" id="flexRadioDefault3">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3"  value ="R_T_T" checked >
+                            <label class="form-check-label" for="flexRadioDefault"  id="flexRadioDefault33" >
                               R.T.T
                             </label>
                           </div>
@@ -79,75 +79,196 @@
                           </div>
                          <span>Profil Calendaire par Defaut</span>
                          <hr>
-                          <table class="table">
-                            <thead>
-                              <tr>
-                                <th scope="col">JOUR DE LA SEMAINE</th>
-                                <th scope="col">PROFILS CALENDAIRE UTILISES</th>
-                                <td></td>
-                                
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr>
-                                <th scope="row">Dimanche</th>
-                                <td>
-                                    <div class="col-md-4 col-lg-5 col-form-label">
-                                        <select class="form-select" id="inputGroupSelect04" aria-label="Example select with button addon">
-                                          
-                                          <option value="1">Profil Calendaire</option>
-                                          <option value="2">Profil1</option>
-                                          <option value="2">Profil2</option>
-                                          <option value="2">Profil3</option>
-                                         
-                                        </select>
-                                        
-                                      </div>
-                                </td>
-                                <td><i class="bi bi-trash"></i></td>
-                              </tr>
-            
-                              <tr class="table-primary">
-                                <th scope="row">Lundi</th>
-                                <td>
-                                    <div class="col-md-4 col-lg-5 col-form-label">
-                                        <select class="form-select" id="inputGroupSelect04" aria-label="Example select with button addon">
-                                          
-                                            <option value="1">Profil Calendaire</option>
-                                            <option value="2">Profil1</option>
-                                            <option value="2">Profil2</option>
-                                            <option value="2">Profil3</option>
-                                         
-                                        </select>
-                                        
-                                      </div>
-                                </td>
-                                <td><i class="bi bi-trash"></i></td>
-                              </tr>
-                              <tr class="table-secondary">
-                                <th scope="row">Mardi</th>
-                                <td>
-                                    <div class="col-md-4 col-lg-5 col-form-label">
-                                        <select class="form-select" id="inputGroupSelect04" aria-label="Example select with button addon">
-                                          
-                                            <option value="1">Profil Calendaire</option>
-                                            <option value="2">Profil1</option>
-                                            <option value="2">Profil2</option>
-                                            <option value="2">Profil3</option>
-                                        </select>
-                                        
-                                      </div>
-                                </td>
-                                <td><i class="bi bi-trash"></i></td>
-                              </tr>
+                         <table class="table">
+                          <thead>
+                            <tr>
+                              <th scope="col">JOUR DE LA SEMAINE</th>
+                              <th scope="col">
+                                PROFILS CALENDAIRE UTILISES
+                              </th>
+                              <td></td>
+                            </tr>
+                          </thead>
+
+                          <tbody>
+                            <tr *ngIf="dim">
+                              <th scope="row">Dimanche</th>
+                              <td>
+                                <div class="col-md-4 col-lg-5 col-form-label">
+                                  <select class="form-select" id="inputGroupSelect04"
+                                    aria-label="Example select with button addon">
+                                    <option *ngFor="
+                                        let item of ListProfilCalendaire;
+                                        let i = index
+                                      " value="{{ item.designation }}">
+                                      {{ item.designation }}
+                                    </option>
+                                    <!-- <option value="1">Profil Calendaire</option>
+                                  <option value="2">Profil1</option>
+                                  <option value="2">Profil2</option>
+                                  <option value="2">Profil3</option> -->
+                                  </select>
+                                </div>
+                              </td>
+                              <td><i class="bi bi-trash" (click)="dim=false"></i></td>
+                            </tr>
+
+                            <tr *ngIf="lun" class="table-primary">
+                              <th scope="row">Lundi</th>
+                              <td>
+                                <div class="col-md-4 col-lg-5 col-form-label">
+                                  <select class="form-select" id="inputGroupSelect04"
+                                    aria-label="Example select with button addon">
+                                    <option *ngFor="
+                                        let item of ListProfilCalendaire;
+                                        let i = index
+                                      " value="{{ item.designation }}">
+                                      {{ item.designation }}
+                                    </option>
+                                    <!-- <option value="1">Profil Calendaire</option>
+                                    <option value="2">Profil1</option>
+                                    <option value="2">Profil2</option>
+                                    <option value="2">Profil3</option> -->
+                                  </select>
+                                </div>
+                              </td>
+                              <td><i class="bi bi-trash" (click)="lun=false"></i></td>
+                            </tr>
+
+
+
+                            <tr *ngIf="mard" class="table-secondary">
+                              <th scope="row">Mardi</th>
+                              <td>
+                                <div class="col-md-4 col-lg-5 col-form-label">
+                                  <select class="form-select" id="inputGroupSelect04"
+                                    aria-label="Example select with button addon">
+                                    <option *ngFor="
+                                        let item of ListProfilCalendaire;
+                                        let i = index
+                                      " value="{{ item.designation }}">
+                                      {{ item.designation }}
+                                    </option>
+                                    <!-- <option value="1">Profil Calendaire</option>
+                                    <option value="2">Profil1</option>
+                                    <option value="2">Profil2</option>
+                                    <option value="2">Profil3</option> -->
+                                  </select>
+                                </div>
+                              </td>
+                              <td><i class="bi bi-trash" (click)="mard=false" ></i></td>
+                            </tr>
+
+
+
+                            <tr *ngIf="merc" class="table-primary">
+                              <th scope="row">Mercredi</th>
+                              <td>
+                                <div class="col-md-4 col-lg-5 col-form-label">
+                                  <select class="form-select" id="inputGroupSelect04"
+                                    aria-label="Example select with button addon">
+                                    <option *ngFor="
+                                        let item of ListProfilCalendaire;
+                                        let i = index
+                                      " value="{{ item.designation }}">
+                                      {{ item.designation }}
+                                    </option>
+                                    <!-- <option value="1">Profil Calendaire</option>
+                                    <option value="2">Profil1</option>
+                                    <option value="2">Profil2</option>
+                                    <option value="2">Profil3</option> -->
+                                  </select>
+                                </div>
+                              </td>
+                              <td><i class="bi bi-trash" (click)="merc=false"></i></td>
+                            </tr>
+
+
+                          <tr *ngIf="jeud" class="table-secondary">
+                              <th scope="row">Jeudi</th>
+                              <td>
+                                <div class="col-md-4 col-lg-5 col-form-label">
+                                  <select class="form-select" id="inputGroupSelect04"
+                                    aria-label="Example select with button addon">
+                                    <option *ngFor="
+                                        let item of ListProfilCalendaire;
+                                        let i = index
+                                      " value="{{ item.designation }}">
+                                      {{ item.designation }}
+                                    </option>
+                                    <!-- <option value="1">Profil Calendaire</option>
+                                    <option value="2">Profil1</option>
+                                    <option value="2">Profil2</option>
+                                    <option value="2">Profil3</option> -->
+                                  </select>
+                                </div>
+                              </td>
+                              <td><i class="bi bi-trash" (click)="jeud=false"></i></td>
+                            </tr>
+
+
+
+
+                          <tr *ngIf="vend" class="table-primary">
+                              <th scope="row">Vendredi</th>
+                              <td>
+                                <div class="col-md-4 col-lg-5 col-form-label">
+                                  <select class="form-select" id="inputGroupSelect04"
+                                    aria-label="Example select with button addon">
+                                    <option *ngFor="
+                                        let item of ListProfilCalendaire;
+                                        let i = index
+                                      " value="{{ item.designation }}">
+                                      {{ item.designation }}
+                                    </option>
+                                    <!-- <option value="1">Profil Calendaire</option>
+                                    <option value="2">Profil1</option>
+                                    <option value="2">Profil2</option>
+                                    <option value="2">Profil3</option> -->
+                                  </select>
+                                </div>
+                              </td>
+                              <td><i class="bi bi-trash" (click)="vend=false"></i></td>
+                            </tr>
+                          <tr *ngIf="samd">
+                              <th scope="row">Samedi</th>
+                              <td>
+                                <div class="col-md-4 col-lg-5 col-form-label">
+                                  <select class="form-select" id="inputGroupSelect04"
+                                    aria-label="Example select with button addon">
+                                    <option *ngFor="
+                                        let item of ListProfilCalendaire;
+                                        let i = index
+                                      " value="{{ item.designation }}">
+                                      {{ item.designation }}
+                                    </option>
+                                    <!-- <option value="1">Profil Calendaire</option>
+                                    <option value="2">Profil1</option>
+                                    <option value="2">Profil2</option>
+                                    <option value="2">Profil3</option> -->
+                                  </select>
+                                </div>
+                              </td>
+                              <td><i class="bi bi-trash" (click)="samd=false"></i></td>
+
+
+
+
+                            </tr>
                             
-                              
-                            </tbody>
-                          </table>                        
-          
+                          </tbody>
+                        </table> 
+
+
+
                           <div >
-                            <button  class="btn btn-primary" style="float: right;" (click)="AddProfilSalarie()">Enregistrer</button>
-                          </div>
+
+                          
+                            <button type="submit" (click)="AddProfilSalarie()" class="btn btn-primary" style="float: right;" >Enregistrer</button>
+                          </div>    
+                          </form>                  
+          
+     
             
                   
                 

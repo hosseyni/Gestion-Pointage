@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { GestiondepartementService } from '../../gestiondepartements/gestiondepartements/gestiondepartement.service';
 import { handKeyModel } from '../handkeysModel';
 import { HandkeysService } from './handkeys.service';
 @Component({
@@ -9,31 +10,125 @@ import { HandkeysService } from './handkeys.service';
   styleUrls: ['./handkeys.component.css']
 })
 export class HandkeysComponent implements OnInit {
-
+  listCompagnies =new Array();
   ListEmpreinte:handKeyModel[] = [];
   ListPadge:handKeyModel[] = [];
-  connect_device:boolean =false;
   modalRow: any;
+  msgConnect:boolean=false;
+  msgDisConnect:boolean=false;
+  hiddenBtnEregister = true;
+  succes =false;
+  probleme=false;
+  msgDisConnectEditIP = false;
+
   @ViewChild("modeladdPointeuse") modeladdPointeuse: ElementRef | undefined;
 
   
-  constructor(private HandkeysService : HandkeysService , private router : Router , private route:ActivatedRoute , private modalService: NgbModal) { }
+  constructor(private HandkeysService : HandkeysService ,
+    private  gestiondepartementService: GestiondepartementService ,
+     private router : Router , private route:ActivatedRoute , private modalService: NgbModal) { }
+    
+    
+     initChamp(){
+      this.hiddenBtnEregister =true;
+    (<HTMLInputElement>document.getElementById('designation')).value ='' ;
+     (<HTMLInputElement>document.getElementById('port')).value ='';
+     (<HTMLInputElement>document.getElementById('company')).value="";
+     (<HTMLInputElement>document.getElementById('inputGroupSelect04')).value ="";
+     (<HTMLInputElement>document.getElementById('inputGroupSelect05')).value="";
+     }
 
-  ngOnInit(): void {
- 
+
+
+     redirection(){
+      window.location.href = '/admin/handkeys';
+    }
+     
+
+changeIP(id:any,e:any){
+  this.hiddenBtnEregister = true;
+  //let company =  (<HTMLInputElement>document.getElementById('companyedit')).value;
+  let company =e.target.value;
+  //alert('value  '+company)
+
+  if(this.ExistPointeuseByIPEdit(company,id) === true){
+   
+    this. msgDisConnectEditIP = true;
+    this.hiddenBtnEregister = true;
+    console.log('ip exite deja ');
+   // alert('ip exite deja ');
+   }else{
+   
+    this.msgDisConnectEditIP = false
+    this.hiddenBtnEregister = false;
+ //   alert('ip n exite pas ');
+}
+//alert('value  '+company)
+}
+
+
+  async ngOnInit() {
+    this.hiddenBtnEregister = true;
     this.GetPointeuse()
+    await this.getCompagnies();
   }
-  connect(){  
 
-    this.connect_device = true
-    console.log("connect" ,this.connect_device )
+async getCompagnies(){
+  await this.gestiondepartementService.GeDepartement().then(data=>{
+
+    console.log('liste compagnie ', data);
+    
+     this.listCompagnies = data;
+    });
+}
+connectEdit(id:any){  
+  let company =  (<HTMLInputElement>document.getElementById('companyedit')).value;
+
+
+  if(this.ExistPointeuseByIPEdit(company,id) === true){
+    this.msgConnect = false
+    this.msgDisConnect = true
+    console.log('ip exite deja ');
+   // alert('ip exite deja ');
+   }else{
+    this.msgConnect =true
+    this.msgDisConnect = false
+    this.hiddenBtnEregister = false;
+ //   alert('ip n exite pas ');
+}
+
+ 
+}
+
+
+
+
+
+
+
+  connect(){  
+    let company =  (<HTMLInputElement>document.getElementById('company')).value;
+    if(this.ExistPointeuseByIP(company) === true){
+      this.msgConnect = false
+      this.msgDisConnect = true
+      console.log('ip exite deja ');
+     // alert('ip exite deja ');
+     }else{
+      this.msgConnect =true
+      this.msgDisConnect = false
+      this.hiddenBtnEregister = false;
+   //   alert('ip n exite pas ');
+  }
+
+   
   }
 
   GetPointeuse(){
  
     this.HandkeysService.GetPointeuse().then((response) => {
      
-      if(response.length > 0 )  {
+     console.log('liste pointeuse ',response );
+     
        
         for (let i = 0; i <response.length ; i++){
           console.log(response[i].type)
@@ -42,8 +137,7 @@ export class HandkeysComponent implements OnInit {
          } else if (response[i].type == "Type1"){
            this.ListPadge.push(response[i])
          }
-      }
-      }  
+            }  
  
     })
     .catch((error) => {
@@ -52,7 +146,7 @@ export class HandkeysComponent implements OnInit {
   }
 
 
-  AddPointeuse(){
+ async AddPointeuse(){
 
     let designation =  (<HTMLInputElement>document.getElementById('designation')).value;
     let port =  (<HTMLInputElement>document.getElementById('port')).value;
@@ -60,7 +154,7 @@ export class HandkeysComponent implements OnInit {
     let inputGroupSelect04 =  (<HTMLInputElement>document.getElementById('inputGroupSelect04')).value;
     let inputGroupSelect05 =  (<HTMLInputElement>document.getElementById('inputGroupSelect05')).value;
 
-    this.HandkeysService.AddPointeuse({
+    console.log('pointeuse avant ajout ',{
       "adresseIp": company,
       "connexion": true,
       "designation": designation,
@@ -69,17 +163,30 @@ export class HandkeysComponent implements OnInit {
       "port": port,
       "principale": true,
       "type": inputGroupSelect05
+    });
+
+  await  this.HandkeysService.AddPointeuse({
+      "adresseIp": company,
+      "connexion": true,
+      "designation": designation,
+      "etat": true,
+      "port": port,
+      "principale": true,
+      "type": inputGroupSelect05
     }).then((response) => {
-      window.location.href = '/admin/handkeys';
+   
+      console.log('response add ',response);
+      
+     // window.location.href = '/admin/handkeys';
+   this.succes =true;
     })
     .catch((error) => {
+      this.probleme =true;
       console.log("error" , error)
       });
   }
 
-  onReload(){
-    this.router.navigate(['/profilssalaries'],{relativeTo:this.route})
-   }
+ 
 
    onItemChange(value: any){
      console.log("eeeevvvvv" , value.value , value.checked )
@@ -97,8 +204,47 @@ export class HandkeysComponent implements OnInit {
     
   }
 
+  ExistPointeuseByIPEdit(ip:string,id:string):boolean{
+    let result = false;
+     for(const obj of this.ListPadge){
+       if(obj.adresseIp === ip && obj.idPointeuse !== id ){
+        result= true;
+         break;
+       }
+     }
+     for(const obj of this.ListEmpreinte ){
+       if(obj.adresseIp === ip && obj.idPointeuse !== id){
+        result= true;
+         break;
+       }
+     }
+     
+          return result;
+   }
+ 
+
+
+   ExistPointeuseByIP(ip:string):boolean{
+   let result = false;
+    for(const obj of this.ListPadge){
+      if(obj.adresseIp === ip){
+       result= true;
+        break;
+      }
+    }
+    for(const obj of this.ListEmpreinte){
+      if(obj.adresseIp === ip){
+       result= true;
+        break;
+      }
+    }
+    
+         return result;
+  }
+
+
   EditPointeuse(value: any){
-    console.log("eeeevvvvv" , value )
+
     let designation =  (<HTMLInputElement>document.getElementById('designationedit')).value;
     let port =  (<HTMLInputElement>document.getElementById('portedit')).value;
     let company =  (<HTMLInputElement>document.getElementById('companyedit')).value;
@@ -114,7 +260,7 @@ export class HandkeysComponent implements OnInit {
       "principale": true,
       "type": inputGroupSelect05
     }
-    console.log("fffffffff" , postrequest)
+ 
     this.HandkeysService.UpdatePointeuse(postrequest , value).then((response) => {
       window.location.href = '/admin/handkeys';
     })

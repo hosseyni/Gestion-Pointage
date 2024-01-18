@@ -30,13 +30,17 @@ export class GestiondepartementsComponent implements OnInit {
 
   }
 
-  DelDepartement(idCompany :number){
-    this.gestiondepartementService.DeleteDepartement(idCompany).then((response) => {
+  async DelDepartement(idCompany :number){
+  await  this.gestiondepartementService.DeleteDepartement(idCompany).toPromise()
+  .then((response) => {
+      console.log('response ****', response);
+      
       window.location.href = '/admin/gestiondepartements';
     })
     .catch((error) => {
       console.log("error" , error)
       });
+      
   }
 
   UpdateDepartement(idCompany :number){

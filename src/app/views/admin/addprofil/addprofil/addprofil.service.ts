@@ -27,6 +27,18 @@ export class AddprofilService {
         );
         return request.toPromise();
       }
+
+ //get by id
+ GeProfilAccesById(id:any): Promise<[ProfilModel]> {
+  const request = this.httpClient.get<any>(
+    environment.BackendUrl + 'pControleAccess/findById/' + id,
+    this.httpOptions
+  );
+  return request.toPromise();
+}
+
+
+      ///pControleAccess/findById/{id}
   
       //DELETE
       DeleteGeProfilAcces(id: number): Promise<any> {
@@ -46,5 +58,6 @@ export class AddprofilService {
         );
         return request.toPromise();
       }
+
  
 }

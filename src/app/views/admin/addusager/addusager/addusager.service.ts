@@ -19,6 +19,51 @@ export class AddusagerService {
     }).set('Authorization',  `Bearer ${this.cookieService.get("token")}`) ,
   };
 
+
+  GetUsager(): Promise<any> {
+    const request = this.httpClient.get<any>(
+      environment.BackendUrl + 'usager/list' ,
+      this.httpOptions
+    );
+    return request.toPromise();
+  }
+
+
+
+
+
+
+
+  //get
+  GetPointeuse(): Promise<any> {
+    const request = this.httpClient.get<any>(
+      environment.BackendUrl + 'pointeuse/list' ,
+      this.httpOptions
+    );
+    return request.toPromise();
+  }
+
+  GetEvennement(): Promise<any> {
+    const request = this.httpClient.get<any>(
+      environment.BackendUrl + 'evenement/list' ,
+      this.httpOptions
+    );
+    return request.toPromise();
+  }
+
+GetAbsence(): Promise<any> {
+    const request = this.httpClient.get<any>(
+      environment.BackendUrl + 'absence/list' ,
+      this.httpOptions
+    );
+    return request.toPromise();
+  }
+
+
+
+
+
+
        //Post
        AddUager(data: any): Promise<any> {
         const request = this.httpClient.put<any>(

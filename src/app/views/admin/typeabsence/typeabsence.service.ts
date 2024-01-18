@@ -1,8 +1,11 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable , TemplateRef } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
+
 import { environment } from 'src/environments/environment';
+
 import { TypeAbsenceModel } from './typeAbsenceModel';
+
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +27,23 @@ export class TypeabsenceService {
 
 
     // POST
+    AddAbsence(data:any): Promise<any> {
+      const request = this.httpClient.post<any>(
+        environment.BackendUrl + 'typeAbsence/add',JSON.stringify(data),
+        this.httpOptions
+      );
+      return request.toPromise();
+    }
+
+    // Put
+    updateAbsence(data:any): Promise<any> {
+      const request = this.httpClient.put<any>(
+        environment.BackendUrl + 'typeAbsence/update/'+data.idTypeAbsence,JSON.stringify(data),
+        this.httpOptions
+      );
+      return request.toPromise();
+    }
+    
  
    //get
     ListAbsence(): Promise<[TypeAbsenceModel]> {

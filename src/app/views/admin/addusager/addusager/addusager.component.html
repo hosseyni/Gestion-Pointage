@@ -3,7 +3,7 @@
     <div class="card">
         <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
             <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item"><a href="#">Accueil</a></li>
               <li class="breadcrumb-item active" aria-current="page">Usager </li>
             </ol>
           </nav>
@@ -22,26 +22,41 @@
                               <hr> 
                             <label for="inputText" class="col-sm-2 col-form-label" style="text-align: center;">Nom</label>
                             <div class="col-sm-4">
-                              <input type="text" class="form-control" id="name" >
+                              <div class=" col-form-label" style="margin-right: 20px;">
+
+                                <select  class="form-select"  style="font-weight: bold;"
+                                   [(ngModel)]=" selectedUsager"
+                                  (change)="changeUser($event.target)" 
+                                  name="sel2">
+                                  <option style="font-weight: bold;" [ngValue]="usager" *ngFor="let usager of listeUsager">{{usager.nom}}</option>
+                              </select>
+
+                                
+                                <!--<select  id="selectedUSER" class="form-select"  (change)="changeUser($event.target)" aria-label="Example select with button addon">
+                                  
+                                  <option   *ngFor="let user of listeUsager" value="{{user.idUsager}}">{{user.nom}}</option>
+                                </select>-->
+                                
+                              </div>
                             </div>
                             <label for="inputText" class="col-sm-2 col-form-label" style="text-align: center;">Prenom</label>
                             <div class="col-sm-4">
-                              <input type="text" class="form-control" id="prenom">
+                              <input type="text"  style="font-weight: bold;" value="{{selectedUsager.prenom}}" class="form-control" id="prenom">
                             </div>
                            
                             <label for="Email" class="col-sm-2 col-form-label" style="margin-top: 20px; text-align: center;">Email</label>
                             <div class="col-sm-4" style="margin-top: 20px;">
-                              <input type="email" class="form-control" id="email">
+                              <input type="email"  style="font-weight: bold;"  value="{{selectedUsager.email}}"  class="form-control" id="email">
                             </div>
 
                             <label for="Email" class="col-sm-2 col-form-label" style="margin-top: 20px; text-align: center;">Profession</label>
                             <div class="col-sm-4" style="margin-top: 20px;">
-                              <input type="email" class="form-control" id="profesion">
+                              <input type="text" style="font-weight: bold;" value="{{selectedUsager.proffession}}" class="form-control" id="profesion">
                             </div>
 
                             <label for="Email" class="col-sm-2 col-form-label" style="margin-top: 20px; text-align: center;">Profil Salarié</label>
                             <div class="col-sm-4" style="margin-top: 20px;">
-                              <input type="email" class="form-control" id="profil_sa">
+                              <input type="text" class="form-control" id="profil_sa">
                             </div>
 
                             <label for="Email" class="col-sm-2 col-form-label" style="margin-top: 20px; text-align: center;">Profil Controle d'acces</label>
@@ -52,7 +67,7 @@
                           </div>
           
                           <div class="row mt-3 mb-3 col-sm-2 pt-2" >
-                            <button type="submit" class="btn btn-primary" style="float: left;">Enregistrer</button>
+                            <button type="submit" class="btn btn-primary" (click)="afficherficheSalarie()" style="float: left;">Afficher</button>
                           </div>
                           
                           <div style="margin-top: 50px;" class="col-sm-12 ">
@@ -106,10 +121,7 @@
                                     <div class=" col-form-label" style="margin-right: 20px;">
                                         <select class="form-select" id="inputGroupSelect04" aria-label="Example select with button addon">
                                           
-                                            <option value="1">choisir Pointeuse</option>
-                                            <option value="2">Pointeuse1</option>
-                                            <option value="2">Pointeuse2</option>
-                                            <option value="2">Pointeuse3</option>
+                                          <option *ngFor="let item of listePointeuse" value="{{item.idPointeuse}}">{{item.designation}}</option>
                                         </select>
                                         
                                       </div>
@@ -173,10 +185,7 @@
                                               </div>
                                             <select class="form-select pt-3" id="inputGroupSelect04" aria-label="Example select with button addon">
                                               
-                                                <option value="1">choisir Pointeuse</option>
-                                                <option value="2">Pointeuse1</option>
-                                                <option value="2">Pointeuse2</option>
-                                                <option value="2">Pointeuse3</option>
+                                              <option *ngFor="let item of listePointeuse" value="{{item.idPointeuse}}">{{item.designation}}</option>
                                             </select>
                                             
                                           </div>

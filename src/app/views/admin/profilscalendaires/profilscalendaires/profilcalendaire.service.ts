@@ -38,4 +38,15 @@ export class ProfilcalendaireService {
       );
       return request.toPromise();
     }
+// put
+UpdateProfilCalandaire(data: any): Promise<any> {
+  const request = this.httpClient.put<any>(
+    environment.BackendUrl + 'profilCalendaire/update/'+ data.idProfilCalendaire, JSON.stringify(data),
+    this.httpOptions
+  );
+  return request.toPromise();
+}
+
+
+
 }

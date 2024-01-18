@@ -2,8 +2,8 @@
     <h1>Profil Session</h1>
     <nav>
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-        <li class="breadcrumb-item">Gestion Users</li>
+        <li class="breadcrumb-item"><a href="index.html">Accueil</a></li>
+        <li class="breadcrumb-item">Gestion Utilisateurs</li>
         <li class="breadcrumb-item active">Ajouter Profil Session</li>
       </ol>
     </nav>

@@ -15,7 +15,8 @@
                 </li>
   
                 <li class="nav-item">
-                  <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-edit" routerLink="/admin/addprofilcalendaire">Ajouter Profil Calendaire</button>
+                  <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-edit" router
+                  Link="/admin/addprofilcalendaire">Ajouter Profil Calendaire</button>
                 </li>
               </ul>
               </div>
@@ -28,6 +29,7 @@
     <img src="assets/admin/img/calendrier.png" class="rounded float-end col-lg-8 pt-2" alt="...">
 
     <div class=" col-form-label col-lg-11 pt-2">
+
       <select class="form-select" id="inputGroupSelect04" aria-label="Example select with button addon">
         
           <option value="1">12H</option>
@@ -48,7 +50,7 @@
 
                             <div class="row mt-3 mb-3">
  
-                              <label for="inputTime" class="col-sm-2 col-form-label">Designation:</label>
+                              <label for="inputTime" class="col-sm-3 col-form-label">Designation:</label>
                               <div class="col-sm-4">
                                 <input type="text" class="form-control" id ="designation">
                               </div>
@@ -71,7 +73,7 @@
  
                               <label for="inputTime" class="col-sm-2 col-form-label">Horaire théorique :</label>
                               <div class="col-sm-4">
-                                <input type="time" class="form-control" id ="horaire_théorique">
+                                <input type="text" class="form-control" id ="horaire_théorique">
                               </div>
                               <label for="inputTime" class="col-sm-2 col-form-label">Ecrétée a partir de :</label>
                               <div class="col-sm-4">
@@ -79,17 +81,27 @@
                               </div>
                             </div>
                             <div class="form-check">
-                              <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                              <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
                               <label class="form-check-label" for="flexRadioDefault2">
                                 Personnel(s) utilisant la pointeuse
                               </label>
                             </div>
                             <div class="form-check">
-                              <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                              <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" >
                               <label class="form-check-label" for="flexRadioDefault2">
                                 Personnel(s) n'utilise pas la pointeuse mais pour qui l'ont comptabilise le temps théorique
                               </label>
                             </div>
+                            <hr>
+                         
+                            <div class="row mb-3">
+                              
+                              <div class="col-sm-10">
+                                <button type="submit" class="btn btn-primary" style="float: right;" (click)="AddProfilCalandaire()">Enregistrer</button>
+                              </div>
+                           
+                            </div>
+                          </form>
                               <hr>
                               <ul class="nav nav-tabs" id="myTab" role="tablist">
                                   <li class="nav-item" role="presentation">
@@ -98,24 +110,90 @@
                                   <li class="nav-item" role="presentation">
                                     <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Mes Pauses</button>
                                   </li>
-                                  <li class="nav-item" role="presentation">
+                                 <!-- <li class="nav-item" role="presentation">
                                     <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">Mes compteurs</button>
-                                  </li>
+                                  </li> -->
                                 </ul>
-                                <div class="tab-content pt-2" id="myTabContent">
-                                  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
 
+
+
+
+
+                            <div class="tab-content pt-2" id="myTabContent">
+                                  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                    <table class="table datatable">
+                                      <thead>
+                                         <tr >
+                                          <th scope="col">#</th>
+                                          <th></th>
+                                          <th scope="col">Designation</th>
+                                          <!--<th scope="col">horaire</th>-->
+                                          <th scope="col">montant</th>
+                                          <th scope="col">reprise pointage</th>
+                                          <th scope="col">traitement</th>
+                                         <!-- <th scope="col">type</th>-->
+                                         
+                                          
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        <tr *ngFor="let item of listeHoraireSpec ;let i = index ">
+                                          <th scope="row">{{i+1}}</th>
+                                          <th> 
+
+                                            <div class="filter">
+                                              <a href="" data-bs-toggle="modal" (click)="editHoraire(item)" data-bs-target="#scrollingModal"><i class="bi bi-pen"></i></a>&nbsp;
+                                              <a class="icon" href="#" data-bs-toggle="dropdown" ><i class="bi bi-trash"></i></a>
+                                             
+                                              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                                                <li class="dropdown-header text-start">
+                                                  <div class="row" >
+                                                    <div class="col-md-12"  style="color: blue; font-size: 24;font-weight: bold;" > voulez vous vraiment  supprimer cet horaire ? </div>  
+                                                  </div>
+                                                  <div class="row" >
+                                                    <div class="col-md-1" > </div>
+                                                    <div class="col-md-2" ><button type="button" (click)="DeleteHoraire(item.idHorraireSpecifique)" class="btn btn-danger">oui</button></div>
+                                                    <div class="col-md-1" > </div>
+                                                    <div class="col-md-2" >    
+                                                      <button type="button" class="btn btn-info">non</button>
+                                                    
+                                                    
+                                                    </div>
+                              
+                                                  </div> 
+                                                </li>
+                              
+                                             
+                                              </ul>
+                                            </div>
+                                            
+                                            
+                                          <td>{{item.definition}}</td>
+                                          <!--<td>{{item.horaireSpec}}</td>-->
+                                          <td>{{item.montant}}</td>
+                                          <td>{{item.reprisePointage}}</td>
+                                          <td>{{item.traitement}}</td>
+                              
+                                          <!--<td>{{item. typeHoraire}}</td>-->
+                                          
+                                         
+                                        </tr>
+                                      
+                                        
+                                      </tbody>
+                                    
+                                    </table>
                                     <div class="row mb-3">
                               
                                       <div class="col-sm-10">
-                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#scrollingModal">
-                                          Ajouter Horraire
+                                        <button type="button" (click)="typeModal='Ajouter';"  class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#scrollingModal">
+                                         Ajouter Horraire
                                         </button>
                                         <div class="modal fade" id="scrollingModal" tabindex="-1">
                                           <div class="modal-dialog">
                                             <div class="modal-content">
                                               <div class="modal-header">
-                                                <h4 class="modal-title">Novel Horraire Specifique</h4>
+                                                <h4 class="modal-title"> {{ typeModal }} Horraire Specifique</h4>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                               </div>
                                               <div class="row mb-3">
@@ -155,7 +233,7 @@
                                                     </label>
                                                   </div>
                                                   <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="horraire" id="horraire" value="Tolèrance" (change)="onItemChange($event.target)">
+                                                    <input class="form-check-input" type="radio" name="horraire" id="horraire" value="Tolerant" (change)="onItemChange($event.target)">
                                                     <label class="form-check-label" for="horraire">
                                                      Tolèrance
                                                     </label>
@@ -171,14 +249,8 @@
                                               <div class="row mb-3">
                                                 <label for="Email" class="col-md-4 col-lg-5 col-form-label">&nbsp;&nbsp;Du Montant</label>
                                                 <div class="col-md-4 col-lg-5 col-form-label">
-                                                  <select class="form-select" id="montant" aria-label="Example select with button addon">
-                                                    
-                                                    <option value="15">15</option>
-                                                    <option value="2">Secteur 2</option>
-                                                    <option value="2">Secteur 3</option>
-                                                    <option value="2">Secteur 4</option>
-                                                  
-                                                  </select>
+                                                  <input type="text" class="form-control" id="montant">
+                                                 
                                                   
                                                 </div>
                                               
@@ -189,34 +261,29 @@
                                               <div class="row mb-3">
                                                 <label for="Email" class="col-md-5 col-lg-5 col-form-label">&nbsp;&nbsp; Reprise de pointage</label>
                                                 <div class="col-md-5 col-lg-5 col-form-label">
-                                                  <select class="form-select" id="reprise_pointage" aria-label="Example select with button addon">
-                                                    
-                                                    <option value="45">45</option>
-                                                    <option value="2">Empreinte</option>
-                                                  
-                                                  </select>
+                                                  <input type="number" min="1" max="60" class="form-control" id="reprise_pointage">
                                                 </div>
-                                                <div class="text-center" style="margin: 3%;">
-                                                  <button type="button" class="btn btn-success">Connecter</button>
-                                                  
-                                                </div>
+                                                
 
                                                 <hr>
                                               <div class="modal-footer" style="border-width: 0;">
                                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-                                                <button type="button" class="btn btn-primary" (click)="AddHoraire()"   data-bs-dismiss="modal" routerLink="/admin/addprofilcalendaire">Enregistrer</button>
+                                                <button type="button" class="btn btn-primary" (click)="AddHoraire()"   data-bs-dismiss="modal" >Enregistrer</button>
                                               </div>
                                             </div>
                                           </div>
                                         </div>
-                                        </div><!-- End Scrolling Modal-->
+                                        </div><!-- 
+                                          routerLink="/admin/addprofilcalendaire"
+                                          End Scrolling Modal-->
                                       </div>
                                   
                                     
                                 </div>
             
                                   </div>
-                                  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+
+        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                                                                               <!-- Table with stripped rows -->
                 <table class="table datatable">
                   <thead>
@@ -230,13 +297,45 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <th scope="row">1</th>
-                      <th> <a href="addsession" class="#addsession"><i class="bi bi-pen"></i></a>&nbsp;
-                        <a href="#" class="#profile-delete"><i class="bi bi-trash"></i></a>&nbsp;</th>
-                      <td>Dejeuner</td>
-                      <td>Pause dejeuner</td>
-                      <td>28</td>
+                    <tr *ngFor="let item of listePauses ;let i = index ">
+                      <th scope="row">{{i+1}}</th>
+
+
+
+                      
+                        <div class="filter">
+                          <a  data-bs-toggle="modal" data-bs-target="#scrollingModalPause" (click)="editPause(item)"   class="#addsession"><i class="bi bi-pen"></i></a>&nbsp;
+                          <a class="icon" href="#" data-bs-toggle="dropdown" ><i class="bi bi-trash"></i></a>
+                         
+                          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                            <li class="dropdown-header text-start">
+                              <div class="row" >
+                                <div class="col-md-12"  style="color: blue; font-size: 24;font-weight: bold;" > voulez vous vraiment  supprimer cet horaire ? </div>  
+                              </div>
+                              <div class="row" >
+                                <div class="col-md-1" > </div>
+                                <div class="col-md-2" ><button type="button" (click)="deletePause(item.idPause)" class="btn btn-danger">oui</button></div>
+                                <div class="col-md-1" > </div>
+                                <div class="col-md-2" >    
+                                  <button type="button" class="btn btn-info">non</button>
+                                
+                                
+                                </div>
+          
+                              </div> 
+                            </li>
+          
+                          </ul>
+                        </div>
+                        
+
+                      <td>{{item.designation}}</td>
+                      <td>{{item.typePause}}</td>
+                      <td>{{item.temps_obligatoire}}</td>
+                     <!-- <td>{{item.profilCalendaire.designation}}</td>
+                      <td>{{item.emps_remunerer}}</td>
+                      -->
+                     
                       
                     </tr>
                   
@@ -247,14 +346,14 @@
                 <div class="row mb-3">
                               
                   <div class="col-sm-10">
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#scrollingModalPause">
+                    <button type="button" class="btn btn-primary" (click)="initialiserChampPause()"  data-bs-toggle="modal" data-bs-target="#scrollingModalPause">
                       Ajouter Pause
                     </button>
                     <div class="modal fade" id="scrollingModalPause" tabindex="-1">
                       <div class="modal-dialog">
                         <div class="modal-content">
                           <div class="modal-header">
-                            <h4 class="modal-title">Novel Pause</h4>
+                            <h4 class="modal-title">{{ typeModal}} Pause</h4>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                           </div>
                           <div class="row mb-3">
@@ -270,30 +369,30 @@
                             <div class="col-md-12 col-lg-12 col-form-label">
                              
                               <div class="form-check">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                                <label class="form-check-label" for="flexRadioDefault2">
+                                <input class="form-check-input" type="radio" (change)="onItemChange($event.target)" value="Aucun" name="typePause" id="typePause"  >
+                                <label class="form-check-label" for="typePause">
                                  Aucun
                                 </label>
                               </div>
                               <div>
                                <div style="display: flex;">
                               <div class="form-check col-sm-4  col-lg-4 pt-2 ">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                                <label class="form-check-label" for="flexRadioDefault2">
+                                <input class="form-check-input" type="radio" (change)="onItemChange($event.target)"  value="Obligatoire" name="typePause" id="typePause" >
+                                <label class="form-check-label" for="typePause">
                                   Pause obligatoire
                                 </label>
                           
                               </div>
                               <label for="inputTime" class="col-sm-4  col-lg-4 pt-2 col-form-label">Horaire théorique :</label>
                               <div class="col-sm-4 col-lg-4">
-                                <input type="time" class="form-control" id="horaire">
+                                <input type="text" class="form-control" id="horaire">
                               </div>
                             </div>
                             </div>
                               <div class="form-check">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                                <label class="form-check-label" for="flexRadioDefault2">
-                                  Pause remunérére
+                                <input class="form-check-input" type="radio" value="Remunerer" (change)="onItemChange($event.target)" name="typePause" id="typePause" [checked]="true">
+                                <label class="form-check-label" for="typePause">
+                                  Pause remunérée
                                 </label>
                               </div>
                             </div>
@@ -318,27 +417,11 @@
                               <input name="date_fin" type="time" class="form-control" id="date_fin" value="">
                             </div>
                             <div class="col-md-4 col-lg-3 col-form-label" >
-                              <button type="button" class="btn btn-success">Ajouter</button>
+                        
                               
                             </div>
                           </div>
-                            <table class="table">
-                              <thead>
-                                <tr>
-                                  <th scope="col" style="font-size: medium;">Date de Debut</th>
-                                  <th scope="col"  style="font-size: medium;">Date de fin</th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                <tr>
-                                  <td >12:00 </td>
-                                  <td >13:00 </td>
-                                  <td><i class="bi bi-trash"></i></td>
-                                </tr>
-              
-                  
-                              </tbody>
-                            </table>     
+                               
 
                             <hr>
                           <div class="modal-footer" style="border-width: 0;">
@@ -354,26 +437,26 @@
                 
             </div>
                                   </div>
-                                  <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-              
+         <div class="tab-pane fade" id="home" role="tabpanel" aria-labelledby="home-tab">
+            
                                   </div>
                                 </div>
+                           
+                           
+                           
+                           
+                           
+                           
                                 <hr>
                    
                       
                   
-                  <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+         <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
 
                   
                 </div>
-                <hr>
-            <div class="row mb-3">
-              
-              <div class="col-sm-10">
-                <button type="submit" class="btn btn-primary" style="float: right;" (click)="AddProfilCalandaire()">Enregistrer</button>
-              </div>
-            </div>
-            </form>
+            
+            
             </div>
             </div>
               

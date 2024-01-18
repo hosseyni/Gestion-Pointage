@@ -6266,13 +6266,13 @@ window.tinymce.Resource.add("tinymce.plugins.emoticons", {
     category: "objects"
   },
   mag: {
-    keywords: [ "search", "zoom", "find", "detective" ],
+    keywords: [ "recherche", "zoom", "find", "detective" ],
     char: '<img data-emoticon="true" style="width:1em;height:1em;margin:0 .05em 0 .1em;vertical-align:-.1em" draggable="false" alt="\ud83d\udd0d" src="1f50d.png"/>',
     fitzpatrick_scale: false,
     category: "objects"
   },
   mag_right: {
-    keywords: [ "search", "zoom", "find", "detective" ],
+    keywords: [ "recherche", "zoom", "find", "detective" ],
     char: '<img data-emoticon="true" style="width:1em;height:1em;margin:0 .05em 0 .1em;vertical-align:-.1em" draggable="false" alt="\ud83d\udd0e" src="1f50e.png"/>',
     fitzpatrick_scale: false,
     category: "objects"

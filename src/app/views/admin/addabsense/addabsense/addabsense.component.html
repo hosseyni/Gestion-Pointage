@@ -4,7 +4,7 @@
         <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="#">Configuration</a></li>
-              <li class="breadcrumb-item active" aria-current="page">Profils Salarie </li>
+              <li class="breadcrumb-item active" aria-current="page">Type d'Absence </li>
             </ol>
           </nav>
              
@@ -19,6 +19,15 @@
                 </li>
               </ul>
               <hr>
+        
+
+
+
+
+
+
+
+
               
             
           
@@ -49,26 +58,26 @@
                           <div class="row mt-3 mb-3">
                           <div class="form-check">Traitement de l'absence 
                               <hr>
-                            <input class="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault1" value="nom comptabilise">
-                            <label class="form-check-label" for="flexRadioDefault1" id="flexRadioDefault1">
-                             nom comptabilise
+                            <input class="form-check-input" type="radio" name="Traitement" id="flexRadioDefault11" value="Non_Comptabilisé">
+                            <label class="form-check-label" for="flexRadioDefault" >
+                             non comptabilise
                             </label>
                           </div>
                           <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault1" value="comptabilise(ou renumere)">
-                            <label class="form-check-label" for="flexRadioDefault1" id="flexRadioDefault1">
+                            <input class="form-check-input" type="radio" name="Traitement" id="flexRadioDefault12" value="Comptabilisé">
+                            <label class="form-check-label" for="flexRadioDefault" >
                                 comptabilise(ou renumere)
                             </label>
                           </div>
                           <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault1" value="Prix en tant que RTT" checked >
-                            <label class="form-check-label" for="flexRadioDefault1" id="flexRadioDefault1">
+                            <input class="form-check-input" type="radio" name="Traitement" id="flexRadioDefault13" value="Pris_en_tant_que_RTT"  >
+                            <label class="form-check-label" for="flexRadioDefault" >
                              Prix en tant que RTT
                             </label>
                           </div>
                           <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault1" value="Prix en tant que conge paye" checked >
-                            <label class="form-check-label" for="flexRadioDefault1" id="flexRadioDefault1">
+                            <input class="form-check-input" type="radio" name="Traitement" id="flexRadioDefault14" value="Pris_en_tant_que_congé_paye" checked >
+                            <label class="form-check-label" for="flexRadioDefault" >
                              Prix en tant que conge paye
                             </label>
                           </div>
@@ -78,27 +87,56 @@
 
                           <div class="form-check">Annulation/Traitement RTT 
                             <hr>
-                          <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault2"  value="Personnalisable par l'operateur" checked>
+                          <input class="form-check-input" type="radio" name="flexRadioDefault22" id="flexRadioDefault1"  value="Personnalisable_par_operateur" >
                           <label class="form-check-label" for="flexRadioDefault2">
                            Personnalisable par l'operateur
                           </label>
                         </div>
                         <div class="form-check">
-                          <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault2"  value="journee complete" checked>
+                          <input class="form-check-input" type="radio" name="flexRadioDefault22" id="flexRadioDefault2"  value="Journe_complet" checked >
                           <label class="form-check-label" for="flexRadioDefault2">
                              journee complete
                           </label>
                         </div>
                         <div class="form-check">
-                          <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault2"  value="Demi journee" checked>
+                          <input class="form-check-input" type="radio" name="flexRadioDefault22" id="flexRadioDefault3"  value="Demi_jour" >
                           <label class="form-check-label" for="flexRadioDefault2">
                            Demi-journee
                           </label>
                         </div>
-                        <div class="text-center" style="margin-left: 30%; margin-top: 10%;">
-                          <button type="button" class="btn btn-success" (click)="AddTypeAbsence()">Enregistrer</button>
+
+                        <div *ngIf="!probleme &&  !succes"  class="text-center" style="margin-left: 30%; margin-top: 10%;">
+                          <button type="button" class="btn btn-primary" (click)="AddTypeAbsence()">Enregistrer</button>
                           
                         </div>
+
+                        <div class="row" *ngIf="succes" >
+                          <div class="col-md-4"></div>
+                          <div class="col-md-4">
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                          <strong>Ajout avec succes ! &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;   </strong> 
+                          <button type="button" (click)="redirection()" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                      </div>
+                        <div class="col-md-4"></div>
+            
+                      </div>
+            
+                      <div class="row" *ngIf="probleme" >
+                        <div class="col-md-3"></div>
+                        <div class="col-md-6">
+                      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <strong>Problème d'ajout , veuillez contactez service informatique !    </strong> 
+                        <button type="button" (click)="redirection()" class="close" data-dismiss="alert" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                    </div>
+                      <div class="col-md-3"></div>
+            
+                    </div>
       
                         
                          </div>

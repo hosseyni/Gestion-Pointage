@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { HandkeysRoutingModule } from './handkeys-routing.module';
 import { HandkeysComponent } from './handkeys/handkeys.component';
-
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -11,7 +11,8 @@ import { HandkeysComponent } from './handkeys/handkeys.component';
   ],
   imports: [
     CommonModule,
-    HandkeysRoutingModule
+    HandkeysRoutingModule,
+    FormsModule
   ]
 })
 export class HandkeysModule { }

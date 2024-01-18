@@ -6253,13 +6253,13 @@ window.tinymce.Resource.add("tinymce.plugins.emoticons", {
     category: "objects"
   },
   mag: {
-    keywords: [ "search", "zoom", "find", "detective" ],
+    keywords: [ "recherche", "zoom", "find", "detective" ],
     char: "\ud83d\udd0d",
     fitzpatrick_scale: false,
     category: "objects"
   },
   mag_right: {
-    keywords: [ "search", "zoom", "find", "detective" ],
+    keywords: [ "recherche", "zoom", "find", "detective" ],
     char: "\ud83d\udd0e",
     fitzpatrick_scale: false,
     category: "objects"

@@ -10,8 +10,9 @@ import { ProfilssalariesModule } from './views/admin/profilssalaries/profilssala
 
 const routes: Routes = [
   {path:'',component:FrontLayoutComponent,children:[
-    {path:'',loadChildren:()=>import('./views/front/home/home.module').then(m=>m.HomeModule)},
-    {path:'loginuser',loadChildren:()=>import('./views/front/loginuser/loginuser.module').then(m=>m.LoginuserModule)},
+   // {path:'',loadChildren:()=>import('./views/front/home/home.module').then(m=>m.HomeModule)},
+   {path:'',redirectTo: '/login', pathMatch: 'full'}, 
+   {path:'loginuser',loadChildren:()=>import('./views/front/loginuser/loginuser.module').then(m=>m.LoginuserModule)},
     
     
     
@@ -28,7 +29,7 @@ const routes: Routes = [
     {path:'typeabsence',loadChildren:()=>import('./views/admin/typeabsence/typeabsence.module').then(m=>m.TypeabsenceModule)},
     {path:'usagers',loadChildren:()=>import('./views/admin/usagers/usagers.module').then(m=>m.UsagersModule)},
     {path:'addsession',loadChildren:()=>import('./views/admin/addsession/addsession.module').then(m=>m.AddsessionModule)},
-    {path:'addfonctionalite',loadChildren:()=>import('./views/admin/addfonctionalite/addfonctionalite.module').then(m=>m.AddfonctionaliteModule)},
+    {path:'gestionusers/addfonctionalite',loadChildren:()=>import('./views/admin/addfonctionalite/addfonctionalite.module').then(m=>m.AddfonctionaliteModule)},
     {path:'adddepartement',loadChildren:()=>import('./views/admin/adddepartement/adddepartement.module').then(m=>m.AdddepartementModule)},
     {path:'addpointeuse',loadChildren:()=>import('./views/admin/addpointeuse/addpointeuse.module').then(m=>m.AddpointeuseModule)},
     {path:'addprofil',loadChildren:()=>import('./views/admin/addprofil/addprofil.module').then(m=>m.AddprofilModule)},

@@ -12,7 +12,7 @@
               <ul class="nav nav-tabs nav-tabs-bordered">
 
                 <li class="nav-item">
-                  <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-overview" routerLink="/admin/handkeys">Profil Calendaire</button>
+                  <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-overview" routerLink="/admin/profilscalendaires">Profil Calendaire</button>
                 </li>
   
                 <li class="nav-item">
@@ -42,7 +42,7 @@
     
                     <div class="d-flex align-items-center">
                       <div class="ps-4">
-                        <h6 style="color: green;">{{card.couvrant.slice(0,2)}}H</h6>
+                        <h6 style="color: green;">{{card.couvrant.substring(0,2)}}H</h6>
                         <span class="text-success small pt-1 fw-bold"></span>{{card.definition}}<span class="text-muted small pt-2 ps-1"></span>
     
                       </div>
@@ -57,8 +57,154 @@
                   <div class="card-footer bg-darkorange" style="background: green; height: 60px; display: flex; justify-content: space-between;">
                     <p><small class="text-muted" style="color: white !important;">{{card.enrcetee}}</small></p>
                    <div>
-                    <a class="icon" href="#" style=" padding-right: 50px; color: white; font-size: larger;" data-bs-toggle="dropdown"><i class="bi bi-pencil-square "></i></a>
-                    <a (click)="DeleteProfilCalendaires(card.idProfilCalendaire)" class="icon" href="#" style=" padding-right: 50px; color: white; font-size: larger;" data-bs-toggle="dropdown"><i class="bi bi-trash"></i></a>
+                    <!--<a   data-bs-toggle="modal" data-bs-target="#scrollingModal"   class="icon" href="#" style=" padding-right: 50px; color: white; font-size: larger;" data-bs-toggle="dropdown"><i class="bi bi-pencil-square "></i></a>-->
+                   
+                    <a  data-bs-toggle="modal" data-bs-target="#editCalendaire" class="icon" href="#" (click)="editCalendaire(card)" style="  padding-right: 50px; color: white; font-size: larger;" ><i  class="bi bi-pencil-square"></i></a>
+                    <a  data-bs-toggle="modal" data-bs-target="#scrollingModal" class="icon" href="#" style=" padding-right: 50px; color: white; font-size: larger;" ><i class="bi bi-trash"></i></a>
+                   
+                   
+                   
+                    <div class="modal fade" id="editCalendaire" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-lg"  role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" style="color: black;" id="exampleModalLabel">Modifier Calendaire </h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                           
+                         
+                          </div>
+                          <div class="modal-body">
+                            <form>
+
+                              <div class="row mt-3 mb-3">
+   
+                                <label for="inputTime" class="col-sm-2 col-form-label" style="color: black;">Designation:</label>
+                                <div class="col-sm-4">
+                                  <input type="text" class="form-control" id ="designation">
+                                </div>
+                               
+                              </div>
+  
+                              <div class="row mt-3 mb-3">
+   
+                                <label for="inputTime" style="color: black;" class="col-sm-2 col-form-label">Defini de :</label>
+                                <div class="col-sm-4">
+                                  <input type="time" class="form-control"  id ="date_definit">
+                                </div>
+                                <label for="inputTime" style="color: black;" class="col-sm-2 col-form-label">couvrant une periode de :</label>
+                                <div class="col-sm-4">
+                                  <input type="time" class="form-control" id ="date_couvrant">
+                                </div>
+                              </div>
+  
+                              <div class="row mt-3 mb-3">
+   
+                                <label for="inputTime" style="color: black;" class="col-sm-2 col-form-label">Horaire théorique :</label>
+                                <div class="col-sm-4">
+                                  <input type="text" class="form-control" id ="horaire_théorique">
+                                </div>
+                                <label for="inputTime" style="color: black;" class="col-sm-2 col-form-label">Ecrétée a partir de :</label>
+                                <div class="col-sm-4">
+                                  <input type="time" class="form-control" id="Ecrete">
+                                </div>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                                <label class="form-check-label" style="color: black;" for="flexRadioDefault1" >
+                                  Personnel(s) utilisant la pointeuse
+                                </label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2"  >
+                                <label class="form-check-label" style="color: black;" for="flexRadioDefault2"  >
+                                  Personnel(s) n'utilise pas la pointeuse mais pour qui l'ont comptabilise le temps théorique
+                                </label>
+                              </div>
+                              <hr>
+                           
+                              <div class="row mb-3">
+                                
+                              
+                              </div>
+                            </form>
+                          </div>
+                          
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">fermer</button>
+                            <button type="button"  (click)="updateProfilCalandaire()" class="btn btn-primary">enregister</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+
+
+
+
+                   
+                    <div class="modal fade" id="scrollingModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle" style="color:black ;">supprimer calendaire</h5>
+                            <button type="button" class="btn-close" (click)="this.afficherMsgContrainte=false" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div *ngIf="!this.afficherMsgContrainte" class="modal-body" style="color:black ;">
+                            Veuillez vous vraiment supprimer ce calendaire !!
+                          </div>
+
+                          <div *ngIf="this.afficherMsgContrainte" class="modal-body" style="color:red ;">
+                            {{msg}}
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button"  *ngIf="!this.afficherMsgContrainte" class="btn btn-info" data-bs-dismiss="modal" >non</button>
+                            <button type="button"  *ngIf="!this.afficherMsgContrainte" class="btn btn-danger" (click)="DeleteProfilCalendaires(card.idProfilCalendaire)">oui</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+
+
+               
+
+
+
+
+
+                    </div>
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+            
+
+
+
+
+
+                   
+
+
+
+
+
+
+
+
+
+
+
                     </div>
                   </div>
                 </div>

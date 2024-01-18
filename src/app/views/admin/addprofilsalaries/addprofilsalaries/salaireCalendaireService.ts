@@ -2,17 +2,16 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { environment } from 'src/environments/environment';
+import { ProfilCalendaireModel } from '../../profilscalendaires/profilcalandaireModel';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AddfonctionalitéService {
+export class SalaireCalendaireService {
 
- 
   constructor(
     private httpClient: HttpClient ,  private cookieService: CookieService ,
   ) { }
-
 
   // Http Headers
   httpOptions = {
@@ -21,19 +20,14 @@ export class AddfonctionalitéService {
     }).set('Authorization',  `Bearer ${this.cookieService.get("token")}`) ,
   };
 
+        //get
+        GetSalaireCalandaire(): Promise<[ProfilCalendaireModel]> {
+            const request = this.httpClient.get<any>(
+              environment.BackendUrl + 'salaireCalendaire/list' ,
+              this.httpOptions
+            );
+            return request.toPromise();
+          }
 
 
-
-
-
-    // POST
-
-    AddFonctionnalite(data: any): Promise<any> {
-      const request = this.httpClient.post<any>(
-        environment.BackendUrl + 'fonctionalitie/add',
-        JSON.stringify(data),
-        this.httpOptions
-      );
-      return request.toPromise();
-    }
-}
+  }

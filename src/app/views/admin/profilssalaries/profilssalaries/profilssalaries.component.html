@@ -1,72 +1,444 @@
 <section class="section">
-    <div class="row">
-      <div class="col-lg-12">
-<div class="card">
-        <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
-            <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="#">Configuration</a></li>
-              <li class="breadcrumb-item active" aria-current="page">Profils Salaries </li>
-            </ol>
-          </nav>
-             
-              <ul class="nav nav-tabs nav-tabs-bordered">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <nav style="
+            --bs-breadcrumb-divider: url(
+              &#34;data:image/svg + xml,
+              %3Csvgxmlns='http://www.w3.org/2000/svg'width='8'height='8'%3E%3Cpathd='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z'fill='currentColor'/%3E%3C/svg%3E&#34;
+            );
+          " aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Configuration</a></li>
+            <li class="breadcrumb-item active" aria-current="page">
+              Profils Salaries
+            </li>
+          </ol>
+        </nav>
 
-                <li class="nav-item">
-                  <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-overview" routerLink="/admin/profilssalaries">Profil Salaries</button>
-                </li>
-  
-                <li class="nav-item">
-                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit" routerLink="/admin/addprofilsalaries">Ajouter Profil Salaries</button>
-                </li>
-              </ul>
-              <hr>
-<div class="card-body">
-             
-      
-    <hr>
-    <section class="section dashboard">
-        <div class="row">
-    
-          <!-- Left side columns -->
-          <div class="col-lg">
+        <ul class="nav nav-tabs nav-tabs-bordered">
+          <li class="nav-item">
+            <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-overview"
+              routerLink="/admin/profilssalaries">
+              Profil Salaries
+            </button>
+          </li>
+
+          <li class="nav-item">
+            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit"
+              routerLink="/admin/addprofilsalaries">
+              Ajouter Profil Salaries
+            </button>
+          </li>
+        </ul>
+        <hr />
+
+       
+
+
+    <hr />
+
+
+
+        <div class="card-body">
+
+
+
+          
+        
+          <section class="section dashboard">
             <div class="row">
-    
-              <!-- Sales Card -->
-              <div class="col-xxl-3 col-md-6"  *ngFor="let card of ListProfilSalaries">
-                <div class="card info-card sales-card">
-    
-                  <div class="filter">
-                    <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-trash" (click)="DeleteProfilSalarie(card.idProfilSalaire)"></i></a><a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-pen"></i></a>
-                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                      <li class="dropdown-header text-start">
-                        <h6>Filter</h6>
-                      </li>
-    
-                      <li><a class="dropdown-item" href="#">Today</a></li>
-                      <li><a class="dropdown-item" href="#">This Month</a></li>
-                      <li><a class="dropdown-item" href="#">This Year</a></li>
-                    </ul>
-                  </div>
-    
-                  <div class="card-body">
-                    <h2 class="card-title"> <span></span></h2>
-    
-                   
-                      <div class="ps-4">
-                        <h6 style="font-size: large;  padding-right: 30%;">{{card.jourDebutAnnee | date :"EEEE, MMMM d, y"}} </h6>
-                        <span class="text-success small pt-1 fw-bold"></span> <span class="text-muted small pt-2 ps-1"></span>
-    
-                      </div>
-                      <div class="d-flex align-items-center" style=" padding-left: 70%;">
-                        <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                          <i class="bi bi-calendar-plus"></i>
+              <!-- Left side columns -->
+              <div class="col-lg">
+                <div class="row">
+                  <!-- Sales Card -->
+                  <div class="col-xxl-3 col-md-6" *ngFor="let card of ListProfilSalaries">
+                    <div class="card info-card sales-card">
+                      <div class="card-body">
+                        <h2 class="card-title"><span></span></h2>
+
+                        <div class="ps-1">
+                          <h6 style="color: darkorange">
+                            {{ card.designation }}
+                          </h6>
                         </div>
+                        <div class="ps-4">
+                          <h6 style="font-size: large; padding-right: 30%">
+                            {{ card.jourDebutAnnee | date: "EEEE, MMMM d, y" }}
+                          </h6>
+                          <span class="text-success small pt-1 fw-bold"></span>
+                          <span class="text-muted small pt-2 ps-1"></span>
+                        </div>
+
+                        <div class="d-flex align-items-center" style="padding-left: 70%">
+                          <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                            <i class="bi bi-calendar-plus"></i>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="card-footer bg-darkorange" style="background: darkorange; height: 90px">
+                        <p>
+                          <small class="text-muted" style="color: white !important">Matin {{ card.horraireMatin
+                            }}</small>
+                        </p>
+                        <p>
+                          <small class="text-muted" style="color: white !important">Soir {{ card.horraireSoir }}</small>
+                        </p>
+                        
+                      </div>
+                      <!-- End Sales Card -->
+
+                      <div class="filter">
+                        <a data-bs-toggle="modal" data-bs-target="#scrollingModal" (click)="edit(card)"
+                          class="#addsession"><i class="bi bi-pen"></i></a>&nbsp;
+                        <a class="icon" href="#" data-bs-toggle="modal" (click)="this.idProfilSalaire= card.idProfilSalaire;" data-bs-target="#scrollingModalSupp"><i
+                            class="bi bi-trash"></i></a>
+
+                        <div class="modal fade" id="scrollingModalSupp" tabindex="-1" role="dialog"
+                          aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                          <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle" style="color: black">
+                                  supprimer profil salairie
+                                </h5>
+                                <button type="button" class="btn-close" (click)="this.afficherMsgContrainte = false"
+                                  data-bs-dismiss="modal" aria-label="Close"></button>
+                              </div>
+                              <div *ngIf="!this.afficherMsgContrainte" class="modal-body" style="color: black">
+                                Veuillez vous vraiment supprimer ce profil
+                                salairie !!
+                              </div>
+
+                              <div *ngIf="this.afficherMsgContrainte" class="modal-body" style="color: red">
+                                {{ msg }}
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" *ngIf="!this.afficherMsgContrainte" class="btn btn-info"
+                                  data-bs-dismiss="modal">
+                                  non
+                                </button>
+                                <button type="button" *ngIf="!this.afficherMsgContrainte" class="btn btn-danger"
+                                  (click)="
+                                    DeleteProfilSalarie(this.idProfilSalaire)
+                                  ">
+                                  oui
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="modal fade" id="scrollingModal" tabindex="-1">
+                        <div class="modal-dialog modal-lg" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h4 class="modal-title">
+                                Modifier Profil Salaire
+                              </h4>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                            </div>
+
+                            <div class="card">
+                              <div class="card-body">
+                                <!-- General Form Elements -->
+                                <form>
+                                  <div class="row mt-3 mb-3">
+                                    <label for="inputText" class="col-sm-2 col-form-label">Designation:</label>
+                                    <div class="col-sm-10">
+                                      <input type="text" class="form-control" id="designation" />
+                                    </div>
+                                  </div>
+
+                                  <div class="row mt-3 mb-3">
+                                    Horaire definissant la nuit
+                                    <hr />
+                                    <label for="inputTime" class="col-sm-2 col-form-label">Soir:</label>
+                                    <div class="col-sm-4">
+                                      <input type="time" class="form-control" id="time_soir" />
+                                    </div>
+                                    <label for="inputTime" class="col-sm-2 col-form-label">Matin:</label>
+                                    <div class="col-sm-4">
+                                      <input type="time" class="form-control" id="time_matin" />
+                                    </div>
+                                  </div>
+
+                                  <div class="form-check">
+                                    Annulation/Traitement RTT
+                                    <hr />
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                      id="flexRadioDefault1"  value ="Payer_les_heures_supplémentaires"  />
+                                    <label class="form-check-label" for="flexRadioDefault" id="flexRadioDefault11">
+                                      Payer les horaires supplementaires
+                                    </label>
+                                  </div>
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                      id="flexRadioDefault2" value="Annualiser_les_heures"  />
+                                    <label class="form-check-label" for="flexRadioDefault" id="flexRadioDefault22">
+                                      Annuler les heures(ecart positifs ou
+                                      negatifs)
+                                    </label>
+                                  </div>
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                      id="flexRadioDefault3" value="R_T_T"  />
+                                    <label class="form-check-label" for="flexRadioDefault" id="flexRadioDefault33">
+                                      R.T.T
+                                    </label>
+                                  </div>
+                                  <div class="row mb-3">
+                                    <div class="col-sm-4">
+                                      <input type="date" class="form-control" id="date" />
+                                    </div>
+                                    <div class="col-sm-8">
+                                      jour du mois qui definit le debut d'une
+                                      annees
+                                    </div>
+                                  </div>
+                                </form>
+                                <span>Profil Calendaire par Defaut</span>
+                                <hr />  
+                                
+                                <table class="table">
+                                  <thead>
+                                    <tr>
+                                      <th scope="col">JOUR DE LA SEMAINE</th>
+                                      <th scope="col">
+                                        PROFILS CALENDAIRE UTILISES
+                                      </th>
+                                      <td></td>
+                                    </tr>
+                                  </thead>
+        
+                                  <tbody>
+                                    <tr *ngIf="dim">
+                                      <th scope="row">Dimanche</th>
+                                      <td>
+                                        <div class="col-md-4 col-lg-5 col-form-label">
+                                          <select class="form-select" id="inputGroupSelect04"
+                                            aria-label="Example select with button addon">
+                                            <option *ngFor="
+                                                let item of ListProfilCalendaire;
+                                                let i = index
+                                              " value="{{ item.designation }}">
+                                              {{ item.designation }}
+                                            </option>
+                                            <!-- <option value="1">Profil Calendaire</option>
+                                          <option value="2">Profil1</option>
+                                          <option value="2">Profil2</option>
+                                          <option value="2">Profil3</option> -->
+                                          </select>
+                                        </div>
+                                      </td>
+                                      <td><i class="bi bi-trash" (click)="dim=false"></i></td>
+                                    </tr>
+        
+                                    <tr *ngIf="lun" class="table-primary">
+                                      <th scope="row">Lundi</th>
+                                      <td>
+                                        <div class="col-md-4 col-lg-5 col-form-label">
+                                          <select class="form-select" id="inputGroupSelect04"
+                                            aria-label="Example select with button addon">
+                                            <option *ngFor="
+                                                let item of ListProfilCalendaire;
+                                                let i = index
+                                              " value="{{ item.designation }}">
+                                              {{ item.designation }}
+                                            </option>
+                                            <!-- <option value="1">Profil Calendaire</option>
+                                            <option value="2">Profil1</option>
+                                            <option value="2">Profil2</option>
+                                            <option value="2">Profil3</option> -->
+                                          </select>
+                                        </div>
+                                      </td>
+                                      <td><i class="bi bi-trash" (click)="lun=false"></i></td>
+                                    </tr>
+        
+        
+        
+                                    <tr *ngIf="mard" class="table-secondary">
+                                      <th scope="row">Mardi</th>
+                                      <td>
+                                        <div class="col-md-4 col-lg-5 col-form-label">
+                                          <select class="form-select" id="inputGroupSelect04"
+                                            aria-label="Example select with button addon">
+                                            <option *ngFor="
+                                                let item of ListProfilCalendaire;
+                                                let i = index
+                                              " value="{{ item.designation }}">
+                                              {{ item.designation }}
+                                            </option>
+                                            <!-- <option value="1">Profil Calendaire</option>
+                                            <option value="2">Profil1</option>
+                                            <option value="2">Profil2</option>
+                                            <option value="2">Profil3</option> -->
+                                          </select>
+                                        </div>
+                                      </td>
+                                      <td><i class="bi bi-trash" (click)="mard=false" ></i></td>
+                                    </tr>
+        
+        
+        
+                                    <tr *ngIf="merc" class="table-primary">
+                                      <th scope="row">Mercredi</th>
+                                      <td>
+                                        <div class="col-md-4 col-lg-5 col-form-label">
+                                          <select class="form-select" id="inputGroupSelect04"
+                                            aria-label="Example select with button addon">
+                                            <option *ngFor="
+                                                let item of ListProfilCalendaire;
+                                                let i = index
+                                              " value="{{ item.designation }}">
+                                              {{ item.designation }}
+                                            </option>
+                                            <!-- <option value="1">Profil Calendaire</option>
+                                            <option value="2">Profil1</option>
+                                            <option value="2">Profil2</option>
+                                            <option value="2">Profil3</option> -->
+                                          </select>
+                                        </div>
+                                      </td>
+                                      <td><i class="bi bi-trash" (click)="merc=false"></i></td>
+                                    </tr>
+        
+        
+                                  <tr *ngIf="jeud" class="table-secondary">
+                                      <th scope="row">Jeudi</th>
+                                      <td>
+                                        <div class="col-md-4 col-lg-5 col-form-label">
+                                          <select class="form-select" id="inputGroupSelect04"
+                                            aria-label="Example select with button addon">
+                                            <option *ngFor="
+                                                let item of ListProfilCalendaire;
+                                                let i = index
+                                              " value="{{ item.designation }}">
+                                              {{ item.designation }}
+                                            </option>
+                                            <!-- <option value="1">Profil Calendaire</option>
+                                            <option value="2">Profil1</option>
+                                            <option value="2">Profil2</option>
+                                            <option value="2">Profil3</option> -->
+                                          </select>
+                                        </div>
+                                      </td>
+                                      <td><i class="bi bi-trash" (click)="jeud=false"></i></td>
+                                    </tr>
+        
+        
+        
+        
+                                  <tr *ngIf="vend" class="table-primary">
+                                      <th scope="row">Vendredi</th>
+                                      <td>
+                                        <div class="col-md-4 col-lg-5 col-form-label">
+                                          <select class="form-select" id="inputGroupSelect04"
+                                            aria-label="Example select with button addon">
+                                            <option *ngFor="
+                                                let item of ListProfilCalendaire;
+                                                let i = index
+                                              " value="{{ item.designation }}">
+                                              {{ item.designation }}
+                                            </option>
+                                            <!-- <option value="1">Profil Calendaire</option>
+                                            <option value="2">Profil1</option>
+                                            <option value="2">Profil2</option>
+                                            <option value="2">Profil3</option> -->
+                                          </select>
+                                        </div>
+                                      </td>
+                                      <td><i class="bi bi-trash" (click)="vend=false"></i></td>
+                                    </tr>
+                                  <tr *ngIf="samd">
+                                      <th scope="row">Samedi</th>
+                                      <td>
+                                        <div class="col-md-4 col-lg-5 col-form-label">
+                                          <select class="form-select" id="inputGroupSelect04"
+                                            aria-label="Example select with button addon">
+                                            <option *ngFor="
+                                                let item of ListProfilCalendaire;
+                                                let i = index
+                                              " value="{{ item.designation }}">
+                                              {{ item.designation }}
+                                            </option>
+                                            <!-- <option value="1">Profil Calendaire</option>
+                                            <option value="2">Profil1</option>
+                                            <option value="2">Profil2</option>
+                                            <option value="2">Profil3</option> -->
+                                          </select>
+                                        </div>
+                                      </td>
+                                      <td><i class="bi bi-trash" (click)="samd=false"></i></td>
+        
+        
+        
+        
+                                    </tr>
+                                    
+                                  </tbody>
+                                </table> 
+
+                                <div *ngIf="!probleme && !succes">
+                                  <button type="submit" class="btn btn-primary" style="float: right"
+                                    (click)="updateProfilSalarie()">
+                                    Enregistrer
+                                  </button>
+                                </div>
+
+
+
+                                <div class="row" *ngIf="succes" >   
+                                  <div class="col-md-12">
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                  <strong>Modification avec succes ! &nbsp; &nbsp;&nbsp;   </strong> 
+                                  <button type="button" (click)="redirection()"  class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                              </div>
+                              </div>
+                        
+                              <div class="row" *ngIf="probleme" >
+                               
+                                <div class="col-md-12">
+                              <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <strong>Problème de modification , veuillez contactez service informatique !    </strong> 
+                                <button type="button" (click)="redirection()" class="close" data-dismiss="alert" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                            </div>
+                            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                  <div class="card-footer bg-darkorange" style="background: darkorange; height: 90px;">
-                  <p><small class="text-muted" style="color: white !important;">Soir {{card.horraireSoir}}</small></p>
-                  <p><small class="text-muted" style="color: white !important;">Matin {{card.horraireMatin}}</small></p>
-                  </div>
                 </div>
-              </div><!-- End Sales Card -->
-    
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -47,9 +47,27 @@ export class GestionusersService {
         return request.toPromise();
       }
 
-      AddFonctionnalite(data: any): Promise<any> {
-        const request = this.httpClient.post<any>(
-          environment.BackendUrl + 'fonctionalitie/add',
+  getFonctions(): Promise<any>{
+        const request = this.httpClient.get<any>(
+          environment.BackendUrl + 'fonction/list',
+        
+          this.httpOptions
+        );
+        return request.toPromise();
+      }
+ getFonctionalites(): Promise<any>{
+  const request = this.httpClient.get<any>(
+    environment.BackendUrl + 'fonctionalitie/list',
+  
+    this.httpOptions
+  );
+  return request.toPromise();
+}
+
+
+      updateFonctionalite(data: any): Promise<any> {
+        const request = this.httpClient.put<any>(
+          environment.BackendUrl + 'fonctionalitie/update/'+data.idFonctionalities,
           JSON.stringify(data),
           this.httpOptions
         );

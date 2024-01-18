@@ -7,6 +7,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class AddprofilcalendraireService {
+
   
   constructor(
     private httpClient: HttpClient ,  private cookieService: CookieService ,
@@ -48,6 +49,51 @@ export class AddprofilcalendraireService {
       return request.toPromise();
     }
 
+    updateHoraire(data:any): Promise<any> {
+      const request = this.httpClient.put<any>(
+        environment.BackendUrl + 'horraireSpecifique/update/'+data.idHorraireSpecifique,
+        JSON.stringify(data),
+        this.httpOptions
+      );
+      return request.toPromise();
+    }
+
+
+    deleteHoraire(data: any): Promise<any> {
+      const request = this.httpClient.delete<any>(
+        environment.BackendUrl + 'horraireSpecifique/delete/'+data,
+        this.httpOptions
+      );
+      return request.toPromise();
+    }
+
+
+
+// put pause
+deletePause(data: any): Promise<any> {
+  const request = this.httpClient.delete<any>(
+    environment.BackendUrl + 'pause/delete/'+data,
+    this.httpOptions
+  );
+  return request.toPromise();
+}
+
+
+
+
+
+
+// put pause
+    updatePause(data: any): Promise<any> {
+      const request = this.httpClient.put<any>(
+        environment.BackendUrl + 'pause/update/'+data.idPause,
+        JSON.stringify(data),
+        this.httpOptions
+      );
+      return request.toPromise();
+    }
+
+// add pause
     AddPause(data: any): Promise<any> {
       const request = this.httpClient.post<any>(
         environment.BackendUrl + 'pause/add',

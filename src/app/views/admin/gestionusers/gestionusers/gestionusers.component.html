@@ -4,8 +4,8 @@
         
         <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
           <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Gestion Users</li>
+            <li class="breadcrumb-item"><a href="#">Accueil</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Gestion Utilisateurs</li>
           </ol>
         </nav>
         <div class="card">
@@ -22,8 +22,8 @@
               </ul>
               <div class="btn-group mr-2" role="group" aria-label="First group" style="float: right;">
                 
-               <h3> <a href="#" class="#profile-delete"><i class="bi bi-trash"></i></a></h3>&nbsp;
-               <h3> <a href="#" class="#profile-edit"><i class="bi bi-exclamation-triangle-fill"></i></a></h3>&nbsp;
+               <h3> <a href="#"  class="#profile-delete"><i class="bi bi-trash"></i></a></h3>&nbsp;
+               <h3> <a href="" class="#profile-edit"><i class="bi bi-exclamation-triangle-fill"></i></a></h3>&nbsp;
                <h3> <a href="#" class="#profile-activate"><i class="bi bi-file-check-fill"></i></a></h3>
               </div>
                 
@@ -53,19 +53,23 @@
               
                 <tr *ngFor="let user of listusers">
                   <th scope="row">
-                    <a routerLink="admin/addfonctionalite" class="#addfonctionalite" data-bs-toggle="modal" data-bs-target="#fullscreenModal"> <i class="bi bi-plus-lg"></i></a>&nbsp;
+                    <a  class="#addfonctionalite" data-bs-toggle="modal" (click)="editFonction(user)"   data-bs-target="#fullscreenModal"> <i class="bi bi-plus-lg"></i></a>&nbsp;
+                   
                     <div class="modal fade" id="fullscreenModal" tabindex="-1">
                       <div class="modal-dialog modal-fullscreen">
                         <div class="modal-content">
                           <div class="modal-header">
-                            <h5 class="modal-title">Ajouter fonctionalités</h5>
+                            <h5 class="modal-title">Modifier fonctionalités</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                           </div>
                           <div class="modal-body">
+
+
+<!--
                             <table class="table datatable">
                               <thead>
                                
-                                <tr>
+                                <tr >
                                   <th scope="col"></th>
                                   <th scope="col">Lecture</th>
                                   <th scope="col">Ajouter</th>
@@ -75,99 +79,75 @@
                                 </tr>
                               </thead>
                               <tbody>
-                                <tr>
-                                  <th scope="row">Gestion des usagers</th>
+
+                                <tr *ngFor="let fonction of this.listeFoncions; let i = index " >
+                                  <th scope="row" value ='' id="fonct{{i}}">{{fonction.designation}}</th>
                                   <td> <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="Lecture" id="defaultCheck1"></div>
+                                    <input class="form-check-input" type="checkbox" value="Lecture" id="lecture{{i}}"   ></div>
                                 </td>
                                 <td> <div class="form-check">
-                                  <input class="form-check-input" type="checkbox" value="Ajouter" id="defaultCheck2"></div></td>
+                                  <input class="form-check-input" type="checkbox" value="Ajouter" id="Ajouter{{i}}"  ></div></td>
                                 <td> <div class="form-check">
-                                  <input class="form-check-input" type="checkbox" value="modification" id="defaultCheck3"></div></td>
+                                  <input class="form-check-input" type="checkbox" value="modification" id="modification{{i}}"  ></div></td>
                                 <td> <div class="form-check">
-                                  <input class="form-check-input" type="checkbox" value="suppression" id="defaultCheck4"></div></td>
+                                  <input class="form-check-input" type="checkbox" value="suppression" id="suppression{{i}}" ></div></td>
                                  
                                 </tr>
-                                <tr>
-                                  <th scope="row">Consultation des logs Handeys</th>
-                                  <td> <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="Lecture" id="defaultCheck1"></div>
-                                </td>
-                                <td> <div class="form-check">
-                                  <input class="form-check-input" type="checkbox" value="Ajouter" id="defaultCheck2"></div></td>
-                                <td> <div class="form-check">
-                                  <input class="form-check-input" type="checkbox" value="modification" id="defaultCheck3"></div></td>
-                                <td> <div class="form-check">
-                                  <input class="form-check-input" type="checkbox" value="suppression" id="defaultCheck4"></div></td>
+
+                                </tbody>
+                            </table>-->
+
+
+
+
+
+
+                            <table class="table datatable">
+                              <thead>
+                               
+                                <tr >
+                                  <th scope="col"></th>
+                                  <th scope="col">Lecture</th>
+                                  <th scope="col">Ajouter</th>
+                                  <th scope="col">Modifier</th>
+                                  <th scope="col">Supprimer</th>
                                   
                                 </tr>
-                                <tr>
-                                  <th scope="row">Gestion des calendriers de pointage</th>
+                              </thead>
+                              <tbody>
+
+                                <tr *ngFor="let fonctionalite of this.listeFoncionalite; let i = index " >
+                                  <th scope="row" id="fonct{{i}}">{{fonctionalite.fonction.designation}}</th>
                                   <td> <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="Lecture" id="defaultCheck1"></div>
+                                    <input class="form-check-input" type="checkbox" value="Lecture" id="lecture{{i}}"  [checked]="fonctionalite.lecture" ></div>
                                 </td>
                                 <td> <div class="form-check">
-                                  <input class="form-check-input" type="checkbox" value="Ajouter" id="defaultCheck2"></div></td>
+                                  <input class="form-check-input" type="checkbox" value="Ajouter" id="Ajouter{{i}}" [checked]="fonctionalite.ajout" ></div></td>
                                 <td> <div class="form-check">
-                                  <input class="form-check-input" type="checkbox" value="modification" id="defaultCheck3"></div></td>
+                                  <input class="form-check-input" type="checkbox" value="modification" id="modification{{i}}" [checked]="fonctionalite.modification" ></div></td>
                                 <td> <div class="form-check">
-                                  <input class="form-check-input" type="checkbox" value="suppression" id="defaultCheck4"></div></td>
+                                  <input class="form-check-input" type="checkbox" value="suppression" id="suppression{{i}}" [checked]="fonctionalite.suppression" ></div></td>
                                  
                                 </tr>
-                                <tr>
-                                  <th scope="row">Gestion des sondages de sources</th>
-                                  <td> <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="Lecture" id="defaultCheck4"></div>
-                                </td>
-                                <td> <div class="form-check">
-                                  <input class="form-check-input" type="checkbox" value="Ajouter" id="defaultCheck4"></div></td>
-                                <td> <div class="form-check">
-                                  <input class="form-check-input" type="checkbox" value="modification" id="defaultCheck4"></div></td>
-                                <td> <div class="form-check">
-                                  <input class="form-check-input" type="checkbox" value="suppression" id="defaultCheck4"></div></td>
-                                 
-                                </tr>
-                                <tr>
-                                  <th scope="row">Gestion des absences des salariés </th>
-                                  <td> <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="Lecture" id="defaultCheck5"></div>
-                                </td>
-                                <td> <div class="form-check">
-                                  <input class="form-check-input" type="checkbox" value="Ajouter" id="defaultCheck5"></div></td>
-                                <td> <div class="form-check">
-                                  <input class="form-check-input" type="checkbox" value="modification" id="defaultCheck5"></div></td>
-                                <td> <div class="form-check">
-                                  <input class="form-check-input" type="checkbox" value="suppression" id="defaultCheck5"></div></td>
-                                 
-                                </tr>
-                                <tr>
-                                  <th scope="row">Gestion des assistants</th>
-                                  <td> <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="Lecture" id="defaultCheck6"></div>
-                                </td>
-                                <td> <div class="form-check">
-                                  <input class="form-check-input" type="checkbox" value="Ajouter" id="defaultCheck6"></div></td>
-                                <td> <div class="form-check">
-                                  <input class="form-check-input" type="checkbox" value="modification" id="defaultCheck6"></div></td>
-                                <td> <div class="form-check">
-                                  <input class="form-check-input" type="checkbox" value="suppression" id="defaultCheck6"></div></td>
-                                 
-                                </tr>
-                                <tr>
-                                  <th scope="row">Consultation des logs logiciels</th>
-                                  <td> <div class="form-check">
-                                      <input class="form-check-input" type="checkbox" value="Lecture" id="defaultCheck1"></div>
-                                  </td>
-                                  <td> <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="Ajouter" id="defaultCheck1"></div></td>
-                                  <td> <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="modification" id="defaultCheck1"></div></td>
-                                  <td> <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="suppression" id="defaultCheck1"></div></td>
-                                 
-                                </tr>
+
                                 </tbody>
                             </table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                           </div>
                           <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
@@ -212,8 +192,8 @@
                                       
                                       <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
                                         <ol class="breadcrumb">
-                                          <li class="breadcrumb-item" routerLink="gestionusers">Home</li>
-                                          <li class="breadcrumb-item"><a href="gestionusers">Gestion Users </a></li>
+                                          <li class="breadcrumb-item" routerLink="gestionusers">Accueil</li>
+                                          <li class="breadcrumb-item"><a href="gestionusers">Gestion Utilisateurs </a></li>
                                           
                                           <li class="breadcrumb-item active" aria-current="page">Ajouter profil session</li>
                                         </ol>
@@ -384,8 +364,8 @@
                   <td>{{user.email}}</td>
                   <td><a href="#" class="#profile-desactivate"><i class="bi bi-exclamation-triangle-fill"></i></a>&nbsp;
                   <a href="#" class="#profile-activate"><i class="bi bi-file-check-fill"></i></a></td>
-                  <td><a href="#" class="#profile-delete" (click)="DeletePointeuse(user.idUsager)"><i class="bi bi-trash"></i></a>&nbsp;
-                  <a href="#" class="#profile-edit" (click)="open(contentEdit, user)" data-bs-toggle="modal" data-bs-target="#scrollingModal"  [attr.data-target]="'#Model'+user.username" #modelEditUser id="modalEditUser"><i class="bi bi-pen"></i></a>&nbsp;
+                  <td><a href="" class="#profile-delete" (click)="DeleteUser(user.idUsager)"><i class="bi bi-trash"></i></a>&nbsp;
+                  <a href="" class="#profile-edit" (click)="open(contentEdit, user)" data-bs-toggle="modal" data-bs-target="#scrollingModal"  [attr.data-target]="'#Model'+user.username" #modelEditUser id="modalEditUser"><i class="bi bi-pen"></i></a>&nbsp;
 
                   </td>
                   <div class=" profile-edit pt-3" id="profile-edit" style="padding:20px;">
@@ -393,7 +373,7 @@
                     <!-- Profile Edit Form -->
                     <ng-template #contentEdit let-modal style="padding:20px;" class="modalEdit">
                       <div class="modal-header">
-                        <h4 class="modal-title" id="modal-basic-title">Modifier Company</h4>
+                        <h4 class="modal-title" id="modal-basic-title">Modifier Utilisateur</h4>
                         <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
                           <span aria-hidden="true">&times;</span>
                         </button>

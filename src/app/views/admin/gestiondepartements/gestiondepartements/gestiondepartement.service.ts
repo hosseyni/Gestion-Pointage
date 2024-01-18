@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
+import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { GestiondepartementModel } from './gestiondepartementModel';
 
@@ -32,12 +33,12 @@ export class GestiondepartementService {
     }
 
     //DELETE
-    DeleteDepartement(id: number): Promise<any> {
+    DeleteDepartement(id: number): Observable<any> {
       const request = this.httpClient.delete<any>(
         environment.BackendUrl + 'company/delete/'+ id,
         this.httpOptions
       );
-      return request.toPromise();
+      return request;
     }
 
      //Put

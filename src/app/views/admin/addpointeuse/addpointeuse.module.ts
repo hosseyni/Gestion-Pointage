@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { AddpointeuseRoutingModule } from './addpointeuse-routing.module';
 import { AddpointeuseComponent } from './addpointeuse/addpointeuse.component';
-
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -11,7 +11,8 @@ import { AddpointeuseComponent } from './addpointeuse/addpointeuse.component';
   ],
   imports: [
     CommonModule,
-    AddpointeuseRoutingModule
+    AddpointeuseRoutingModule,
+    FormsModule
   ]
 })
 export class AddpointeuseModule { }

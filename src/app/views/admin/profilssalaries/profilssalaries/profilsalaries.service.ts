@@ -22,7 +22,7 @@ export class ProfilsalariesService {
   };
 
         //get
-    GeProfilSalarie(): Promise<[ProfilSalarieModel]> {
+    GeProfilSalarie(): Promise<any> {
       const request = this.httpClient.get<any>(
         environment.BackendUrl + 'profilSalaire/list' ,
         this.httpOptions
@@ -34,6 +34,15 @@ export class ProfilsalariesService {
     DeleteProfilSalarie(id: any): Promise<any> {
       const request = this.httpClient.delete<any>(
         environment.BackendUrl + 'profilSalaire/delete/'+ id,
+        this.httpOptions
+      );
+      return request.toPromise();
+    }
+
+
+    updateProfilSalarie(data: any): Promise<any> {
+      const request = this.httpClient.put<any>(
+        environment.BackendUrl + 'profilSalaire/update/'+ data.idProfilSalaire,data,
         this.httpOptions
       );
       return request.toPromise();

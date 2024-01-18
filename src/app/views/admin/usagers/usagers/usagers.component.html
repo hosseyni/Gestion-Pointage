@@ -1,6 +1,6 @@
 <div class="wrap">
     <div class="search">
-       <input type="text" class="searchTerm" placeholder="search">
+       <input type="text" class="searchTerm" placeholder="rec">
        <button type="submit" class="searchButton">
          <i class="fa fa-search"></i>
       </button>
@@ -18,18 +18,18 @@
                     
                       <div id="friends">
                          
-                        <div class="friend">
-                            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/245657/1_copy.jpg" />
+                        <div class="friend" *ngFor="let item of listeUser  ; let i = index" >
+                            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/245657/{{i+1}}_copy.jpg" />
                               <div class="text">
-                                <strong>Miro Badev</strong>
-                                <span>13/3/2022</span>
-                                <p>Integrateur</p>
+                                <strong>{{item.nom}}</strong>
+                                <span>{{ item.dateInscrit |date:'shortDate'}}</span>
+                                <p>{{item.proffession}}</p>
 
                               </div>
                               <div class="status available"></div>
                           </div>
                           
-                          <div class="friend">
+                         <!-- <div class="friend">
                             <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/245657/1_copy.jpg" />
                               <div class="text">
                                 <strong>Miro Badev</strong>
@@ -82,6 +82,7 @@
                               </div>
                               <div class="status available"></div>
                           </div>
+                          -->
                           
                       </div>                
                       
@@ -100,8 +101,10 @@
 <table class="table table-success table-striped"  >
     <thead>
       <tr>
-        
-        <th  scope="col"><i *ngIf= "isShown" class="bi bi-plus-lg nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit" routerLink="/admin/addusager"></i></th>
+        <!-- 
+          data-bs-toggle="tab" data-bs-target="#profile-edit"
+        -->
+        <th  scope="col"><i *ngIf= "isShown" class="bi bi-plus-lg nav-link"  routerLink="/admin/addusager"></i></th>
         <th scope="col">DIMANCHE</th>
         <th scope="col">LUNDI</th>
         <th scope="col">MARDI</th>
@@ -125,7 +128,7 @@
 
       </tr>
 
-      <tr>
+    <!-- <tr>
         <td >Adam Bannour</td>
         <td><p>10:00:00</p><p>18:00:00</p></td>
         <td> Sans Profile</td>
@@ -179,7 +182,7 @@
         <td><p>11:00:00</p><p>19:00:00</p></td>
 
       </tr>
-      
+      --> 
     </tbody>
   </table>
 </div>

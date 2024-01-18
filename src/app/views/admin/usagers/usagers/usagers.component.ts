@@ -1,7 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
-
+import {UsagersService } from './usagers.service'
 @Component({
   selector: 'app-usagers',
   templateUrl: './usagers.component.html',
@@ -10,6 +10,7 @@ import html2canvas from 'html2canvas';
 export class UsagersComponent implements OnInit {
   @ViewChild('htmlData') htmlData!: ElementRef;
 
+  listeUser = new Array()
   isShown : Boolean = true;
 
   USERS = [
@@ -50,9 +51,48 @@ export class UsagersComponent implements OnInit {
       "phone": "1-477-935-8478 x6430"
     }
   ];
-  constructor() { }
+  constructor(private usagersService : UsagersService) { }
+/*
+absences: []
+badge: null
+company: null
+dateInscrit: "2022-06-23T13:53:43.000+00:00"
+dateNaissance: "1997-04-20"
+details: {idDetails: 1, adresse: 'ariena', webstite: 'www.website.com', github: 'www.github.com', linkedin: 'www.linkedin.com', …}
+email: "hosseynitaher@gmail.com"
+empreinte: null
+evenements: []
+fonctionalities: [{…}]
+idUsager: 1
+nom: "hosseyni"
+numero: null
+password: "$2a$10$IVFIgxYnoCeVZFAfRY7.S.wIr2R4ts0CyNWJa1mRysz5uQMreZcFW"
+prenom: "taher"
+proffession: null
+role: {idRole: 1, role: 'ADMIN'}
+sexe: "homme"
+username: "hosseyni2022"
 
-  ngOnInit(): void {
+
+*/
+ async getListUser(){
+  await this.usagersService.listUsager().then((data)=>{
+    this.listeUser = data;
+    console.log('user liste ', data);
+    
+  }).catch((error=>{
+        console.log('error liste user ', error);
+        
+  }));
+  for(const obj of this.listeUser){
+    obj.dateInscrit = String(obj.dateInscrit).substring(0,10)
+  }
+ }
+
+
+ async ngOnInit(){
+   
+  await  this.getListUser();
   }
 
 

@@ -7,7 +7,7 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import { FullCalendarModule } from '@fullcalendar/angular';
-  
+import { FormsModule } from '@angular/forms';
 FullCalendarModule.registerPlugins([
   dayGridPlugin,
   interactionPlugin
@@ -21,6 +21,7 @@ FullCalendarModule.registerPlugins([
   imports: [
     CommonModule,
     AddusagerRoutingModule,
+    FormsModule ,
     FullCalendarModule,
     CalendarModule.forRoot({
       provide: DateAdapter,

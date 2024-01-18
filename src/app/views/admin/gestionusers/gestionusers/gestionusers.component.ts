@@ -11,19 +11,116 @@ import { UserModel } from './userModel';
 })
 export class GestionusersComponent implements OnInit {
 
-  listusers :UserModel[] = [];
+  listusers =new Array();
   sexe:string | undefined;
   modalRow: any;
   addfonctionalitiservice: any;
+  editUser : any;
+  listeFoncionalite = new Array();
+  editUserId: any;
+  listeFoncions: any;
   constructor(private gestionusertservice :GestionusersService , private router: Router , private modalService : NgbModal) { }
 
   ngOnInit(): void {
     this.GetUsers();
   }
+
+
+ async  editFonction(user:any){
+  await    this.gestionusertservice.getFonctions().then((response:any) => {
+    console.log("response liste  Fonctionnalite  " , response)
+    this. listeFoncions =response
+     })
+.catch((error:any) => {
+  console.log("error" , error)
+  });
+
+
+
+  this.editUserId =user.idUsager;
+  this.editUser = user;
+   console.log('User FONCTIONALITES ', user.fonctionalities);
+      this. listeFoncionalite =  user.fonctionalities
+     
+      for(let item of this.listeFoncionalite ){
+        console.log("fonction ",item.fonction)
+       
+        }
+   
+  }
+  verifCheck(fct:any){
+    let res = false
+    let i=0
+    for(let fnctlt of this.listeFoncionalite){
+      if(fnctlt.idFonction===fct.idFonction ){
+        res= fnctlt.lecture
+        (<HTMLInputElement>document.getElementById('lecture'+i)).checked = fnctlt.lecture
+        (<HTMLInputElement>document.getElementById('Ajouter'+i)).checked = fnctlt.ajout
+        (<HTMLInputElement>document.getElementById('modification'+i)).checked = fnctlt.modification
+        (<HTMLInputElement>document.getElementById('uppression'+i)).checked = fnctlt.uppression
+      }
+      i++
+    }
+  
+    
+  }
+
+
+
+   async AddFonctionnalitie(){
+      let i=0; 
+          for(let fnctlt of this.listeFoncionalite){
+          //  console.log('Foncionalite ',fnctlt );
+            let lecture1 =  (<HTMLInputElement>document.getElementById('lecture'+i)).checked;
+           
+       
+        
+        
+            let iduser = this.editUserId;
+            console.log('id usager ',iduser );
+            
+          let idFonction =fnctlt.fonction.idFonction;
+       
+          let lecture =  (<HTMLInputElement>document.getElementById('lecture'+i)).checked;
+           let ajout =  (<HTMLInputElement>document.getElementById('Ajouter'+i)).checked;
+           let modification =  (<HTMLInputElement>document.getElementById('modification'+i)).checked;
+           let suppression =  (<HTMLInputElement>document.getElementById('suppression'+i)).checked;
+           let obj ={
+            "usager" :{"idUsager":iduser},
+            //"usager":this.editUser,
+             "idFonctionalities":fnctlt.idFonctionalities,
+             "idFonction":idFonction,
+             "ajout":ajout,
+             "lecture": lecture,
+             "modification": modification,
+             "suppression": suppression
+           }
+           console.log('obj  ',obj );
+          
+       await    this.gestionusertservice.updateFonctionalite(obj).then((response:any) => {
+              console.log("response add  Fonctionnalite  " , response)
+              window.location.href ='/admin/gestionusers';
+            //  window.location.reload();
+        
+          })
+          .catch((error:any) => {
+            console.log("error" , error)
+            });
+          
+           
+           i++;
+          }
+      
+      
+        }
+      
+
+
+
   
   GetUsers(){
     this.gestionusertservice.GetUsers().then((response) => {
-      console.log("response")
+      console.log("liste user ",response)
    
       if(response.length > 0 )  {
        
@@ -38,7 +135,7 @@ export class GestionusersComponent implements OnInit {
       console.log("error" , error)
       });
 }
-  DeletePointeuse(value: any){
+DeleteUser(value: any){
       this.gestionusertservice.DeleteUser(value).then((response) => {
         window.location.href   = '/admin/gestionusers';
   
@@ -90,26 +187,6 @@ export class GestionusersComponent implements OnInit {
     }
 
 
-AddFonctionnalitie(){
-  let defaultCheck1 =  (<HTMLInputElement>document.getElementById('defaultCheck1')).value;
-  let defaultCheck2 =  (<HTMLInputElement>document.getElementById('defaultCheck2')).value;
-  let defaultCheck3 =  (<HTMLInputElement>document.getElementById('defaultCheck3')).value;
-  let defaultCheck4 =  (<HTMLInputElement>document.getElementById('defaultCheck4')).value;
-  let defaultCheck5 =  (<HTMLInputElement>document.getElementById('defaultCheck5')).value;
-  let defaultCheck6 =  (<HTMLInputElement>document.getElementById('defaultCheck6')).value;
-  console.log("defaultCheck1" , defaultCheck1 , defaultCheck2 , defaultCheck3 , defaultCheck4 , defaultCheck5 , defaultCheck6)
-  this.gestionusertservice.AddFonctionnalite({
-    "lecture": true,
-    "modification": true,
-    "suppression": true,
-  }).then((response:any) => {
-      console.log("response" , response)
-
-  })
-  .catch((error:any) => {
-    console.log("error" , error)
-    });
-  }
 
   open(content: any, tableRow : any) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'});

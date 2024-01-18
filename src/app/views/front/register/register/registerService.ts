@@ -6,7 +6,7 @@ import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class AddfonctionalitéService {
+export class registerService {
 
  
   constructor(
@@ -28,9 +28,9 @@ export class AddfonctionalitéService {
 
     // POST
 
-    AddFonctionnalite(data: any): Promise<any> {
+    regigister(data: any): Promise<any> {
       const request = this.httpClient.post<any>(
-        environment.BackendUrl + 'fonctionalitie/add',
+        environment.BackendUrl + 'usager/add',
         JSON.stringify(data),
         this.httpOptions
       );
